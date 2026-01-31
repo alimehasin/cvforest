@@ -24,8 +24,8 @@ export function useVerifyEmailOtpMut() {
         .json<VerifyEmailOtpResponseBody>();
     },
     onSuccess: () => {
-      n.success(t('auth.emailVerified'));
-      router.push('/set-password');
+      n.success(t('auth.passwordSetSuccess'));
+      router.push('/');
     },
   });
 }

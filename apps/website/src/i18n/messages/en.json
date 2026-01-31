@@ -19,6 +19,7 @@
     "passwordSetSuccess": "Password set successfully",
     "passwordSpecial": "Password must contain at least one special character",
     "passwordUpperCase": "Password must contain at least one uppercase letter",
+    "passwordsDoNotMatch": "Passwords do not match",
     "setPassword": "Set Your Password",
     "verificationCodeSent": "We've sent a 6-digit code to your email",
     "verifyCode": "Verify Code",

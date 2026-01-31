@@ -19,6 +19,7 @@
     "passwordSetSuccess": "تم تعيين كلمة المرور بنجاح",
     "passwordSpecial": "يجب أن تحتوي كلمة المرور على حرف خاص على الأقل",
     "passwordUpperCase": "يجب أن تحتوي كلمة المرور على حرف كبير على الأقل",
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
     "setPassword": "تعيين كلمة المرور",
     "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
     "verifyCode": "تحقق من الرمز",
