@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Anchor,
   Button,
   Checkbox,
   MultiSelect,
@@ -223,11 +224,11 @@ export function JoinForm() {
                 </SimpleGrid>
 
                 <Select
+                  clearable
                   label={t('join.availabilityType')}
                   placeholder={t('join.availabilityPlaceholder')}
                   leftSection={<IconClock size={18} />}
                   data={availabilityOptions}
-                  clearable
                   {...form.getInputProps('availabilityType')}
                 />
 
@@ -280,7 +281,6 @@ export function JoinForm() {
           {/* Submit Button */}
           <Button
             type="submit"
-            size="lg"
             leftSection={<IconCheck size={20} />}
             loading={registerMut.isPending}
           >
@@ -290,9 +290,9 @@ export function JoinForm() {
           {/* Link to Login */}
           <Text ta="center" c="dimmed" size="sm">
             {t('join.alreadyHaveAccount')}{' '}
-            <Text component={Link} href="/" c="blue" fw={500}>
+            <Anchor href="/login" component={Link} c="blue" fw={500}>
               {t('join.signIn')}
-            </Text>
+            </Anchor>
           </Text>
         </Stack>
       </Stack>
