@@ -2,6 +2,7 @@ import { Elysia } from 'elysia';
 import { accounts } from '@/api/accounts/admin/accounts.admin.route';
 import { files } from '@/api/files/admin/files.admin.route';
 import { governorates } from '@/api/governorates/admin/governorates.admin.route';
+import { joinRequests } from '@/api/join-requests/admin/join-requests.admin.route';
 import { skills } from '@/api/skills/admin/skills.admin.route';
 import { users } from '@/api/users/admin/users.admin.route';
 import { init } from '@/init';
@@ -21,4 +22,5 @@ export const admin = new Elysia({ prefix: '/admin', tags: ['Admin'] })
   .use(governorates)
   .use(skills)
   .use(files)
-  .use(users);
+  .use(users)
+  .use(joinRequests);
