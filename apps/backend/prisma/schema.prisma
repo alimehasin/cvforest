@@ -38,6 +38,9 @@ model User {
   phoneNumber         String?  @unique
   phoneNumberVerified Boolean?
 
+  username        String?
+  displayUsername String?
+
   role       String?
   banned     Boolean?  @default(false)
   banReason  String?

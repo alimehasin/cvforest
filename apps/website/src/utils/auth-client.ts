@@ -1,4 +1,8 @@
-import { adminClient, inferAdditionalFields } from 'better-auth/client/plugins';
+import {
+  adminClient,
+  inferAdditionalFields,
+  usernameClient,
+} from 'better-auth/client/plugins';
 import { createAuthClient } from 'better-auth/react';
 import { env } from '@/env';
 
@@ -8,6 +12,7 @@ export const authClient = createAuthClient({
 
   plugins: [
     adminClient(),
+    usernameClient(),
     inferAdditionalFields({
       user: {
         gender: {
