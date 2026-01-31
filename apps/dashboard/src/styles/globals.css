@@ -1,0 +1,29 @@
+html,
+body {
+  background-color: var(--mantine-color-nature-0);
+}
+
+.mantine-Button-root,
+.mantine-Input-input,
+.mantine-ActionIcon-root,
+.mantine-Pagination-control,
+.mantine-DatePickerInput-day,
+.mantine-DateTimePicker-day {
+  border-radius: 100vw;
+}
+
+.mantine-Menu-dropdown {
+  min-width: 150px;
+}
+
+.mantine-Popover-dropdown {
+  min-width: 150px;
+}
+
+.mantine-Input-input {
+  &:focus-within {
+    outline: none;
+    transition: box-shadow 150ms ease;
+    box-shadow: 0 0 0 2px var(--mantine-primary-color-filled);
+  }
+}

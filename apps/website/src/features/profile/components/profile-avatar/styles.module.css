@@ -1,0 +1,14 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  border-radius: 100vw;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+}
+
+.cameraIcon {
+  color: var(--mantine-color-gray-3);
+}

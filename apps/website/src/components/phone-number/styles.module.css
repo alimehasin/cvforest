@@ -1,0 +1,6 @@
+.root {
+  @mixin rtl {
+    direction: ltr;
+    text-align: right;
+  }
+}

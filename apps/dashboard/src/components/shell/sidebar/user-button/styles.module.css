@@ -1,0 +1,31 @@
+.root {
+  padding: var(--mantine-spacing-md);
+}
+
+.button {
+  width: 100%;
+  background-color: var(--mantine-color-nature-0);
+  border: 1px solid var(--mantine-color-nature-2);
+  border-radius: 100vw;
+  padding: var(--mantine-spacing-xs);
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--mantine-spacing-xs);
+  align-items: center;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--mantine-color-nature-2);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  background-color: var(--mantine-color-nature-0);
+}

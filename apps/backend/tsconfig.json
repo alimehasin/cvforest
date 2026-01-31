@@ -1,0 +1,10 @@
+{
+  "extends": "@repo/tsconfig/src/base.json",
+  "exclude": ["node_modules", "src/gen"],
+  "compilerOptions": {
+    "paths": {
+      "@db/*": ["./prisma/*"],
+      "@/*": ["./src/*"]
+    }
+  }
+}

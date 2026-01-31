@@ -1,0 +1,4 @@
+{
+  "*.{js,jsx,ts,tsx,json,css,scss}": ["biome check --write"],
+  "apps/*/src/i18n/messages/*.json": ["bun run i18n:validate"]
+}

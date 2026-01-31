@@ -1,0 +1,5 @@
+.tableWrapper {
+  overflow: hidden;
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-gray-3);
+}

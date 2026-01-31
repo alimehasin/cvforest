@@ -1,0 +1,67 @@
+{
+  "_": {
+    "done": "Done",
+    "error": "Error",
+    "hello": "Hello",
+    "save": "Save",
+    "search": "Search",
+    "success": "Success"
+  },
+  "confirmDelete": {
+    "actionCannotBeUndone": "This action cannot be undone.",
+    "areYouSureAboutThisAction": "Are you sure you want to perform this action?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "dataTable": {
+    "noRecords": "No records to show",
+    "recordsPerPageLabel": "Records per page"
+  },
+  "login": {
+    "email": "Email",
+    "login": "Login",
+    "loginTitle": "Login to your account",
+    "logo": "Logo Here",
+    "password": "Password"
+  },
+  "meta": {
+    "description": "FindCV | A platform for finding CVs",
+    "title": "FindCV | Dashboard"
+  },
+  "notFound": {
+    "description": "The page you requested might have been moved, deleted, or you might have entered the wrong URL.",
+    "errorCode": "404",
+    "goBack": "Go Back",
+    "goHome": "Go Home",
+    "subtitle": "Oops! The page you're looking for doesn't exist.",
+    "title": "Page Not Found"
+  },
+  "profiles": {
+    "email": "Email Address",
+    "emailRequired": "Email is required",
+    "female": "Female",
+    "gender": "Gender",
+    "genderRequired": "Gender is required",
+    "male": "Male",
+    "memberSince": "Member since",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "phone": "Phone",
+    "profileInfo": "Profile Info",
+    "updated": "Profile updated successfully",
+    "updateProfile": "Update Profile Details"
+  },
+  "sessions": {
+    "activeSessions": "Active Sessions",
+    "createdAt": "Created At",
+    "currentSession": "Current Session",
+    "currentSessionCannotBeRevoked": "Current session cannot be revoked",
+    "expiresAt": "Expires At",
+    "ipAddress": "IP Address",
+    "revoke": "Revoke",
+    "revokeAll": "Revoke All Other Sessions",
+    "revokeAllSuccess": "All other sessions were revoked successfully",
+    "revokeSuccess": "Revoked successfully",
+    "userAgent": "User Agent"
+  }
+}

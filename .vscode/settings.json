@@ -1,0 +1,28 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+
+  "emmet.showExpandedAbbreviation": "never",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  "[markdown][html][yaml][mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // i18n Ally
+  "i18n-ally.enabledFrameworks": ["next-intl"],
+  "i18n-ally.localesPaths": "apps/*/src/i18n/messages",
+  "i18n-ally.pathMatcher": "{locale}.json",
+  "i18n-ally.defaultNamespace": "",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.extract.autoDetect": true
+}

@@ -1,0 +1,160 @@
+# i18n Two-Level Nesting Rule
+
+## Overview
+
+This rule enforces a strict two-level nesting structure for all i18n translation keys across the project. Translation keys must follow the pattern `category.key` and cannot exceed two levels of nesting.
+
+## Rule Details
+
+### ✅ Allowed Patterns
+
+- `product.name` - Two levels: category and key
+- `user.email` - Two levels: category and key
+- `auth.login` - Two levels: category and key
+- `dashboard.title` - Two levels: category and key
+- `sidebar.home` - Two levels: category and key
+
+### ❌ Rejected Patterns
+
+- `reservation.statuses.canceled` - Three levels: category, subcategory, and key
+- `auth.errors.invalidCredentials` - Three levels: category, subcategory, and key
+- `dashboard.metrics.totalReservations` - Three levels: category, subcategory, and key
+- `user.profile.settings.theme` - Four levels: too deep nesting
+
+## Implementation Guidelines
+
+### 1. Key Structure
+
+- **First level**: Represents the main feature/component (e.g., `reservations`, `users`, `auth`)
+- **Second level**: Represents the specific property/action (e.g., `name`, `email`, `login`)
+
+### 2. Naming Conventions
+
+- Use camelCase for both levels
+- First level should be plural for collections (e.g., `reservations`, `users`)
+- Second level should be descriptive and specific
+
+### 3. File Organization
+
+- All translation files must follow this structure
+- Both `en.json` and `ar.json` files must maintain identical key structures
+- Keys should be organized logically by feature/component
+
+## Examples
+
+### ✅ Correct Structure
+
+```json
+{
+  "reservations": {
+    "add": "Add Reservation",
+    "edit": "Edit Reservation",
+    "delete": "Delete Reservation",
+    "status": "Status",
+    "pending": "Pending",
+    "attended": "Attended",
+    "cancelled": "Cancelled"
+  },
+  "users": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "add": "Add User",
+    "edit": "Edit User"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password"
+  }
+}
+```
+
+### ❌ Incorrect Structure
+
+```json
+{
+  "reservations": {
+    "statuses": {
+      "pending": "Pending",
+      "attended": "Attended"
+    },
+    "actions": {
+      "add": "Add",
+      "edit": "Edit"
+    }
+  },
+  "auth": {
+    "errors": {
+      "invalidCredentials": "Invalid credentials",
+      "sessionExpired": "Session expired"
+    }
+  }
+}
+```
+
+## Migration Strategy
+
+### For Existing Violations
+
+If you encounter existing three-level nesting, refactor as follows:
+
+**Before:**
+
+```json
+{
+  "qrcode": {
+    "notFetched": {
+      "title": "Scan QR Code",
+      "subtitle": "Enter a reservation ID",
+      "description": "Use the search form above"
+    }
+  }
+}
+```
+
+**After:**
+
+```json
+{
+  "qrcode": {
+    "notFetchedTitle": "Scan QR Code",
+    "notFetchedSubtitle": "Enter a reservation ID",
+    "notFetchedDescription": "Use the search form above"
+  }
+}
+```
+
+## Validation
+
+### Automated Checks
+
+- Use JSON schema validation to enforce structure
+- Implement pre-commit hooks to validate i18n files
+- Add ESLint rules to catch violations in TypeScript/JavaScript files
+
+### Manual Review
+
+- Review all translation files before commits
+- Ensure both `en.json` and `ar.json` maintain identical structure
+- Verify that refactored keys are updated in all usage locations
+
+## Benefits
+
+1. **Consistency**: Uniform structure across all translation files
+2. **Maintainability**: Easier to locate and update translations
+3. **Performance**: Faster key resolution with fewer nesting levels
+4. **Developer Experience**: Clearer mental model for translation organization
+5. **Tooling**: Better support from i18n tools and IDEs
+
+## Enforcement
+
+This rule should be enforced through:
+
+- Code review processes
+- Automated validation scripts
+- Pre-commit hooks
+- CI/CD pipeline checks
+
+Any violations should be caught and fixed before merging to main branch.

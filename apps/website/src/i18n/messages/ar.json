@@ -1,0 +1,67 @@
+{
+  "_": {
+    "done": "تم",
+    "error": "خطأ",
+    "hello": "مرحبا",
+    "save": "حفظ",
+    "search": "بحث",
+    "success": "نجحت"
+  },
+  "confirmDelete": {
+    "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء.",
+    "areYouSureAboutThisAction": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد"
+  },
+  "dataTable": {
+    "noRecords": "لا توجد سجلات لعرضها",
+    "recordsPerPageLabel": "عدد السجلات في الصفحة"
+  },
+  "login": {
+    "email": "البريد الإلكتروني",
+    "login": "تسجيل الدخول",
+    "loginTitle": "تسجيل الدخول إلى حسابك",
+    "logo": "الشعار هنا",
+    "password": "كلمة المرور"
+  },
+  "meta": {
+    "description": "FindCV | منصة للعثور على السير الذاتية",
+    "title": "FindCV | لوحة التحكم"
+  },
+  "notFound": {
+    "description": "قد تكون الصفحة المطلوبة قد تم نقلها أو حذفها، أو ربما أدخلت رابطاً خاطئاً.",
+    "errorCode": "404",
+    "goBack": "العودة للخلف",
+    "goHome": "العودة للرئيسية",
+    "subtitle": "عذراً! الصفحة التي تبحث عنها غير موجودة.",
+    "title": "الصفحة غير موجودة"
+  },
+  "profiles": {
+    "email": "البريد الإلكتروني",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "female": "أنثى",
+    "gender": "الجنس",
+    "genderRequired": "الجنس مطلوب",
+    "male": "ذكر",
+    "memberSince": "عضو منذ",
+    "name": "الاسم",
+    "nameRequired": "الاسم مطلوب",
+    "phone": "الهاتف",
+    "profileInfo": "معلومات  الحساب الشخصي",
+    "updated": "تم تحديث الحساب بنجاح",
+    "updateProfile": "تحديث بيانات الحساب الشخصي"
+  },
+  "sessions": {
+    "activeSessions": "الجلسات النشطة",
+    "createdAt": "تاريخ الإنشاء",
+    "currentSession": "الجلسة الحالية",
+    "currentSessionCannotBeRevoked": "لا يمكن إلغاء الجلسة الحالية",
+    "expiresAt": "تاريخ الانتهاء",
+    "ipAddress": "عنوان IP",
+    "revoke": "إلغاء",
+    "revokeAll": "إلغاء جميع الجلسات الأخرى",
+    "revokeAllSuccess": "تم إلغاء جميع الجلسات الأخرى بنجاح",
+    "revokeSuccess": "تم إلغاء الجلسة بنجاح",
+    "userAgent": "مستخدم الويب"
+  }
+}
