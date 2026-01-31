@@ -33,14 +33,6 @@
     "nameRequired": "Name is required",
     "savedSuccessfully": "Governorate saved successfully"
   },
-  "skills": {
-    "add": "Add Skill",
-    "createdAt": "Created At",
-    "deletedSuccessfully": "Skill deleted successfully",
-    "name": "Name",
-    "nameRequired": "Name is required",
-    "savedSuccessfully": "Skill saved successfully"
-  },
   "login": {
     "email": "Email",
     "login": "Login",
@@ -95,6 +87,7 @@
   "sidebar": {
     "colorScheme": "Color Scheme",
     "dark": "Dark",
+    "governorates": "Governorates",
     "home": "Home",
     "language": "Language",
     "light": "Light",
@@ -106,5 +99,13 @@
     "skills": "Skills",
     "support": "Support",
     "users": "Users"
+  },
+  "skills": {
+    "add": "Add Skill",
+    "createdAt": "Created At",
+    "deletedSuccessfully": "Skill deleted successfully",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "savedSuccessfully": "Skill saved successfully"
   }
 }

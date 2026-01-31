@@ -2,17 +2,9 @@
   "_": {
     "done": "Done",
     "error": "Error",
-    "hello": "Hello",
     "save": "Save",
     "search": "Search",
     "success": "Success"
-  },
-  "hero": {
-    "ctaDeveloper": "Upload Your CV",
-    "ctaRecruiter": "Browse Talent",
-    "description": "For developers: showcase your skills and control your data. For recruiters: access quality talent with structured profiles.",
-    "subtitle": "Privacy-First Platform",
-    "title": "Connect Talent with Opportunity"
   },
   "confirmDelete": {
     "actionCannotBeUndone": "This action cannot be undone.",
@@ -28,6 +20,13 @@
     "courses": "Courses",
     "joinUs": "Join Us",
     "plans": "Plans"
+  },
+  "hero": {
+    "ctaDeveloper": "Upload Your CV",
+    "ctaRecruiter": "Browse Talent",
+    "description": "For developers: showcase your skills and control your data. For recruiters: access quality talent with structured profiles.",
+    "subtitle": "Privacy-First Platform",
+    "title": "Connect Talent with Opportunity"
   },
   "login": {
     "codeRequired": "Code is required",

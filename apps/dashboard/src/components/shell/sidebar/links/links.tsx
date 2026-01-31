@@ -1,5 +1,10 @@
 import { ScrollArea, Stack, Text } from '@mantine/core';
-import { IconCode, IconHome, IconUsers } from '@tabler/icons-react';
+import {
+  IconBuilding,
+  IconCode,
+  IconHome,
+  IconUsers,
+} from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { ShellLink } from './shell-link';
 
@@ -25,6 +30,11 @@ export function Links() {
           icon: IconUsers,
           label: t('sidebar.users'),
           path: '/users',
+        },
+        {
+          icon: IconBuilding,
+          label: t('sidebar.governorates'),
+          path: '/governorates',
         },
         {
           icon: IconCode,

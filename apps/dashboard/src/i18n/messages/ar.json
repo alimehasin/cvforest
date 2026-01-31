@@ -33,14 +33,6 @@
     "nameRequired": "الاسم مطلوب",
     "savedSuccessfully": "تم حفظ المحافظة بنجاح"
   },
-  "skills": {
-    "add": "اضافة مهارة",
-    "createdAt": "تاريخ الإنشاء",
-    "deletedSuccessfully": "تم حذف المهارة بنجاح",
-    "name": "الاسم",
-    "nameRequired": "الاسم مطلوب",
-    "savedSuccessfully": "تم حفظ المهارة بنجاح"
-  },
   "login": {
     "email": "البريد الإلكتروني",
     "login": "تسجيل الدخول",
@@ -95,6 +87,7 @@
   "sidebar": {
     "colorScheme": "نظام اللون",
     "dark": "داكن",
+    "governorates": "المحافظات",
     "home": "الرئيسية",
     "language": "اللغة",
     "light": "فاتح",
@@ -106,5 +99,13 @@
     "skills": "المهارات",
     "support": "الدعم",
     "users": "المستخدمين"
+  },
+  "skills": {
+    "add": "اضافة مهارة",
+    "createdAt": "تاريخ الإنشاء",
+    "deletedSuccessfully": "تم حذف المهارة بنجاح",
+    "name": "الاسم",
+    "nameRequired": "الاسم مطلوب",
+    "savedSuccessfully": "تم حفظ المهارة بنجاح"
   }
 }
