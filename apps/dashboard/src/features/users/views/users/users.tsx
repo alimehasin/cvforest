@@ -1,10 +1,10 @@
 'use client';
 
-import { Avatar, Badge, Group, Stack, Text } from '@mantine/core';
+import { Avatar, Stack, Text } from '@mantine/core';
 import { useSetState } from '@mantine/hooks';
-import dayjs from 'dayjs';
 import { DataTable } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
+import { PhoneNumber } from '@/components/phone-number';
 import { SearchInput } from '@/components/search-input';
 import { useUsersList } from '@/features/users/hooks/use-users-list';
 import type { UsersList } from '@/features/users/types';
@@ -62,37 +62,27 @@ export function Users({ initialData }: UsersProps) {
             {
               accessor: 'email',
               title: t('users.email'),
+              width: 220,
+            },
+            {
+              accessor: 'phoneNumber',
+              title: t('users.phoneNumber'),
               width: 200,
+              render: ({ phoneNumber }) =>
+                phoneNumber ? <PhoneNumber phone={phoneNumber} /> : '-',
             },
             {
               accessor: 'governorate',
               title: t('users.governorate'),
-              width: 200,
+              width: 120,
               render: ({ governorate }) => {
                 return governorate ? <Text>{governorate.name}</Text> : null;
               },
             },
             {
-              accessor: 'skills',
-              title: t('users.skills'),
-              width: 300,
-              render: ({ userSkills }) => (
-                <Group gap={4}>
-                  {userSkills.map((userSkill) => (
-                    <Badge key={userSkill.id} variant="light" size="sm">
-                      {userSkill.skill.name}
-                    </Badge>
-                  ))}
-                </Group>
-              ),
-            },
-            {
-              accessor: 'createdAt',
-              title: t('users.createdAt'),
+              accessor: 'jobTitle',
+              title: t('users.jobTitle'),
               width: 200,
-              render: ({ createdAt }) => {
-                return dayjs(createdAt as string).format('YYYY-MM-DD');
-              },
             },
           ],
         })}
