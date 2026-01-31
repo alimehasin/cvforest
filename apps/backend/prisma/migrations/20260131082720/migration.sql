@@ -10,6 +10,9 @@ CREATE TYPE "FileType" AS ENUM ('Image', 'Video', 'Other');
 -- CreateEnum
 CREATE TYPE "Gender" AS ENUM ('Male', 'Female');
 
+-- CreateEnum
+CREATE TYPE "Currency" AS ENUM ('Iqd', 'Usd');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -34,7 +37,7 @@ CREATE TABLE "User" (
     "experienceInYears" INTEGER,
     "expectedSalaryMin" INTEGER,
     "expectedSalaryMax" INTEGER,
-    "expectedSalaryCurrency" TEXT,
+    "expectedSalaryCurrency" "Currency",
     "availabilityType" "AvailabilityType",
     "workLocationType" "WorkLocationType",
     "bio" TEXT,

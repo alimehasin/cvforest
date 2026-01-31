@@ -38,6 +38,11 @@ enum Gender {
   Female
 }
 
+enum Currency {
+  Iqd
+  Usd
+}
+
 model User {
   id String @id @default(uuid())
 
@@ -71,7 +76,7 @@ model User {
   experienceInYears      Int?
   expectedSalaryMin      Int?
   expectedSalaryMax      Int?
-  expectedSalaryCurrency String?
+  expectedSalaryCurrency Currency?
   availabilityType       AvailabilityType?
   workLocationType       WorkLocationType?
   bio                    String?

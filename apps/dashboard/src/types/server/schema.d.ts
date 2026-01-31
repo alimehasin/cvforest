@@ -467,7 +467,7 @@ export interface components {
       experienceInYears: null | (string | number);
       expectedSalaryMin: null | (string | number);
       expectedSalaryMax: null | (string | number);
-      expectedSalaryCurrency: null | string;
+      expectedSalaryCurrency: null | ('Iqd' | 'Usd');
       availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
       workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
       bio: null | string;
@@ -547,7 +547,7 @@ export interface components {
       experienceInYears: null | (string | number);
       expectedSalaryMin: null | (string | number);
       expectedSalaryMax: null | (string | number);
-      expectedSalaryCurrency: null | string;
+      expectedSalaryCurrency: null | ('Iqd' | 'Usd');
       availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
       workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
       bio: null | string;
@@ -719,7 +719,7 @@ export interface components {
         experienceInYears: null | (string | number);
         expectedSalaryMin: null | (string | number);
         expectedSalaryMax: null | (string | number);
-        expectedSalaryCurrency: null | string;
+        expectedSalaryCurrency: null | ('Iqd' | 'Usd');
         availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
         workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
         bio: null | string;
@@ -807,7 +807,7 @@ export interface components {
       experienceInYears: null | (string | number);
       expectedSalaryMin: null | (string | number);
       expectedSalaryMax: null | (string | number);
-      expectedSalaryCurrency: null | string;
+      expectedSalaryCurrency: null | ('Iqd' | 'Usd');
       availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
       workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
       bio: null | string;
@@ -888,7 +888,7 @@ export interface components {
       experienceInYears: null | (string | number);
       expectedSalaryMin: null | (string | number);
       expectedSalaryMax: null | (string | number);
-      expectedSalaryCurrency: null | string;
+      expectedSalaryCurrency: null | ('Iqd' | 'Usd');
       availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
       workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
       bio: null | string;
