@@ -23,9 +23,9 @@ export async function Header() {
           <Divider orientation="vertical" />
 
           <Button
+            href="/join"
             variant="light"
             component={Link}
-            href="/accounts/login"
             leftSection={<IconLogin size={18} />}
           >
             {t('header.joinUs')}
