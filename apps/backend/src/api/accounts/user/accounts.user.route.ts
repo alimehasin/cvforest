@@ -1,10 +1,8 @@
-import { APIError } from 'better-auth';
 import { Elysia } from 'elysia';
 import { init } from '@/init';
 import { mustBeAuthed } from '@/plugins/better-auth';
 import { auth } from '@/utils/auth';
 import { HttpError } from '@/utils/error';
-import { setBetterAuthHeaders } from '../accounts.helpers';
 import { UserAccountsModel } from './accounts.user.model';
 import { userAccountsService } from './accounts.user.service';
 
@@ -13,113 +11,21 @@ export const accounts = new Elysia({ prefix: '/accounts' })
   .model(UserAccountsModel)
 
   .post(
-    '/send-otp',
-    async ({ t, set, body: { phoneNumber } }) => {
-      const res = await auth.api
-        .sendPhoneNumberOTP({
-          returnHeaders: true,
-          body: { phoneNumber },
-        })
-        .catch(() => {
-          throw new HttpError({
-            statusCode: 400,
-            message: t({
-              en: 'Failed to send OTP',
-              ar: 'فشل إرسال رمز التحقق',
-            }),
-          });
-        });
-
-      setBetterAuthHeaders(set, res.headers);
+    '/register',
+    async ({ body, t }) => {
+      await userAccountsService.registerUser(t, body);
 
       return {
         message: t({
-          en: 'OTP sent successfully',
-          ar: 'تم إرسال رمز التحقق بنجاح',
+          en: 'Registration successful',
+          ar: 'تم التسجيل بنجاح',
         }),
       };
     },
     {
-      body: 'UserAccountsSendOtpBody',
+      body: 'UserAccountsRegisterBody',
       response: {
-        200: 'UserAccountsSendOtpResponse',
-      },
-    },
-  )
-
-  .post(
-    '/verify-otp',
-    async ({ t, set, body: { phoneNumber, code } }) => {
-      const res = await auth.api
-        .verifyPhoneNumber({
-          returnHeaders: true,
-          body: { phoneNumber, code },
-        })
-        .catch((e) => {
-          if (e instanceof APIError) {
-            if (e.body?.code === 'INVALID_OTP') {
-              throw new HttpError({
-                statusCode: 400,
-                message: t({
-                  en: 'Invalid OTP',
-                  ar: 'رمز التحقق غير صالح',
-                }),
-              });
-            }
-
-            if (e.body?.code === 'OTP_EXPIRED') {
-              throw new HttpError({
-                statusCode: 400,
-                message: t({
-                  en: 'Expired OTP',
-                  ar: 'رمز التحقق قد انتهى',
-                }),
-              });
-            }
-
-            if (e.body?.code === 'OTP_NOT_FOUND') {
-              throw new HttpError({
-                statusCode: 400,
-                message: t({
-                  en: 'OTP not found',
-                  ar: 'رمز التحقق غير موجود',
-                }),
-              });
-            }
-
-            if (e.body?.code === 'TOO_MANY_ATTEMPTS') {
-              throw new HttpError({
-                statusCode: 400,
-                message: t({
-                  en: 'OTP rate limit exceeded',
-                  ar: 'تم تجاوز حد التحقق من رمز التحقق',
-                }),
-              });
-            }
-          }
-
-          throw new HttpError({
-            statusCode: 500,
-            message: t({
-              en: 'Something went wrong',
-              ar: 'حدث خطأ ما',
-            }),
-          });
-        });
-
-      setBetterAuthHeaders(set, res.headers);
-
-      return {
-        message: t({
-          en: 'OTP verified successfully',
-          ar: 'تم تحقق رمز التحقق بنجاح',
-        }),
-      };
-    },
-    {
-      body: 'UserAccountsVerifyOtpBody',
-      response: {
-        200: 'UserAccountsVerifyOtpResponse',
+        201: 'UserAccountsRegisterResponse',
       },
     },
   )

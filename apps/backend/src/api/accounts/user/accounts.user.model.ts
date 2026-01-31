@@ -1,4 +1,8 @@
-import { Gender } from '@db/gen/prisma/client';
+import {
+  AvailabilityType,
+  Gender,
+  WorkLocationType,
+} from '@db/gen/prisma/client';
 import { AccountPlain } from '@db/gen/prismabox/Account';
 import { FilePlain } from '@db/gen/prismabox/File';
 import { SessionPlain } from '@db/gen/prismabox/Session';
@@ -7,21 +11,42 @@ import { t } from 'elysia';
 import { IraqiPhoneNumberSchema } from '@/utils/schemas';
 
 export const UserAccountsModel = {
-  // Send OTP
-  UserAccountsSendOtpBody: t.Object({
-    phoneNumber: IraqiPhoneNumberSchema,
-  }),
-  UserAccountsSendOtpResponse: t.Object({
-    message: t.String(),
-  }),
+  // Register
+  UserAccountsRegisterBody: t.Object({
+    // Required fields
+    name: t.String(),
+    email: t.String({ format: 'email' }),
+    jobTitle: t.String(),
+    experienceInYears: t.Number({ minimum: 0 }),
 
-  // Verify OTP
-  UserAccountsVerifyOtpBody: t.Object({
-    phoneNumber: IraqiPhoneNumberSchema,
-    code: t.String(),
+    // Optional professional fields
+    expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
+    expectedSalaryMax: t.Optional(t.Number({ minimum: 0 })),
+    expectedSalaryCurrency: t.Optional(t.String()),
+    availabilityType: t.Optional(t.Enum(AvailabilityType)),
+    workLocationType: t.Optional(t.Enum(WorkLocationType)),
+    bio: t.Optional(t.String()),
+    availableForHire: t.Optional(t.Boolean()),
+
+    // Optional social/portfolio fields
+    githubUrl: t.Optional(t.String({ format: 'uri' })),
+    linkedinUrl: t.Optional(t.String({ format: 'uri' })),
+    portfolioUrl: t.Optional(t.String({ format: 'uri' })),
+
+    // Optional profile fields
+    phoneNumber: t.Optional(IraqiPhoneNumberSchema),
+    username: t.Optional(t.String()),
+    displayUsername: t.Optional(t.String()),
+    gender: t.Optional(t.Enum(Gender)),
+    governorateId: t.Optional(t.String({ format: 'uuid' })),
   }),
-  UserAccountsVerifyOtpResponse: t.Object({
+  UserAccountsRegisterResponse: t.Object({
     message: t.String(),
+    user: t.Object({
+      id: t.String(),
+      name: t.String(),
+      email: t.String({ format: 'email' }),
+    }),
   }),
 
   // Session
