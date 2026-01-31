@@ -1,5 +1,9 @@
 import { prisma } from '@db/client';
-import { AvailabilityType, WorkLocationType } from '@db/gen/prisma/enums';
+import {
+  AvailabilityType,
+  Currency,
+  WorkLocationType,
+} from '@db/gen/prisma/enums';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import {
@@ -42,7 +46,11 @@ export const auth = betterAuth({
       experienceInYears: { type: 'number', required: false },
       expectedSalaryMin: { type: 'number', required: false },
       expectedSalaryMax: { type: 'number', required: false },
-      expectedSalaryCurrency: { type: 'string', required: false },
+      expectedSalaryCurrency: {
+        type: 'string',
+        enum: Currency,
+        required: false,
+      },
       availabilityType: {
         type: 'string',
         enum: AvailabilityType,

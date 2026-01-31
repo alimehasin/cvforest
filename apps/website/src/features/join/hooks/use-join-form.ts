@@ -1,6 +1,7 @@
 import { useForm } from '@mantine/form';
 import {
   AvailabilityType,
+  Currency,
   Gender,
   WorkLocationType,
 } from '@repo/backend/prisma/enums';
@@ -22,9 +23,7 @@ export function useJoinForm() {
       gender: z.enum([Gender.Male, Gender.Female], {
         message: t('join.genderRequired'),
       }),
-      governorateId: z
-        .string()
-        .uuid({ message: t('join.governorateRequired') }),
+      governorateId: z.uuid({ message: t('join.governorateRequired') }),
 
       // Professional Information - Required
       jobTitle: z.string().min(1, { message: t('join.jobTitleRequired') }),
@@ -35,7 +34,7 @@ export function useJoinForm() {
       // Professional Information - Optional
       expectedSalaryMin: z.number().min(0).optional().or(z.literal(0)),
       expectedSalaryMax: z.number().min(0).optional().or(z.literal(0)),
-      expectedSalaryCurrency: z.string().optional().or(z.literal('')),
+      expectedSalaryCurrency: z.enum(Currency).optional(),
       availabilityType: z.enum(AvailabilityType).optional(),
       workLocationType: z.enum(WorkLocationType).optional(),
       availableForHire: z.boolean().optional(),
@@ -92,7 +91,7 @@ export function useJoinForm() {
       experienceInYears: 0,
       expectedSalaryMin: 0,
       expectedSalaryMax: 0,
-      expectedSalaryCurrency: 'IQD',
+      expectedSalaryCurrency: 'Iqd',
       availabilityType: undefined,
       workLocationType: undefined,
       availableForHire: false,
