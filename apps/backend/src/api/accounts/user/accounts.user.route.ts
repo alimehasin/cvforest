@@ -71,7 +71,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
   )
 
   .post(
-    '/setup-password',
+    '/set-password',
     async ({ t, body: { email, password } }) => {
       const prisma = (await import('@db/client')).prisma;
 
@@ -139,9 +139,9 @@ export const accounts = new Elysia({ prefix: '/accounts' })
       };
     },
     {
-      body: 'UserAccountsSetupPasswordBody',
+      body: 'UserAccountsSetPasswordBody',
       response: {
-        200: 'UserAccountsSetupPasswordResponse',
+        200: 'UserAccountsSetPasswordResponse',
       },
     },
   )

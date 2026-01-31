@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useKy } from '@/hooks/use-ky';
 import { useNotifications } from '@/hooks/use-notifications';
@@ -16,6 +17,7 @@ interface VerifyEmailOtpResponseBody {
 
 export function useVerifyEmailOtpMut() {
   const ky = useKy();
+  const router = useRouter();
   const t = useTranslations();
   const n = useNotifications();
 
@@ -29,6 +31,7 @@ export function useVerifyEmailOtpMut() {
     },
     onSuccess: () => {
       n.success(t('auth.emailVerified'));
+      router.push('/set-password');
     },
   });
 }

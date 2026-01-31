@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useSetPasswordForm } from '@/features/auth/hooks/use-set-password-form';
-import { useSetupPasswordMut } from '@/features/auth/hooks/use-setup-password-mut';
+import { useSetPasswordMut } from '@/features/auth/hooks/use-set-password-mut';
 
 interface SetPasswordFormProps {
   email: string;
@@ -19,10 +19,10 @@ interface SetPasswordFormProps {
 export function SetPasswordForm({ email }: SetPasswordFormProps) {
   const t = useTranslations();
   const form = useSetPasswordForm();
-  const setupPasswordMut = useSetupPasswordMut();
+  const setPasswordMut = useSetPasswordMut();
 
   const handleSubmit = form.onSubmit(async ({ password }) => {
-    await setupPasswordMut.mutateAsync({ email, password });
+    await setPasswordMut.mutateAsync({ email, password });
   });
 
   return (
@@ -46,7 +46,7 @@ export function SetPasswordForm({ email }: SetPasswordFormProps) {
             {...form.getInputProps('confirmPassword')}
           />
 
-          <Button type="submit" loading={setupPasswordMut.isPending}>
+          <Button type="submit" loading={setPasswordMut.isPending}>
             {t('auth.setPassword')}
           </Button>
         </Stack>

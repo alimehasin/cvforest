@@ -4,28 +4,28 @@ import { useTranslations } from 'next-intl';
 import { useKy } from '@/hooks/use-ky';
 import { useNotifications } from '@/hooks/use-notifications';
 
-interface SetupPasswordRequestBody {
+interface SetPasswordRequestBody {
   email: string;
   password: string;
 }
 
-interface SetupPasswordResponseBody {
+interface SetPasswordResponseBody {
   success: boolean;
 }
 
-export function useSetupPasswordMut() {
+export function useSetPasswordMut() {
   const ky = useKy();
   const router = useRouter();
   const t = useTranslations();
   const n = useNotifications();
 
   return useMutation({
-    mutationFn: ({ email, password }: SetupPasswordRequestBody) => {
+    mutationFn: ({ email, password }: SetPasswordRequestBody) => {
       const body = { email, password };
 
       return ky
-        .post('accounts/setup-password', { json: body })
-        .json<SetupPasswordResponseBody>();
+        .post('accounts/set-password', { json: body })
+        .json<SetPasswordResponseBody>();
     },
     onSuccess: () => {
       n.success(t('auth.passwordSetSuccess'));

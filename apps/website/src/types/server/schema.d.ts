@@ -260,7 +260,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/user/accounts/setup-password': {
+  '/user/accounts/set-password': {
     parameters: {
       query?: never;
       header?: never;
@@ -269,7 +269,7 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    post: operations['postUserAccountsSetup-password'];
+    post: operations['postUserAccountsSet-password'];
     delete?: never;
     options?: never;
     head?: never;
@@ -951,12 +951,12 @@ export interface components {
       /** Format: email */
       email: string;
     };
-    UserAccountsSetupPasswordBody: {
+    UserAccountsSetPasswordBody: {
       /** Format: email */
       email: string;
       password: string;
     };
-    UserAccountsSetupPasswordResponse: {
+    UserAccountsSetPasswordResponse: {
       success: boolean;
       message: string;
     };
@@ -1872,7 +1872,7 @@ export interface operations {
       };
     };
   };
-  'postUserAccountsSetup-password': {
+  'postUserAccountsSet-password': {
     parameters: {
       query?: never;
       header?: never;
@@ -1881,9 +1881,9 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['UserAccountsSetupPasswordBody'];
-        'application/x-www-form-urlencoded': components['schemas']['UserAccountsSetupPasswordBody'];
-        'multipart/form-data': components['schemas']['UserAccountsSetupPasswordBody'];
+        'application/json': components['schemas']['UserAccountsSetPasswordBody'];
+        'application/x-www-form-urlencoded': components['schemas']['UserAccountsSetPasswordBody'];
+        'multipart/form-data': components['schemas']['UserAccountsSetPasswordBody'];
       };
     };
     responses: {
@@ -1893,7 +1893,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['UserAccountsSetupPasswordResponse'];
+          'application/json': components['schemas']['UserAccountsSetPasswordResponse'];
         };
       };
       /** @description Response for status 400 */

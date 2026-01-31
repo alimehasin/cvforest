@@ -111,12 +111,12 @@ export const UserAccountsModel = {
     email: t.String({ format: 'email' }),
   }),
 
-  // Setup Password
-  UserAccountsSetupPasswordBody: t.Object({
+  // Set Password
+  UserAccountsSetPasswordBody: t.Object({
     email: t.String({ format: 'email' }),
     password: t.String({ minLength: 8 }),
   }),
-  UserAccountsSetupPasswordResponse: t.Object({
+  UserAccountsSetPasswordResponse: t.Object({
     success: t.Boolean(),
     message: t.String(),
   }),
