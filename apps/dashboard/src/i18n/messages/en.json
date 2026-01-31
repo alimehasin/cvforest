@@ -33,6 +33,14 @@
     "nameRequired": "Name is required",
     "savedSuccessfully": "Governorate saved successfully"
   },
+  "skills": {
+    "add": "Add Skill",
+    "createdAt": "Created At",
+    "deletedSuccessfully": "Skill deleted successfully",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "savedSuccessfully": "Skill saved successfully"
+  },
   "login": {
     "email": "Email",
     "login": "Login",
@@ -95,6 +103,7 @@
     "myAccount": "My Account",
     "overviewGroup": "Overview",
     "settings": "Settings",
+    "skills": "Skills",
     "support": "Support",
     "users": "Users"
   }

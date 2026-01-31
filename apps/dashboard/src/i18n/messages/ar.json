@@ -33,6 +33,14 @@
     "nameRequired": "الاسم مطلوب",
     "savedSuccessfully": "تم حفظ المحافظة بنجاح"
   },
+  "skills": {
+    "add": "اضافة مهارة",
+    "createdAt": "تاريخ الإنشاء",
+    "deletedSuccessfully": "تم حذف المهارة بنجاح",
+    "name": "الاسم",
+    "nameRequired": "الاسم مطلوب",
+    "savedSuccessfully": "تم حفظ المهارة بنجاح"
+  },
   "login": {
     "email": "البريد الإلكتروني",
     "login": "تسجيل الدخول",
@@ -95,6 +103,7 @@
     "myAccount": "الحساب الشخصي",
     "overviewGroup": "نظرة عامة",
     "settings": "الإعدادات",
+    "skills": "المهارات",
     "support": "الدعم",
     "users": "المستخدمين"
   }
