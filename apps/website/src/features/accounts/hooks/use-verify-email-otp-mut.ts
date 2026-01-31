@@ -3,11 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useKy } from '@/hooks/use-ky';
 import { useNotifications } from '@/hooks/use-notifications';
-
-interface VerifyEmailOtpRequestBody {
-  email: string;
-  otp: string;
-}
+import type { VerifyEmailOtpRequestBody } from '../types';
 
 interface VerifyEmailOtpResponseBody {
   success: boolean;
@@ -22,9 +18,7 @@ export function useVerifyEmailOtpMut() {
   const n = useNotifications();
 
   return useMutation({
-    mutationFn: ({ email, otp }: VerifyEmailOtpRequestBody) => {
-      const body = { email, otp };
-
+    mutationFn: (body: VerifyEmailOtpRequestBody) => {
       return ky
         .post('accounts/verify-email-otp', { json: body })
         .json<VerifyEmailOtpResponseBody>();
