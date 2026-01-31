@@ -1,3 +1,4 @@
+import { Container } from '@mantine/core';
 import { Header } from '@/components/header';
 
 interface WebsiteLayoutProps {
@@ -6,9 +7,9 @@ interface WebsiteLayoutProps {
 
 export default async function WebsiteLayout({ children }: WebsiteLayoutProps) {
   return (
-    <div>
+    <Container size="xl">
       <Header />
       {children}
-    </div>
+    </Container>
   );
 }

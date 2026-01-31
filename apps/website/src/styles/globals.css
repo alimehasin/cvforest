@@ -27,3 +27,7 @@ body {
     box-shadow: 0 0 0 2px var(--mantine-primary-color-filled);
   }
 }
+
+.mantine-Textarea-input {
+  border-radius: var(--mantine-radius-default);
+}

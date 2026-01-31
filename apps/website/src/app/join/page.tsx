@@ -1,12 +1,5 @@
-import { Title } from '@mantine/core';
-import { Header } from '@/components/header';
+import { Join } from '@/features/join/views/join';
 
 export default async function JoinPage() {
-  return (
-    <div>
-      <Header />
-
-      <Title>Hello</Title>
-    </div>
-  );
+  return <Join />;
 }
