@@ -2,6 +2,7 @@ import { prisma } from '@db/client';
 import {
   AvailabilityType,
   Currency,
+  UserStatus,
   WorkLocationType,
 } from '@db/gen/prisma/enums';
 import { betterAuth } from 'better-auth';
@@ -75,7 +76,7 @@ export const auth = betterAuth({
       governorateId: { type: 'string', required: false },
 
       // System fields
-      accountVerified: { type: 'boolean', required: false, input: false },
+      status: { type: 'string', enum: UserStatus, required: false },
     },
   },
 

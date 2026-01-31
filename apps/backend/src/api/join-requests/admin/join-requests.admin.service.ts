@@ -10,7 +10,7 @@ export const adminJoinRequestsService = {
     query: typeof AdminJoinRequestsModel.AdminJoinRequestsListQuery.static,
   ) {
     const where: Prisma.UserWhereInput = {
-      accountVerified: false,
+      status: 'Pending',
       ...(query.search && {
         OR: [
           { name: { contains: query.search, mode: 'insensitive' } },
@@ -68,7 +68,7 @@ export const adminJoinRequestsService = {
       });
     }
 
-    if (joinRequest.accountVerified) {
+    if (joinRequest.status !== 'Pending') {
       throw new HttpError({
         statusCode: 404,
         message: t({
@@ -96,7 +96,7 @@ export const adminJoinRequestsService = {
       });
     }
 
-    if (joinRequest.accountVerified) {
+    if (joinRequest.status !== 'Pending') {
       throw new HttpError({
         statusCode: 400,
         message: t({
@@ -108,7 +108,7 @@ export const adminJoinRequestsService = {
 
     await prisma.user.update({
       where: { id },
-      data: { accountVerified: true },
+      data: { status: 'Approved' },
     });
 
     return {
