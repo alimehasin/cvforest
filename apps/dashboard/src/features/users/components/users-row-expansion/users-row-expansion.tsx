@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Badge,
   Button,
   Group,
@@ -14,7 +15,6 @@ import {
   IconAt,
   IconBrandGithub,
   IconBrandLinkedin,
-  IconBriefcase,
   IconBuilding,
   IconCircleCheck,
   IconClock,
@@ -29,6 +29,7 @@ import { useTranslations } from 'next-intl';
 import { BooleanBadge } from '@/components/boolean-badge';
 import { PhoneNumber } from '@/components/phone-number';
 import type { User } from '@/features/users/types';
+import { constructImageUrl } from '@/utils/helpers';
 import {
   translateAvailabilityType,
   translateCurrency,
@@ -74,104 +75,123 @@ export function UsersRowExpansion({ user }: UsersRowExpansionProps) {
       <SimpleGrid cols={{ md: 2 }}>
         <Stack gap="md">
           {/* Professional Information Section */}
-          {(user.jobTitle ||
-            user.experienceInYears ||
-            user.expectedSalaryMin ||
-            user.expectedSalaryMax ||
-            user.availabilityType ||
-            user.workLocationType ||
-            user.availableForHire !== null) && (
-            <Paper component={Stack}>
-              <Title order={3}>{t('users.professionalInformation')}</Title>
+          <Paper component={Stack} gap={4}>
+            {/* Profile Header */}
+            <Group wrap="nowrap" mb="md" align="flex-start">
+              <Avatar
+                size={80}
+                radius="md"
+                name={user.name}
+                src={constructImageUrl(user.avatar?.key)}
+              />
+              <Stack gap={4}>
+                <Title order={2}>{user.name}</Title>
+                {user.jobTitle && (
+                  <Text c="dimmed" fz={14}>
+                    {user.jobTitle}
+                  </Text>
+                )}
+                {user.availableForHire && (
+                  <Badge color="green" variant="light" size="sm">
+                    {t('users.availableForHire')}
+                  </Badge>
+                )}
+              </Stack>
+            </Group>
 
-              {user.jobTitle && (
-                <InfoItem
-                  icon={IconBriefcase}
-                  label={t('users.jobTitle')}
-                  value={<Text>{user.jobTitle}</Text>}
-                />
-              )}
-
-              {user.experienceInYears !== null && (
-                <InfoItem
-                  icon={IconTrophy}
-                  label={t('users.experience')}
-                  value={
-                    <Text>
-                      {t('users.years', {
+            <Stack>
+              <InfoItem
+                icon={IconTrophy}
+                label={t('users.experience')}
+                value={
+                  <Text>
+                    {user.experienceInYears ? (
+                      t('users.years', {
                         number: user.experienceInYears,
-                      })}
-                    </Text>
-                  }
-                />
-              )}
+                      })
+                    ) : (
+                      <Text c="dimmed">-</Text>
+                    )}
+                  </Text>
+                }
+              />
 
-              {(user.expectedSalaryMin || user.expectedSalaryMax) && (
-                <InfoItem
-                  icon={IconCurrencyDollar}
-                  label={t('users.expectedSalary')}
-                  value={
-                    <Text>
-                      {user.expectedSalaryMin?.toLocaleString()}{' '}
-                      {user.expectedSalaryMin && user.expectedSalaryMax && '-'}{' '}
-                      {user.expectedSalaryMax?.toLocaleString()}{' '}
-                      {user.expectedSalaryCurrency &&
-                        translateCurrency(t, user.expectedSalaryCurrency)}
-                    </Text>
-                  }
-                />
-              )}
+              <InfoItem
+                icon={IconCurrencyDollar}
+                label={t('users.expectedSalary')}
+                value={
+                  <Text>
+                    {user.expectedSalaryMin?.toLocaleString()}{' '}
+                    {user.expectedSalaryMin && user.expectedSalaryMax && '-'}{' '}
+                    {user.expectedSalaryMax?.toLocaleString()}{' '}
+                    {user.expectedSalaryCurrency &&
+                      translateCurrency(t, user.expectedSalaryCurrency)}
+                  </Text>
+                }
+              />
 
-              {user.availabilityType && (
-                <InfoItem
-                  icon={IconClock}
-                  label={t('users.availabilityType')}
-                  value={
-                    <Text>
-                      {translateAvailabilityType(t, user.availabilityType)}
-                    </Text>
-                  }
-                />
-              )}
+              <InfoItem
+                icon={IconClock}
+                label={t('users.availabilityType')}
+                value={
+                  <Text>
+                    {user.availabilityType
+                      ? translateAvailabilityType(t, user.availabilityType)
+                      : '-'}
+                  </Text>
+                }
+              />
 
-              {user.workLocationType && (
-                <InfoItem
-                  icon={IconBuilding}
-                  label={t('users.workLocationType')}
-                  value={
-                    <Text>
-                      {translateWorkLocationType(t, user.workLocationType)}
-                    </Text>
-                  }
-                />
-              )}
+              <InfoItem
+                icon={IconBuilding}
+                label={t('users.workLocationType')}
+                value={
+                  <Text>
+                    {user.workLocationType
+                      ? translateWorkLocationType(t, user.workLocationType)
+                      : '-'}
+                  </Text>
+                }
+              />
 
-              {user.availableForHire !== null && (
-                <InfoItem
-                  icon={IconCircleCheck}
-                  label={t('users.availableForHire')}
-                  value={<BooleanBadge value={user.availableForHire} />}
-                />
-              )}
-            </Paper>
-          )}
+              <InfoItem
+                icon={IconCircleCheck}
+                label={t('users.availableForHire')}
+                value={
+                  user.availableForHire !== null ? (
+                    <BooleanBadge
+                      value={user.availableForHire}
+                      label={{
+                        true: t('users.availableForHire'),
+                        false: t('_.no'),
+                      }}
+                    />
+                  ) : (
+                    <Text c="dimmed">-</Text>
+                  )
+                }
+              />
+            </Stack>
+          </Paper>
 
           {/* Bio Section */}
-          {user.bio && (
-            <Paper component={Stack}>
-              <Title order={3}>{t('users.bio')}</Title>
+          <Paper component={Stack} gap={4}>
+            <Title c="gray.8" order={4}>
+              {t('users.bio')}
+            </Title>
 
-              <Text fz={14}>{user.bio}</Text>
-            </Paper>
-          )}
+            <Text fz={14}>{user.bio}</Text>
+          </Paper>
         </Stack>
 
         <Stack gap="md">
           {/* Contact Information Section */}
-          <Paper component={Stack}>
-            <Title order={3}>{t('users.contactInformation')}</Title>
+          <Paper component={Stack} gap={4}>
+            <Title c="gray.8" order={4}>
+              {t('users.contactInformation')}
+            </Title>
 
-            {user.email && (
+            <Stack>
               <InfoItem
                 icon={IconAt}
                 label={t('users.email')}
@@ -182,111 +202,121 @@ export function UsersRowExpansion({ user }: UsersRowExpansionProps) {
                       value={user.emailVerified ?? false}
                       label={{
                         true: t('users.emailVerified'),
-                        false: t('_.no'),
+                        false: t('users.emailNotVerified'),
                       }}
                     />
                   </Group>
                 }
               />
-            )}
 
-            <InfoItem
-              icon={IconPhone}
-              label={t('users.phone')}
-              value={
-                <Group gap="xs">
-                  <PhoneNumber phone={user.phoneNumber ?? ''} />
+              <InfoItem
+                icon={IconPhone}
+                label={t('users.phone')}
+                value={
+                  <Group gap="xs">
+                    {user.phoneNumber ? (
+                      <PhoneNumber phone={user.phoneNumber} />
+                    ) : (
+                      <Text c="dimmed">-</Text>
+                    )}
 
-                  {user.phoneNumberVerified !== null && (
-                    <BooleanBadge
-                      value={user.phoneNumberVerified ?? false}
-                      label={{
-                        true: t('users.phoneVerified'),
-                        false: t('_.no'),
-                      }}
-                    />
-                  )}
-                </Group>
-              }
-            />
+                    {user.phoneNumber ? (
+                      <BooleanBadge
+                        value={user.phoneNumberVerified ?? false}
+                        label={{
+                          true: t('users.phoneVerified'),
+                          false: t('users.phoneNotVerified'),
+                        }}
+                      />
+                    ) : null}
+                  </Group>
+                }
+              />
 
-            {user.gender && (
               <InfoItem
                 icon={IconAB}
                 label={t('users.gender')}
-                value={<Text>{translateGender(t, user.gender)}</Text>}
+                value={
+                  user.gender ? (
+                    <Text>{translateGender(t, user.gender)}</Text>
+                  ) : (
+                    <Text c="dimmed">-</Text>
+                  )
+                }
               />
-            )}
 
-            {user.governorate && (
               <InfoItem
                 icon={IconMapPin}
                 label={t('users.location')}
-                value={<Text>{user.governorate.name}</Text>}
+                value={
+                  user.governorate ? (
+                    <Text>{user.governorate.name}</Text>
+                  ) : (
+                    <Text c="dimmed">-</Text>
+                  )
+                }
               />
-            )}
+            </Stack>
           </Paper>
 
           {/* Skills Section */}
-          {user.userSkills && user.userSkills.length > 0 && (
-            <Paper component={Stack}>
-              <Title order={3}>{t('users.skills')}</Title>
-              <Group gap={4}>
-                {user.userSkills.map((userSkill) => (
-                  <Badge key={userSkill.id} variant="light" size="sm">
-                    {userSkill.skill.name}
-                  </Badge>
-                ))}
-              </Group>
-            </Paper>
-          )}
+          <Paper component={Stack} gap={4}>
+            <Title c="gray.8" order={4}>
+              {t('users.skills')}
+            </Title>
+            <Group gap={4}>
+              {user.userSkills.map((userSkill) => (
+                <Badge key={userSkill.id} variant="light" size="sm">
+                  {userSkill.skill.name}
+                </Badge>
+              ))}
+            </Group>
+          </Paper>
 
           {/* Social Links Section */}
-          {(user.githubUrl || user.linkedinUrl || user.portfolioUrl) && (
-            <Paper component={Stack}>
-              <Title order={3}>{t('users.socialLinks')}</Title>
-              <Group gap="sm">
-                {user.githubUrl && (
-                  <Button
-                    component="a"
-                    href={user.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="light"
-                    leftSection={<IconBrandGithub size={18} />}
-                  >
-                    {t('users.github')}
-                  </Button>
-                )}
+          <Paper component={Stack} gap={4}>
+            <Title c="gray.8" order={4}>
+              {t('users.socialLinks')}
+            </Title>
 
-                {user.linkedinUrl && (
-                  <Button
-                    component="a"
-                    href={user.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="light"
-                    leftSection={<IconBrandLinkedin size={18} />}
-                  >
-                    {t('users.linkedin')}
-                  </Button>
-                )}
+            <Group gap="sm">
+              <Button
+                component="a"
+                target="_blank"
+                variant="light"
+                disabled={!user.githubUrl}
+                rel="noopener noreferrer"
+                href={user.githubUrl ?? ''}
+                leftSection={<IconBrandGithub size={18} />}
+              >
+                {t('users.github')}
+              </Button>
 
-                {user.portfolioUrl && (
-                  <Button
-                    component="a"
-                    href={user.portfolioUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="light"
-                    leftSection={<IconWorld size={18} />}
-                  >
-                    {t('users.portfolio')}
-                  </Button>
-                )}
-              </Group>
-            </Paper>
-          )}
+              <Button
+                component="a"
+                target="_blank"
+                variant="light"
+                rel="noopener noreferrer"
+                disabled={!user.linkedinUrl}
+                href={user.linkedinUrl ?? ''}
+                leftSection={<IconBrandLinkedin size={18} />}
+              >
+                {t('users.linkedin')}
+              </Button>
+
+              <Button
+                component="a"
+                target="_blank"
+                variant="light"
+                rel="noopener noreferrer"
+                disabled={!user.portfolioUrl}
+                href={user.portfolioUrl ?? ''}
+                leftSection={<IconWorld size={18} />}
+              >
+                {t('users.portfolio')}
+              </Button>
+            </Group>
+          </Paper>
         </Stack>
       </SimpleGrid>
     </Paper>
