@@ -3,8 +3,7 @@ import {
   IconBuilding,
   IconCode,
   IconHome,
-  IconUserCheck,
-  IconUsers,
+  IconUser,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { ShellLink } from './shell-link';
@@ -28,12 +27,7 @@ export function Links() {
       label: t('sidebar.managementGroup'),
       links: [
         {
-          icon: IconUserCheck,
-          label: t('sidebar.joinRequests'),
-          path: '/join-requests',
-        },
-        {
-          icon: IconUsers,
+          icon: IconUser,
           label: t('sidebar.users'),
           path: '/users',
         },

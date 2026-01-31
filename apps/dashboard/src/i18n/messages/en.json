@@ -33,7 +33,7 @@
     "nameRequired": "Name is required",
     "savedSuccessfully": "Governorate saved successfully"
   },
-  "joinRequests": {
+  "users": {
     "availabilityType": "Availability Type",
     "availabilityTypeFreelance": "Freelance",
     "availabilityTypeFullTime": "Full Time",

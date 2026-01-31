@@ -29,7 +29,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { BooleanBadge } from '@/components/boolean-badge';
 import { PhoneNumber } from '@/components/phone-number';
-import type { JoinRequest } from '@/features/join-requests/types';
+import type { User } from '@/features/users/types';
 import {
   translateAvailabilityType,
   translateCurrency,
@@ -37,8 +37,8 @@ import {
   translateWorkLocationType,
 } from '@/utils/translation-maps';
 
-interface JoinRequestsRowExpansionInfoItemProps {
-  joinRequest: JoinRequest;
+interface UsersRowExpansionProps {
+  user: User;
 }
 
 function InfoItem({
@@ -67,110 +67,105 @@ function InfoItem({
   );
 }
 
-export function JoinRequestsRowExpansion({
-  joinRequest,
-}: JoinRequestsRowExpansionInfoItemProps) {
+export function UsersRowExpansion({ user }: UsersRowExpansionProps) {
   const t = useTranslations();
 
   return (
     <SimpleGrid cols={{ md: 2 }}>
       <Stack gap="md">
         {/* Professional Information Section */}
-        {(joinRequest.jobTitle ||
-          joinRequest.experienceInYears ||
-          joinRequest.expectedSalaryMin ||
-          joinRequest.expectedSalaryMax ||
-          joinRequest.availabilityType ||
-          joinRequest.workLocationType ||
-          joinRequest.availableForHire !== null) && (
+        {(user.jobTitle ||
+          user.experienceInYears ||
+          user.expectedSalaryMin ||
+          user.expectedSalaryMax ||
+          user.availabilityType ||
+          user.workLocationType ||
+          user.availableForHire !== null) && (
           <Paper withBorder p="md" component={Stack}>
-            <Title order={3}>{t('joinRequests.professionalInformation')}</Title>
+            <Title order={3}>{t('users.professionalInformation')}</Title>
 
-            {joinRequest.jobTitle && (
+            {user.jobTitle && (
               <InfoItem
                 icon={IconBriefcase}
-                label={t('joinRequests.jobTitle')}
-                value={<Text>{joinRequest.jobTitle}</Text>}
+                label={t('users.jobTitle')}
+                value={<Text>{user.jobTitle}</Text>}
               />
             )}
 
-            {joinRequest.experienceInYears !== null && (
+            {user.experienceInYears !== null && (
               <InfoItem
                 icon={IconTrophy}
-                label={t('joinRequests.experience')}
+                label={t('users.experience')}
                 value={
                   <Text>
-                    {t('joinRequests.years', {
-                      number: joinRequest.experienceInYears,
+                    {t('users.years', {
+                      number: user.experienceInYears,
                     })}
                   </Text>
                 }
               />
             )}
 
-            {(joinRequest.expectedSalaryMin ||
-              joinRequest.expectedSalaryMax) && (
+            {(user.expectedSalaryMin || user.expectedSalaryMax) && (
               <InfoItem
                 icon={IconCurrencyDollar}
-                label={t('joinRequests.expectedSalary')}
+                label={t('users.expectedSalary')}
                 value={
                   <Text>
-                    {joinRequest.expectedSalaryMin?.toLocaleString()}{' '}
-                    {joinRequest.expectedSalaryMin &&
-                      joinRequest.expectedSalaryMax &&
-                      '-'}{' '}
-                    {joinRequest.expectedSalaryMax?.toLocaleString()}{' '}
-                    {joinRequest.expectedSalaryCurrency &&
-                      translateCurrency(t, joinRequest.expectedSalaryCurrency)}
+                    {user.expectedSalaryMin?.toLocaleString()}{' '}
+                    {user.expectedSalaryMin && user.expectedSalaryMax && '-'}{' '}
+                    {user.expectedSalaryMax?.toLocaleString()}{' '}
+                    {user.expectedSalaryCurrency &&
+                      translateCurrency(t, user.expectedSalaryCurrency)}
                   </Text>
                 }
               />
             )}
 
-            {joinRequest.availabilityType && (
+            {user.availabilityType && (
               <InfoItem
                 icon={IconClock}
-                label={t('joinRequests.availabilityType')}
+                label={t('users.availabilityType')}
                 value={
                   <Text>
-                    {translateAvailabilityType(t, joinRequest.availabilityType)}
+                    {translateAvailabilityType(t, user.availabilityType)}
                   </Text>
                 }
               />
             )}
 
-            {joinRequest.workLocationType && (
+            {user.workLocationType && (
               <InfoItem
                 icon={IconBuilding}
-                label={t('joinRequests.workLocationType')}
+                label={t('users.workLocationType')}
                 value={
                   <Text>
-                    {translateWorkLocationType(t, joinRequest.workLocationType)}
+                    {translateWorkLocationType(t, user.workLocationType)}
                   </Text>
                 }
               />
             )}
 
-            {joinRequest.availableForHire !== null && (
+            {user.availableForHire !== null && (
               <InfoItem
                 icon={IconCircleCheck}
-                label={t('joinRequests.availableForHire')}
-                value={<BooleanBadge value={joinRequest.availableForHire} />}
+                label={t('users.availableForHire')}
+                value={<BooleanBadge value={user.availableForHire} />}
               />
             )}
           </Paper>
         )}
 
         {/* Bio Section */}
-        {joinRequest.bio && (
+        {user.bio && (
           <Paper withBorder p="md" component={Stack}>
             <Group>
               <ThemeIcon variant="light">
                 <IconFileText size={18} />
               </ThemeIcon>
-              <Title order={3}>{t('joinRequests.bio')}</Title>
+              <Title order={3}>{t('users.bio')}</Title>
             </Group>
-            <Text fz={14}>{joinRequest.bio}</Text>
+            <Text fz={14}>{user.bio}</Text>
           </Paper>
         )}
       </Stack>
@@ -178,19 +173,19 @@ export function JoinRequestsRowExpansion({
       <Stack gap="md">
         {/* Contact Information Section */}
         <Paper withBorder p="md" component={Stack}>
-          <Title order={3}>{t('joinRequests.contactInformation')}</Title>
+          <Title order={3}>{t('users.contactInformation')}</Title>
 
-          {joinRequest.email && (
+          {user.email && (
             <InfoItem
               icon={IconAt}
-              label={t('joinRequests.email')}
+              label={t('users.email')}
               value={
                 <Group gap="xs">
-                  <Text>{joinRequest.email}</Text>
+                  <Text>{user.email}</Text>
                   <BooleanBadge
-                    value={joinRequest.emailVerified ?? false}
+                    value={user.emailVerified ?? false}
                     label={{
-                      true: t('joinRequests.emailVerified'),
+                      true: t('users.emailVerified'),
                       false: t('_.no'),
                     }}
                   />
@@ -201,16 +196,16 @@ export function JoinRequestsRowExpansion({
 
           <InfoItem
             icon={IconPhone}
-            label={t('joinRequests.phone')}
+            label={t('users.phone')}
             value={
               <Group gap="xs">
-                <PhoneNumber phone={joinRequest.phoneNumber ?? ''} />
+                <PhoneNumber phone={user.phoneNumber ?? ''} />
 
-                {joinRequest.phoneNumberVerified !== null && (
+                {user.phoneNumberVerified !== null && (
                   <BooleanBadge
-                    value={joinRequest.phoneNumberVerified ?? false}
+                    value={user.phoneNumberVerified ?? false}
                     label={{
-                      true: t('joinRequests.phoneVerified'),
+                      true: t('users.phoneVerified'),
                       false: t('_.no'),
                     }}
                   />
@@ -219,29 +214,29 @@ export function JoinRequestsRowExpansion({
             }
           />
 
-          {joinRequest.gender && (
+          {user.gender && (
             <InfoItem
               icon={IconAB}
-              label={t('joinRequests.gender')}
-              value={<Text>{translateGender(t, joinRequest.gender)}</Text>}
+              label={t('users.gender')}
+              value={<Text>{translateGender(t, user.gender)}</Text>}
             />
           )}
 
-          {joinRequest.governorate && (
+          {user.governorate && (
             <InfoItem
               icon={IconMapPin}
-              label={t('joinRequests.location')}
-              value={<Text>{joinRequest.governorate.name}</Text>}
+              label={t('users.location')}
+              value={<Text>{user.governorate.name}</Text>}
             />
           )}
         </Paper>
 
         {/* Skills Section */}
-        {joinRequest.userSkills && joinRequest.userSkills.length > 0 && (
+        {user.userSkills && user.userSkills.length > 0 && (
           <Paper withBorder p="md" component={Stack}>
-            <Title order={3}>{t('joinRequests.skills')}</Title>
+            <Title order={3}>{t('users.skills')}</Title>
             <Group gap={4}>
-              {joinRequest.userSkills.map((userSkill) => (
+              {user.userSkills.map((userSkill) => (
                 <Badge key={userSkill.id} variant="light" size="sm">
                   {userSkill.skill.name}
                 </Badge>
@@ -251,48 +246,46 @@ export function JoinRequestsRowExpansion({
         )}
 
         {/* Social Links Section */}
-        {(joinRequest.githubUrl ||
-          joinRequest.linkedinUrl ||
-          joinRequest.portfolioUrl) && (
+        {(user.githubUrl || user.linkedinUrl || user.portfolioUrl) && (
           <Paper withBorder p="md" component={Stack}>
-            <Title order={3}>{t('joinRequests.socialLinks')}</Title>
+            <Title order={3}>{t('users.socialLinks')}</Title>
             <Group gap="sm">
-              {joinRequest.githubUrl && (
+              {user.githubUrl && (
                 <Button
                   component="a"
-                  href={joinRequest.githubUrl}
+                  href={user.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="light"
                   leftSection={<IconBrandGithub size={18} />}
                 >
-                  {t('joinRequests.github')}
+                  {t('users.github')}
                 </Button>
               )}
 
-              {joinRequest.linkedinUrl && (
+              {user.linkedinUrl && (
                 <Button
                   component="a"
-                  href={joinRequest.linkedinUrl}
+                  href={user.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="light"
                   leftSection={<IconBrandLinkedin size={18} />}
                 >
-                  {t('joinRequests.linkedin')}
+                  {t('users.linkedin')}
                 </Button>
               )}
 
-              {joinRequest.portfolioUrl && (
+              {user.portfolioUrl && (
                 <Button
                   component="a"
-                  href={joinRequest.portfolioUrl}
+                  href={user.portfolioUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="light"
                   leftSection={<IconWorld size={18} />}
                 >
-                  {t('joinRequests.portfolio')}
+                  {t('users.portfolio')}
                 </Button>
               )}
             </Group>

@@ -3,12 +3,10 @@ import type { Prisma } from '@db/gen/prisma/client';
 import type { TranslationFn } from '@/types';
 import { HttpError } from '@/utils/error';
 import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
-import type { AdminJoinRequestsModel } from './join-requests.admin.model';
+import type { AdminUsersModel } from './users.admin.model';
 
-export const adminJoinRequestsService = {
-  async list(
-    query: typeof AdminJoinRequestsModel.AdminJoinRequestsListQuery.static,
-  ) {
+export const adminUsersService = {
+  async list(query: typeof AdminUsersModel.AdminUsersListQuery.static) {
     const where: Prisma.UserWhereInput = {
       status: 'Pending',
       ...(query.search && {
@@ -42,10 +40,8 @@ export const adminJoinRequestsService = {
   async getById(
     id: string,
     t: TranslationFn,
-  ): Promise<
-    typeof AdminJoinRequestsModel.AdminJoinRequestsGetResponse.static
-  > {
-    const joinRequest = await prisma.user.findUnique({
+  ): Promise<typeof AdminUsersModel.AdminUsersGetResponse.static> {
+    const user = await prisma.user.findUnique({
       where: { id },
       include: {
         avatar: true,
@@ -58,50 +54,50 @@ export const adminJoinRequestsService = {
       },
     });
 
-    if (!joinRequest) {
+    if (!user) {
       throw new HttpError({
         statusCode: 404,
         message: t({
-          en: 'Join request not found',
-          ar: 'طلب الانضمام غير موجود',
+          en: 'User not found',
+          ar: 'المستخدم غير موجود',
         }),
       });
     }
 
-    if (joinRequest.status !== 'Pending') {
+    if (user.status !== 'Pending') {
       throw new HttpError({
         statusCode: 404,
         message: t({
-          en: 'Join request not found',
-          ar: 'طلب الانضمام غير موجود',
+          en: 'User not found',
+          ar: 'المستخدم غير موجود',
         }),
       });
     }
 
-    return joinRequest;
+    return user;
   },
 
   async approve(id: string, t: TranslationFn) {
-    const joinRequest = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { id },
     });
 
-    if (!joinRequest) {
+    if (!user) {
       throw new HttpError({
         statusCode: 404,
         message: t({
-          en: 'Join request not found',
-          ar: 'طلب الانضمام غير موجود',
+          en: 'User not found',
+          ar: 'المستخدم غير موجود',
         }),
       });
     }
 
-    if (joinRequest.status !== 'Pending') {
+    if (user.status !== 'Pending') {
       throw new HttpError({
         statusCode: 400,
         message: t({
-          en: 'Join request already approved',
-          ar: 'تم الموافقة على طلب الانضمام بالفعل',
+          en: 'User already approved',
+          ar: 'تم الموافقة على المستخدم بالفعل',
         }),
       });
     }
@@ -113,8 +109,8 @@ export const adminJoinRequestsService = {
 
     return {
       message: t({
-        en: 'Join request approved successfully',
-        ar: 'تمت الموافقة على طلب الانضمام بنجاح',
+        en: 'User approved successfully',
+        ar: 'تمت الموافقة على المستخدم بنجاح',
       }),
     };
   },

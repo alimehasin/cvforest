@@ -33,7 +33,7 @@
     "nameRequired": "الاسم مطلوب",
     "savedSuccessfully": "تم حفظ المحافظة بنجاح"
   },
-  "joinRequests": {
+  "users": {
     "availabilityType": "نوع التوفر",
     "availabilityTypeFreelance": "عمل حر",
     "availabilityTypeFullTime": "دوام كامل",
@@ -123,7 +123,6 @@
     "dark": "داكن",
     "governorates": "المحافظات",
     "home": "الرئيسية",
-    "joinRequests": "طلبات الانضمام",
     "language": "اللغة",
     "light": "فاتح",
     "logout": "تسجيل الخروج",

@@ -228,14 +228,14 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/admin/join-requests/': {
+  '/admin/users/{id}': {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    get: operations['getAdminJoin-requests'];
+    get: operations['getAdminUsersById'];
     put?: never;
     post?: never;
     delete?: never;
@@ -244,23 +244,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/admin/join-requests/{id}': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get: operations['getAdminJoin-requestsById'];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  '/admin/join-requests/{id}/approve': {
+  '/admin/users/{id}/approve': {
     parameters: {
       query?: never;
       header?: never;
@@ -273,7 +257,7 @@ export interface paths {
     delete?: never;
     options?: never;
     head?: never;
-    patch: operations['patchAdminJoin-requestsByIdApprove'];
+    patch: operations['patchAdminUsersByIdApprove'];
     trace?: never;
   };
   '/user/accounts/register': {
@@ -555,7 +539,8 @@ export interface components {
       linkedinUrl: null | string;
       portfolioUrl: null | string;
       availableForHire: null | boolean;
-      accountVerified: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
       avatar: {
         id: string;
         key: string;
@@ -635,7 +620,8 @@ export interface components {
       linkedinUrl: null | string;
       portfolioUrl: null | string;
       availableForHire: null | boolean;
-      accountVerified: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
     };
     AdminAccountsRevokeSessionBody: {
       token: string;
@@ -807,54 +793,8 @@ export interface components {
         linkedinUrl: null | string;
         portfolioUrl: null | string;
         availableForHire: null | boolean;
-        accountVerified: boolean;
-      }[];
-    };
-    AdminJoinRequestsListQuery: {
-      /** @default 1 */
-      page: number;
-      /** @default 10 */
-      pageSize: number;
-      /** @default createdAt */
-      sortingColumn: string;
-      /** @default desc */
-      sortingDirection: string;
-      search?: string;
-    };
-    AdminJoinRequestsListResponse: {
-      total: number;
-      data: {
-        id: string;
-        name: string;
-        email: string;
-        emailVerified: boolean;
-        image: null | string;
-        createdAt: Record<string, never> | string | number;
-        updatedAt: Record<string, never> | string | number;
-        phoneNumber: null | string;
-        phoneNumberVerified: null | boolean;
-        username: null | string;
-        displayUsername: null | string;
-        role: null | string;
-        banned: null | boolean;
-        banReason: null | string;
-        banExpires: null | (Record<string, never> | string | number);
-        gender: null | ('Male' | 'Female');
-        avatarId: null | string;
-        governorateId: null | string;
-        jobTitle: null | string;
-        experienceInYears: null | (string | number);
-        expectedSalaryMin: null | (string | number);
-        expectedSalaryMax: null | (string | number);
-        expectedSalaryCurrency: null | ('Iqd' | 'Usd');
-        availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
-        workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
-        bio: null | string;
-        githubUrl: null | string;
-        linkedinUrl: null | string;
-        portfolioUrl: null | string;
-        availableForHire: null | boolean;
-        accountVerified: boolean;
+        /** @enum {string} */
+        status: 'Pending' | 'Approved' | 'Rejected';
         avatar: {
           id: string;
           key: string;
@@ -884,7 +824,7 @@ export interface components {
         }[];
       }[];
     };
-    AdminJoinRequestsGetResponse: {
+    AdminUsersGetResponse: {
       id: string;
       name: string;
       email: string;
@@ -915,7 +855,8 @@ export interface components {
       linkedinUrl: null | string;
       portfolioUrl: null | string;
       availableForHire: null | boolean;
-      accountVerified: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
       avatar: {
         id: string;
         key: string;
@@ -944,7 +885,7 @@ export interface components {
         };
       }[];
     };
-    AdminJoinRequestsApproveResponse: {
+    AdminUsersApproveResponse: {
       message: string;
     };
     UserAccountsRegisterBody: {
@@ -1039,7 +980,8 @@ export interface components {
       linkedinUrl: null | string;
       portfolioUrl: null | string;
       availableForHire: null | boolean;
-      accountVerified: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
       avatar: {
         id: string;
         key: string;
@@ -1120,7 +1062,8 @@ export interface components {
       linkedinUrl: null | string;
       portfolioUrl: null | string;
       availableForHire: null | boolean;
-      accountVerified: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
     };
     UserAccountsRevokeSessionBody: {
       token: string;
@@ -1961,17 +1904,13 @@ export interface operations {
       };
     };
   };
-  'getAdminJoin-requests': {
+  getAdminUsersById: {
     parameters: {
-      query: {
-        page: number;
-        pageSize: number;
-        sortingColumn: string;
-        sortingDirection: string;
-        search?: string;
-      };
+      query?: never;
       header?: never;
-      path?: never;
+      path: {
+        id: string;
+      };
       cookie?: never;
     };
     requestBody?: never;
@@ -1982,7 +1921,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['AdminJoinRequestsListResponse'];
+          'application/json': components['schemas']['AdminUsersGetResponse'];
         };
       };
       /** @description Response for status 400 */
@@ -2005,7 +1944,7 @@ export interface operations {
       };
     };
   };
-  'getAdminJoin-requestsById': {
+  patchAdminUsersByIdApprove: {
     parameters: {
       query?: never;
       header?: never;
@@ -2022,47 +1961,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['AdminJoinRequestsGetResponse'];
-        };
-      };
-      /** @description Response for status 400 */
-      400: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['BadRequestError'];
-        };
-      };
-      /** @description Response for status 422 */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['FieldsValidationError'];
-        };
-      };
-    };
-  };
-  'patchAdminJoin-requestsByIdApprove': {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Response for status 200 */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          'application/json': components['schemas']['AdminJoinRequestsApproveResponse'];
+          'application/json': components['schemas']['AdminUsersApproveResponse'];
         };
       };
       /** @description Response for status 400 */

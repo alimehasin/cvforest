@@ -6,8 +6,8 @@ import { UserSkillPlain } from '@db/gen/prismabox/UserSkill';
 import { t } from 'elysia';
 import { paginationSchema, sortingSchema } from '@/utils/schemas';
 
-// Join request response with relations
-const JoinRequestWithRelations = t.Composite([
+// User response with relations
+const UserWithRelations = t.Composite([
   UserPlain,
   t.Object({
     avatar: t.Union([FilePlain, t.Null()]),
@@ -18,9 +18,9 @@ const JoinRequestWithRelations = t.Composite([
   }),
 ]);
 
-export const AdminJoinRequestsModel = {
+export const AdminUsersModel = {
   // List Query
-  AdminJoinRequestsListQuery: t.Object({
+  AdminUsersListQuery: t.Object({
     ...paginationSchema,
     ...sortingSchema,
 
@@ -29,16 +29,16 @@ export const AdminJoinRequestsModel = {
   }),
 
   // List Response
-  AdminJoinRequestsListResponse: t.Object({
+  AdminUsersListResponse: t.Object({
     total: t.Number(),
-    data: t.Array(JoinRequestWithRelations),
+    data: t.Array(UserWithRelations),
   }),
 
   // Get Response
-  AdminJoinRequestsGetResponse: JoinRequestWithRelations,
+  AdminUsersGetResponse: UserWithRelations,
 
   // Approve Response
-  AdminJoinRequestsApproveResponse: t.Object({
+  AdminUsersApproveResponse: t.Object({
     message: t.String(),
   }),
 };

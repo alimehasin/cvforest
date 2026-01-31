@@ -6,23 +6,23 @@ import dayjs from 'dayjs';
 import { DataTable } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
 import { SearchInput } from '@/components/search-input';
-import { useJoinRequestsList } from '@/features/join-requests/hooks/use-join-requests-list';
-import type { JoinRequestsList } from '@/features/join-requests/types';
+import { useUsersList } from '@/features/users/hooks/use-users-list';
+import type { UsersList } from '@/features/users/types';
 import { constructImageUrl } from '@/utils/helpers';
-import { JoinRequestsRowExpansion } from '../../components/join-requests-row-expansion';
+import { UsersRowExpansion } from '../../components/users-row-expansion';
 
-interface JoinRequestsProps {
-  initialData: JoinRequestsList;
+interface UsersProps {
+  initialData: UsersList;
 }
 
-export function JoinRequests({ initialData }: JoinRequestsProps) {
+export function Users({ initialData }: UsersProps) {
   const t = useTranslations();
 
   const [filters, setFilters] = useSetState({
     search: '',
   });
 
-  const { getTableProps, joinRequests } = useJoinRequestsList({
+  const { getTableProps, users } = useUsersList({
     initialData,
     filters,
   });
@@ -36,12 +36,10 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
 
       <DataTable
         rowExpansion={{
-          content: ({ record }) => (
-            <JoinRequestsRowExpansion joinRequest={record} />
-          ),
+          content: ({ record }) => <UsersRowExpansion user={record} />,
         }}
         {...getTableProps({
-          query: joinRequests,
+          query: users,
           columns: [
             {
               accessor: 'avatar',
@@ -58,17 +56,17 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
             },
             {
               accessor: 'name',
-              title: t('joinRequests.name'),
+              title: t('users.name'),
               width: 'auto',
             },
             {
               accessor: 'email',
-              title: t('joinRequests.email'),
+              title: t('users.email'),
               width: 200,
             },
             {
               accessor: 'governorate',
-              title: t('joinRequests.governorate'),
+              title: t('users.governorate'),
               width: 200,
               render: ({ governorate }) => {
                 return governorate ? <Text>{governorate.name}</Text> : null;
@@ -76,7 +74,7 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
             },
             {
               accessor: 'skills',
-              title: t('joinRequests.skills'),
+              title: t('users.skills'),
               width: 300,
               render: ({ userSkills }) => (
                 <Group gap={4}>
@@ -90,7 +88,7 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
             },
             {
               accessor: 'createdAt',
-              title: t('joinRequests.createdAt'),
+              title: t('users.createdAt'),
               width: 200,
               render: ({ createdAt }) => {
                 return dayjs(createdAt as string).format('YYYY-MM-DD');

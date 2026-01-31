@@ -20,9 +20,9 @@ export function translateAvailabilityType(
   availabilityType: AvailabilityType,
 ) {
   const map: Record<AvailabilityType, string> = {
-    FullTime: t('joinRequests.availabilityTypeFullTime'),
-    PartTime: t('joinRequests.availabilityTypePartTime'),
-    Freelance: t('joinRequests.availabilityTypeFreelance'),
+    FullTime: t('users.availabilityTypeFullTime'),
+    PartTime: t('users.availabilityTypePartTime'),
+    Freelance: t('users.availabilityTypeFreelance'),
   };
 
   return map[availabilityType];
@@ -33,9 +33,9 @@ export function translateWorkLocationType(
   workLocationType: WorkLocationType,
 ) {
   const map: Record<WorkLocationType, string> = {
-    OnSite: t('joinRequests.workLocationTypeOnSite'),
-    Remote: t('joinRequests.workLocationTypeRemote'),
-    Hybrid: t('joinRequests.workLocationTypeHybrid'),
+    OnSite: t('users.workLocationTypeOnSite'),
+    Remote: t('users.workLocationTypeRemote'),
+    Hybrid: t('users.workLocationTypeHybrid'),
   };
 
   return map[workLocationType];
@@ -43,8 +43,8 @@ export function translateWorkLocationType(
 
 export function translateCurrency(t: TranslationFn, currency: Currency) {
   const map: Record<Currency, string> = {
-    Iqd: t('joinRequests.currencyIqd'),
-    Usd: t('joinRequests.currencyUsd'),
+    Iqd: t('users.currencyIqd'),
+    Usd: t('users.currencyUsd'),
   };
 
   return map[currency];
