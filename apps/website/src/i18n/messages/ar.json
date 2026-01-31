@@ -6,6 +6,24 @@
     "search": "بحث",
     "success": "نجحت"
   },
+  "auth": {
+    "confirmPassword": "تأكيد كلمة المرور",
+    "emailVerified": "تم التحقق من بريدك الإلكتروني. يرجى تعيين كلمة مرور لحسابك.",
+    "invalidCode": "رمز التحقق غير صالح أو منتهي الصلاحية",
+    "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+    "passwordLowerCase": "يجب أن تحتوي كلمة المرور على حرف صغير على الأقل",
+    "passwordMaxLength": "يجب أن تكون كلمة المرور أقصر من 128 حرف",
+    "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+    "passwordNumber": "يجب أن تحتوي كلمة المرور على رقم على الأقل",
+    "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
+    "passwordSetSuccess": "تم تعيين كلمة المرور بنجاح",
+    "passwordSpecial": "يجب أن تحتوي كلمة المرور على حرف خاص على الأقل",
+    "passwordUpperCase": "يجب أن تحتوي كلمة المرور على حرف كبير على الأقل",
+    "setPassword": "تعيين كلمة المرور",
+    "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
+    "verifyCode": "تحقق من الرمز",
+    "verifyEmail": "تحقق من بريدك الإلكتروني"
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء.",
     "areYouSureAboutThisAction": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
@@ -95,21 +113,6 @@
     "workLocationPlaceholder": "اختر تفضيلك",
     "workLocationRemote": "عن بُعد",
     "workLocationType": "تفضيل موقع العمل"
-  },
-  "auth": {
-    "verifyEmail": "تحقق من بريدك الإلكتروني",
-    "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
-    "enterCode": "أدخل رمز التحقق",
-    "verifyCode": "تحقق من الرمز",
-    "invalidCode": "رمز التحقق غير صالح أو منتهي الصلاحية",
-    "setPassword": "تعيين كلمة المرور",
-    "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
-    "confirmPassword": "تأكيد كلمة المرور",
-    "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
-    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-    "passwordSetSuccess": "تم تعيين كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول.",
-    "passwordSetFailed": "فشل تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
-    "emailVerified": "تم التحقق من بريدك الإلكتروني. يرجى تعيين كلمة مرور لحسابك."
   },
   "meta": {
     "description": "FindCV | منصة للعثور على السير الذاتية",

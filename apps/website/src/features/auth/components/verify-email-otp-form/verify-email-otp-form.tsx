@@ -33,7 +33,7 @@ export function VerifyEmailOtpForm({
         </Text>
 
         <PinInput
-          length={6}
+          length={8}
           value={form.values.otp}
           onChange={(value) => form.setFieldValue('otp', value)}
           oneTimeCode

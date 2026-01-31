@@ -6,9 +6,18 @@ import { z } from 'zod';
 export function useSetPasswordForm() {
   const t = useTranslations();
 
+  const strongPasswordSchema = z
+    .string()
+    .min(8, { error: t('auth.passwordMinLength') })
+    .max(128, { error: t('auth.passwordMaxLength') })
+    .regex(/[a-z]/, { error: t('auth.passwordLowerCase') })
+    .regex(/[A-Z]/, { error: t('auth.passwordUpperCase') })
+    .regex(/[0-9]/, { error: t('auth.passwordNumber') })
+    .regex(/[^a-zA-Z0-9]/, { error: t('auth.passwordSpecial') });
+
   const schema = z.object({
-    password: z.string().min(8, { error: t('auth.passwordMinLength') }),
-    confirmPassword: z.string().min(8, { error: t('auth.passwordMinLength') }),
+    password: strongPasswordSchema,
+    confirmPassword: strongPasswordSchema,
   });
 
   return useForm({

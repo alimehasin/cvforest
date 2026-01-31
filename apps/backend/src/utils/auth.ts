@@ -80,6 +80,8 @@ export const auth = betterAuth({
     }),
 
     emailOTP({
+      otpLength: 8,
+
       sendVerificationOTP: async ({ email, otp, type }) => {
         console.log('======================== OTP =========================');
         console.log(otp);

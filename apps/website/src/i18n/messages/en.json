@@ -6,6 +6,24 @@
     "search": "Search",
     "success": "Success"
   },
+  "auth": {
+    "confirmPassword": "Confirm Password",
+    "emailVerified": "Your email has been verified. Please set a password for your account.",
+    "invalidCode": "Invalid or expired verification code",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordLowerCase": "Password must contain at least one lowercase letter",
+    "passwordMaxLength": "Password must be less than 128 characters",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordNumber": "Password must contain at least one number",
+    "passwordPlaceholder": "Enter your password",
+    "passwordSetSuccess": "Password set successfully",
+    "passwordSpecial": "Password must contain at least one special character",
+    "passwordUpperCase": "Password must contain at least one uppercase letter",
+    "setPassword": "Set Your Password",
+    "verificationCodeSent": "We've sent a 6-digit code to your email",
+    "verifyCode": "Verify Code",
+    "verifyEmail": "Verify Your Email"
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "This action cannot be undone.",
     "areYouSureAboutThisAction": "Are you sure you want to perform this action?",
@@ -95,21 +113,6 @@
     "workLocationPlaceholder": "Select your preference",
     "workLocationRemote": "Remote",
     "workLocationType": "Work Location Preference"
-  },
-  "auth": {
-    "verifyEmail": "Verify Your Email",
-    "verificationCodeSent": "We've sent a 6-digit code to your email",
-    "enterCode": "Enter verification code",
-    "verifyCode": "Verify Code",
-    "invalidCode": "Invalid or expired verification code",
-    "setPassword": "Set Your Password",
-    "passwordPlaceholder": "Enter your password",
-    "confirmPassword": "Confirm Password",
-    "passwordMinLength": "Password must be at least 8 characters",
-    "passwordsDoNotMatch": "Passwords do not match",
-    "passwordSetSuccess": "Password set successfully! You can now log in.",
-    "passwordSetFailed": "Failed to set password. Please try again.",
-    "emailVerified": "Your email has been verified. Please set a password for your account."
   },
   "meta": {
     "description": "FindCV | A platform for finding CVs",

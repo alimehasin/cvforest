@@ -18,8 +18,8 @@ interface SetPasswordFormProps {
 
 export function SetPasswordForm({ email }: SetPasswordFormProps) {
   const t = useTranslations();
-  const setupPasswordMut = useSetupPasswordMut();
   const form = useSetPasswordForm();
+  const setupPasswordMut = useSetupPasswordMut();
 
   const handleSubmit = form.onSubmit(async ({ password }) => {
     await setupPasswordMut.mutateAsync({ email, password });
@@ -33,16 +33,16 @@ export function SetPasswordForm({ email }: SetPasswordFormProps) {
           <Text>{t('auth.emailVerified')}</Text>
 
           <PasswordInput
+            required
             label={t('auth.passwordPlaceholder')}
             placeholder={t('auth.passwordPlaceholder')}
-            required
             {...form.getInputProps('password')}
           />
 
           <PasswordInput
+            required
             label={t('auth.confirmPassword')}
             placeholder={t('auth.confirmPassword')}
-            required
             {...form.getInputProps('confirmPassword')}
           />
 
