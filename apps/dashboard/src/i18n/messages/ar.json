@@ -109,6 +109,7 @@
     "savedSuccessfully": "تم حفظ المهارة بنجاح"
   },
   "users": {
+    "approvedSuccessfully": "تم الموافقة على المستخدم بنجاح",
     "availabilityType": "نوع التوفر",
     "availabilityTypeFreelance": "عمل حر",
     "availabilityTypeFullTime": "دوام كامل",
@@ -135,6 +136,7 @@
     "phoneNumber": "رقم الهاتف",
     "phoneVerified": "الهاتف موثق",
     "portfolio": "الموقع الشخصي",
+    "rejectedSuccessfully": "تم رفض المستخدم بنجاح",
     "skills": "المهارات",
     "socialLinks": "روابط التواصل الاجتماعي",
     "workLocationType": "نوع العمل",

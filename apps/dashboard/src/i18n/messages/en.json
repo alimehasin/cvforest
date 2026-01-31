@@ -109,6 +109,7 @@
     "savedSuccessfully": "Skill saved successfully"
   },
   "users": {
+    "approvedSuccessfully": "User approved successfully",
     "availabilityType": "Availability Type",
     "availabilityTypeFreelance": "Freelance",
     "availabilityTypeFullTime": "Full Time",
@@ -135,6 +136,7 @@
     "phoneNumber": "Phone Number",
     "phoneVerified": "Phone Verified",
     "portfolio": "Portfolio",
+    "rejectedSuccessfully": "User rejected successfully",
     "skills": "Skills",
     "socialLinks": "Social Links",
     "workLocationType": "Work Location Type",
