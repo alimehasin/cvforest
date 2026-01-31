@@ -33,6 +33,17 @@
     "nameRequired": "Name is required",
     "savedSuccessfully": "Governorate saved successfully"
   },
+  "joinRequests": {
+    "approve": "Approve",
+    "approvedSuccessfully": "Join request approved successfully",
+    "createdAt": "Created At",
+    "email": "Email",
+    "governorate": "Governorate",
+    "name": "Name",
+    "reject": "Reject",
+    "rejectedSuccessfully": "Join request rejected successfully",
+    "skills": "Skills"
+  },
   "login": {
     "email": "Email",
     "login": "Login",
@@ -89,6 +100,7 @@
     "dark": "Dark",
     "governorates": "Governorates",
     "home": "Home",
+    "joinRequests": "Join Requests",
     "language": "Language",
     "light": "Light",
     "logout": "Logout",

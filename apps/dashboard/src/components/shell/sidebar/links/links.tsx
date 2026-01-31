@@ -3,6 +3,7 @@ import {
   IconBuilding,
   IconCode,
   IconHome,
+  IconUserCheck,
   IconUsers,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -26,6 +27,11 @@ export function Links() {
     {
       label: t('sidebar.managementGroup'),
       links: [
+        {
+          icon: IconUserCheck,
+          label: t('sidebar.joinRequests'),
+          path: '/join-requests',
+        },
         {
           icon: IconUsers,
           label: t('sidebar.users'),

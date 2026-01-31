@@ -33,6 +33,17 @@
     "nameRequired": "الاسم مطلوب",
     "savedSuccessfully": "تم حفظ المحافظة بنجاح"
   },
+  "joinRequests": {
+    "approve": "موافقة",
+    "approvedSuccessfully": "تمت الموافقة على طلب الانضمام بنجاح",
+    "createdAt": "تاريخ الإنشاء",
+    "email": "البريد الإلكتروني",
+    "governorate": "المحافظة",
+    "name": "الاسم",
+    "reject": "رفض",
+    "rejectedSuccessfully": "تم رفض طلب الانضمام بنجاح",
+    "skills": "المهارات"
+  },
   "login": {
     "email": "البريد الإلكتروني",
     "login": "تسجيل الدخول",
@@ -89,6 +100,7 @@
     "dark": "داكن",
     "governorates": "المحافظات",
     "home": "الرئيسية",
+    "joinRequests": "طلبات الانضمام",
     "language": "اللغة",
     "light": "فاتح",
     "logout": "تسجيل الخروج",
