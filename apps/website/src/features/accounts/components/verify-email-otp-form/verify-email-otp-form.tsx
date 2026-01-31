@@ -2,7 +2,7 @@
 
 import { Button, Center, PinInput, Stack, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import { useVerifyEmailOtpForm } from '@/features/auth/hooks/use-verify-email-otp-form';
+import { useVerifyEmailOtpForm } from '@/features/accounts/hooks/use-verify-email-otp-form';
 import { useVerifyEmailOtpMut } from '../../hooks/use-verify-email-otp-mut';
 
 interface VerifyEmailOtpFormProps {

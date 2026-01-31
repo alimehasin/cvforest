@@ -1,4 +1,4 @@
-import { VerifyEmail } from '@/features/auth/views/verify-email';
+import { VerifyEmail } from '@/features/accounts/views/verify-email';
 
 interface VerifyEmailPageProps {
   searchParams: Promise<{ email: string }>;

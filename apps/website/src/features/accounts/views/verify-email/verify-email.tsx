@@ -1,7 +1,7 @@
 'use client';
 
 import { Container } from '@mantine/core';
-import { VerifyEmailOtpForm } from '@/features/auth/components/verify-email-otp-form';
+import { VerifyEmailOtpForm } from '@/features/accounts/components/verify-email-otp-form';
 
 interface VerifyEmailProps {
   email: string;

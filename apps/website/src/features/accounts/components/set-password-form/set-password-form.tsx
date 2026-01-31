@@ -9,8 +9,8 @@ import {
   Title,
 } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import { useSetPasswordForm } from '@/features/auth/hooks/use-set-password-form';
-import { useSetPasswordMut } from '@/features/auth/hooks/use-set-password-mut';
+import { useSetPasswordForm } from '@/features/accounts/hooks/use-set-password-form';
+import { useSetPasswordMut } from '@/features/accounts/hooks/use-set-password-mut';
 
 export function SetPasswordForm() {
   const t = useTranslations();
