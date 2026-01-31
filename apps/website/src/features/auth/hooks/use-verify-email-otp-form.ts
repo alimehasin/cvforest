@@ -7,7 +7,7 @@ export function useVerifyEmailOtpForm() {
   const t = useTranslations();
 
   const schema = z.object({
-    otp: z.string().length(6, { message: t('auth.invalidCode') }),
+    otp: z.string().length(6, { error: t('auth.invalidCode') }),
   });
 
   return useForm({

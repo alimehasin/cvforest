@@ -3,52 +3,33 @@
 import { Button, PinInput, Stack, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useVerifyEmailOtpForm } from '@/features/auth/hooks/use-verify-email-otp-form';
+import { useVerifyEmailOtpMut } from '../../hooks/use-verify-email-otp-mut';
 
 interface VerifyEmailOtpFormProps {
   email: string;
-  onVerify: (otp: string) => Promise<void>;
-  isVerifying?: boolean;
-  errorMessage?: string;
 }
 
-export function VerifyEmailOtpForm({
-  email,
-  onVerify,
-  errorMessage,
-  isVerifying = false,
-}: VerifyEmailOtpFormProps) {
+export function VerifyEmailOtpForm({ email }: VerifyEmailOtpFormProps) {
   const t = useTranslations();
   const form = useVerifyEmailOtpForm();
+  const verifyOtpMut = useVerifyEmailOtpMut();
 
   const handleSubmit = form.onSubmit(async ({ otp }) => {
-    await onVerify(otp);
+    await verifyOtpMut.mutateAsync({ email, otp });
   });
 
   return (
     <form onSubmit={handleSubmit}>
       <Stack>
         <Title>{t('auth.verifyEmail')}</Title>
+
         <Text>
           {t('auth.verificationCodeSent')} {email}.
         </Text>
 
-        <PinInput
-          length={8}
-          value={form.values.otp}
-          onChange={(value) => form.setFieldValue('otp', value)}
-          oneTimeCode
-          disabled={isVerifying}
-          error={!!form.errors.otp}
-        />
+        <PinInput length={8} oneTimeCode {...form.getInputProps('otp')} />
 
-        {form.errors.otp && <Text c="red">{form.errors.otp}</Text>}
-        {errorMessage && <Text c="red">{errorMessage}</Text>}
-
-        <Button
-          type="submit"
-          disabled={form.values.otp.length !== 6 || isVerifying}
-          loading={isVerifying}
-        >
+        <Button type="submit" loading={form.submitting}>
           {t('auth.verifyCode')}
         </Button>
       </Stack>
