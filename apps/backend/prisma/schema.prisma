@@ -15,6 +15,18 @@ datasource db {
   provider = "postgresql"
 }
 
+enum AvailabilityType {
+  FullTime
+  PartTime
+  Freelance
+}
+
+enum WorkLocationType {
+  OnSite
+  Remote
+  Hybrid
+}
+
 enum FileType {
   Image
   Video
@@ -54,10 +66,48 @@ model User {
   governorateId String?
   governorate   Governorate? @relation(fields: [governorateId], references: [id])
 
+  // Professional Information
+  jobTitle               String?
+  experienceInYears      Int?
+  expectedSalaryMin      Int?
+  expectedSalaryMax      Int?
+  expectedSalaryCurrency String?
+  availabilityType       AvailabilityType?
+  workLocationType       WorkLocationType?
+  bio                    String?
+  githubUrl              String?
+  linkedinUrl            String?
+  portfolioUrl           String?
+  availableForHire       Boolean?
+
+  accountVerified Boolean @default(false)
+
   // Backrefs
-  files    File[]
-  sessions Session[]
-  accounts Account[]
+  files      File[]
+  sessions   Session[]
+  accounts   Account[]
+  userSkills UserSkill[]
+}
+
+model Skill {
+  id String @id @default(uuid())
+
+  name String
+
+  // Metadata
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  userSkills UserSkill[]
+}
+
+model UserSkill {
+  id String @id @default(uuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  skillId String
+  skill   Skill  @relation(fields: [skillId], references: [id], onDelete: Cascade)
 }
 
 model Session {
