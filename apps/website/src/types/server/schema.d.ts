@@ -148,6 +148,38 @@ export interface paths {
     patch: operations['patchAdminGovernoratesById'];
     trace?: never;
   };
+  '/admin/skills/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getAdminSkills'];
+    put?: never;
+    post: operations['postAdminSkills'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/admin/skills/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations['deleteAdminSkillsById'];
+    options?: never;
+    head?: never;
+    patch: operations['patchAdminSkillsById'];
+    trace?: never;
+  };
   '/admin/files/upload': {
     parameters: {
       query?: never;
@@ -324,6 +356,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/user/skills/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getUserSkills'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/user/files/upload': {
     parameters: {
       query?: never;
@@ -422,12 +470,28 @@ export interface components {
       updatedAt: Record<string, never> | string | number;
       phoneNumber: null | string;
       phoneNumberVerified: null | boolean;
+      username: null | string;
+      displayUsername: null | string;
       role: null | string;
       banned: null | boolean;
       banReason: null | string;
       banExpires: null | (Record<string, never> | string | number);
       gender: null | ('Male' | 'Female');
       avatarId: null | string;
+      governorateId: null | string;
+      jobTitle: null | string;
+      experienceInYears: null | (string | number);
+      expectedSalaryMin: null | (string | number);
+      expectedSalaryMax: null | (string | number);
+      expectedSalaryCurrency: null | string;
+      availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+      workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+      bio: null | string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: null | boolean;
+      accountVerified: boolean;
       avatar: {
         id: string;
         key: string;
@@ -486,12 +550,28 @@ export interface components {
       updatedAt: Record<string, never> | string | number;
       phoneNumber: null | string;
       phoneNumberVerified: null | boolean;
+      username: null | string;
+      displayUsername: null | string;
       role: null | string;
       banned: null | boolean;
       banReason: null | string;
       banExpires: null | (Record<string, never> | string | number);
       gender: null | ('Male' | 'Female');
       avatarId: null | string;
+      governorateId: null | string;
+      jobTitle: null | string;
+      experienceInYears: null | (string | number);
+      expectedSalaryMin: null | (string | number);
+      expectedSalaryMax: null | (string | number);
+      expectedSalaryCurrency: null | string;
+      availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+      workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+      bio: null | string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: null | boolean;
+      accountVerified: boolean;
     };
     AdminAccountsRevokeSessionBody: {
       token: string;
@@ -549,6 +629,53 @@ export interface components {
       id: string;
     };
     AdminGovernoratesDeleteResponse: unknown;
+    AdminSkillsListQuery: {
+      /** @default 1 */
+      page: number;
+      /** @default 10 */
+      pageSize: number;
+      /** @default createdAt */
+      sortingColumn: string;
+      /** @default desc */
+      sortingDirection: string;
+      search?: string;
+    };
+    AdminSkillsListResponse: {
+      total: number;
+      data: {
+        id: string;
+        name: string;
+        createdAt: Record<string, never> | string | number;
+        updatedAt: Record<string, never> | string | number;
+      }[];
+    };
+    AdminSkillsCreateBody: {
+      name: string;
+    };
+    AdminSkillsCreateResponse: {
+      id: string;
+      name: string;
+      createdAt: Record<string, never> | string | number;
+      updatedAt: Record<string, never> | string | number;
+    };
+    AdminSkillsUpdateParams: {
+      /** Format: uuid */
+      id: string;
+    };
+    AdminSkillsUpdateBody: {
+      name: string;
+    };
+    AdminSkillsUpdateResponse: {
+      id: string;
+      name: string;
+      createdAt: Record<string, never> | string | number;
+      updatedAt: Record<string, never> | string | number;
+    };
+    AdminSkillsDeleteParams: {
+      /** Format: uuid */
+      id: string;
+    };
+    AdminSkillsDeleteResponse: unknown;
     AdminFilesCreateBody: {
       /**
        * Format: binary
@@ -595,12 +722,28 @@ export interface components {
         updatedAt: Record<string, never> | string | number;
         phoneNumber: null | string;
         phoneNumberVerified: null | boolean;
+        username: null | string;
+        displayUsername: null | string;
         role: null | string;
         banned: null | boolean;
         banReason: null | string;
         banExpires: null | (Record<string, never> | string | number);
         gender: null | ('Male' | 'Female');
         avatarId: null | string;
+        governorateId: null | string;
+        jobTitle: null | string;
+        experienceInYears: null | (string | number);
+        expectedSalaryMin: null | (string | number);
+        expectedSalaryMax: null | (string | number);
+        expectedSalaryCurrency: null | string;
+        availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+        workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+        bio: null | string;
+        githubUrl: null | string;
+        linkedinUrl: null | string;
+        portfolioUrl: null | string;
+        availableForHire: null | boolean;
+        accountVerified: boolean;
       }[];
     };
     UserAccountsSendOtpBody: {
@@ -643,12 +786,28 @@ export interface components {
       updatedAt: Record<string, never> | string | number;
       phoneNumber: null | string;
       phoneNumberVerified: null | boolean;
+      username: null | string;
+      displayUsername: null | string;
       role: null | string;
       banned: null | boolean;
       banReason: null | string;
       banExpires: null | (Record<string, never> | string | number);
       gender: null | ('Male' | 'Female');
       avatarId: null | string;
+      governorateId: null | string;
+      jobTitle: null | string;
+      experienceInYears: null | (string | number);
+      expectedSalaryMin: null | (string | number);
+      expectedSalaryMax: null | (string | number);
+      expectedSalaryCurrency: null | string;
+      availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+      workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+      bio: null | string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: null | boolean;
+      accountVerified: boolean;
       avatar: {
         id: string;
         key: string;
@@ -708,12 +867,28 @@ export interface components {
       updatedAt: Record<string, never> | string | number;
       phoneNumber: null | string;
       phoneNumberVerified: null | boolean;
+      username: null | string;
+      displayUsername: null | string;
       role: null | string;
       banned: null | boolean;
       banReason: null | string;
       banExpires: null | (Record<string, never> | string | number);
       gender: null | ('Male' | 'Female');
       avatarId: null | string;
+      governorateId: null | string;
+      jobTitle: null | string;
+      experienceInYears: null | (string | number);
+      expectedSalaryMin: null | (string | number);
+      expectedSalaryMax: null | (string | number);
+      expectedSalaryCurrency: null | string;
+      availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+      workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+      bio: null | string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: null | boolean;
+      accountVerified: boolean;
     };
     UserAccountsRevokeSessionBody: {
       token: string;
@@ -725,6 +900,12 @@ export interface components {
       message: string;
     };
     UserGovernoratesListResponse: {
+      id: string;
+      name: string;
+      createdAt: Record<string, never> | string | number;
+      updatedAt: Record<string, never> | string | number;
+    }[];
+    UserSkillsListResponse: {
       id: string;
       name: string;
       createdAt: Record<string, never> | string | number;
@@ -1240,6 +1421,180 @@ export interface operations {
       };
     };
   };
+  getAdminSkills: {
+    parameters: {
+      query: {
+        page: number;
+        pageSize: number;
+        sortingColumn: string;
+        sortingDirection: string;
+        search?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AdminSkillsListResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  postAdminSkills: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AdminSkillsCreateBody'];
+        'application/x-www-form-urlencoded': components['schemas']['AdminSkillsCreateBody'];
+        'multipart/form-data': components['schemas']['AdminSkillsCreateBody'];
+      };
+    };
+    responses: {
+      /** @description Response for status 201 */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AdminSkillsCreateResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  deleteAdminSkillsById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 204 */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AdminSkillsDeleteResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  patchAdminSkillsById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AdminSkillsUpdateBody'];
+        'application/x-www-form-urlencoded': components['schemas']['AdminSkillsUpdateBody'];
+        'multipart/form-data': components['schemas']['AdminSkillsUpdateBody'];
+      };
+    };
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AdminSkillsUpdateResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
   postAdminFilesUpload: {
     parameters: {
       query?: never;
@@ -1703,6 +2058,44 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['UserGovernoratesListResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  getUserSkills: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserSkillsListResponse'];
         };
       };
       /** @description Response for status 400 */
