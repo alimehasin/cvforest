@@ -47,8 +47,8 @@ import { useRegisterMut } from '../../hooks/use-register-mut';
 import { useSkillsQuery } from '../../hooks/use-skills-query';
 
 export function JoinForm() {
-  const t = useTranslations();
   const form = useJoinForm();
+  const t = useTranslations();
   const registerMut = useRegisterMut();
   const skillsQuery = useSkillsQuery();
   const governoratesQuery = useGovernoratesQuery();
