@@ -85,28 +85,17 @@
     "userAgent": "User Agent"
   },
   "sidebar": {
-    "attributes": "Attributes",
-    "banners": "Banners",
-    "catalogGroup": "Catalog",
-    "categories": "Categories",
     "colorScheme": "Color Scheme",
-    "coupons": "Coupons",
     "dark": "Dark",
-    "governorates": "Governorates",
     "home": "Home",
     "language": "Language",
     "light": "Light",
     "logout": "Logout",
     "managementGroup": "Management",
-    "marketingGroup": "Marketing",
     "myAccount": "My Account",
-    "orders": "Orders",
     "overviewGroup": "Overview",
-    "priceReports": "Price Reports",
-    "products": "Products",
     "settings": "Settings",
     "support": "Support",
-    "users": "Users",
-    "warranties": "Warranties"
+    "users": "Users"
   }
 }

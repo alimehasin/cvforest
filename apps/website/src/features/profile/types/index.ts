@@ -1,29 +1,29 @@
 import type { GetRequestBody, GetResponseBody } from '@/types/server/helpers';
 
 export type SessionResponseBody = GetResponseBody<
-  '/admin/accounts/session',
+  '/user/accounts/session',
   'get'
 >;
 export type RevokeSessionResponseBody = GetRequestBody<
-  '/admin/accounts/revoke-session',
+  '/user/accounts/revoke-session',
   'post'
 >;
 export type RevokeOtherSessionsResponseBody = GetRequestBody<
-  '/admin/accounts/revoke-other-sessions',
+  '/user/accounts/revoke-other-sessions',
   'post'
 >;
-export type FileUploadBody = GetRequestBody<'/admin/files/upload', 'post'>;
+export type FileUploadBody = GetRequestBody<'/user/files/upload', 'post'>;
 export type FileUploadResponseBody = GetResponseBody<
-  '/admin/files/upload',
+  '/user/files/upload',
   'post',
   201
 >;
 
 export type ProfileUpdateBody = GetRequestBody<
-  '/admin/accounts/profile',
+  '/user/accounts/profile',
   'patch'
 >;
 export type ProfileResponseBody = GetResponseBody<
-  '/admin/accounts/profile',
+  '/user/accounts/profile',
   'get'
 >;

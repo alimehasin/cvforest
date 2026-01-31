@@ -18,11 +18,17 @@
     "recordsPerPageLabel": "عدد السجلات في الصفحة"
   },
   "login": {
-    "email": "البريد الإلكتروني",
-    "login": "تسجيل الدخول",
+    "codeRequired": "الرمز المكون من 6 أرقام مطلوب",
+    "enterOtp": "أدخل الرمز المكون من 6 أرقام",
+    "goBack": "الرجوع",
     "loginTitle": "تسجيل الدخول إلى حسابك",
     "logo": "الشعار هنا",
-    "password": "كلمة المرور"
+    "otpSentSuccessfully": "تم إرسال رمز التحقق بنجاح",
+    "phoneNumber": "رقم الهاتف",
+    "phoneNumberRequired": "رقم الهاتف مطلوب",
+    "resendOtp": "إعادة إرسال رمز التحقق",
+    "sendOtp": "إرسال رمز التحقق",
+    "verifyOtp": "تحقق رمز التحقق"
   },
   "meta": {
     "description": "FindCV | منصة للعثور على السير الذاتية",

@@ -1,6 +1,19 @@
-import type { GetRequestBody } from '@/types/server/helpers';
+import type { GetRequestBody, GetResponseBody } from '@/types/server/helpers';
 
-export type SignInRequestBody = GetRequestBody<
-  '/admin/accounts/sign-in',
+export type SendOtpRequestBody = GetRequestBody<
+  '/user/accounts/send-otp',
+  'post'
+>;
+export type SendOtpResponseBody = GetResponseBody<
+  '/user/accounts/send-otp',
+  'post'
+>;
+
+export type VerifyOtpRequestBody = GetRequestBody<
+  '/user/accounts/verify-otp',
+  'post'
+>;
+export type VerifyOtpResponseBody = GetResponseBody<
+  '/user/accounts/verify-otp',
   'post'
 >;

@@ -1,9 +1,8 @@
 import { redirect } from 'next/navigation';
-import { Shell } from '@/components/shell';
 import { getKy } from '@/server/actions';
 import type { GetResponseBody } from '@/types/server/helpers';
 
-type SessionResponseBody = GetResponseBody<'/admin/accounts/session', 'get'>;
+type SessionResponseBody = GetResponseBody<'/user/accounts/session', 'get'>;
 
 export default async function DashboardLayout({
   children,
@@ -18,9 +17,9 @@ export default async function DashboardLayout({
       return redirect('/accounts/login');
     });
 
-  if (!session || session.user.role !== 'admin') {
+  if (!session || session.user.role !== 'user') {
     return redirect('/accounts/login');
   }
 
-  return <Shell>{children}</Shell>;
+  return children;
 }

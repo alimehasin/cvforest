@@ -1,8 +1,11 @@
-import { getLocale } from 'next-intl/server';
-import { Login } from '@/features/accounts/views/login';
+import { SendOtp } from '@/features/accounts/views/send-otp';
 
-export default async function LoginPage() {
-  const locale = await getLocale();
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ next?: string }>;
+}) {
+  const { next } = await searchParams;
 
-  return <Login locale={locale} />;
+  return <SendOtp next={next || '/'} />;
 }

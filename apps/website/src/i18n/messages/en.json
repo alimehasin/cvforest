@@ -18,11 +18,17 @@
     "recordsPerPageLabel": "Records per page"
   },
   "login": {
-    "email": "Email",
-    "login": "Login",
+    "codeRequired": "Code is required",
+    "enterOtp": "Enter OTP",
+    "goBack": "Go Back",
     "loginTitle": "Login to your account",
     "logo": "Logo Here",
-    "password": "Password"
+    "otpSentSuccessfully": "OTP sent successfully",
+    "phoneNumber": "Phone Number",
+    "phoneNumberRequired": "Phone number is required",
+    "resendOtp": "Resend OTP",
+    "sendOtp": "Send OTP",
+    "verifyOtp": "Verify OTP"
   },
   "meta": {
     "description": "FindCV | A platform for finding CVs",

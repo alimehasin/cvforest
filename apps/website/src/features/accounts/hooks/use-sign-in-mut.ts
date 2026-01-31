@@ -1,8 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import type {
+  VerifyOtpRequestBody,
+  VerifyOtpResponseBody,
+} from '@/features/accounts/types';
 import { useKy } from '@/hooks/use-ky';
 import { useNotifications } from '@/hooks/use-notifications';
-import type { SignInRequestBody } from '../types';
 
 export function useSignInMut() {
   const ky = useKy();
@@ -13,10 +16,10 @@ export function useSignInMut() {
     onSuccess: () => router.push('/'),
     onError: (error: Error) => n.error(error.message),
 
-    mutationFn: async ({ email, password }: SignInRequestBody) => {
+    mutationFn: async ({ phoneNumber, code }: VerifyOtpRequestBody) => {
       const result = await ky
-        .post('accounts/sign-in', { json: { email, password } })
-        .json<SignInRequestBody>();
+        .post('accounts/verify-otp', { json: { phoneNumber, code } })
+        .json<VerifyOtpResponseBody>();
 
       return result;
     },

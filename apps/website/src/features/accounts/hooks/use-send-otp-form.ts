@@ -1,25 +1,27 @@
 import { useForm } from '@mantine/form';
 import { zod4Resolver } from 'mantine-form-zod-resolver';
-import { useTranslations } from 'next-intl';
 import { z } from 'zod';
+import { formatPhoneNumber } from '@/utils/helpers';
 import { phoneNumberZodValidator } from '@/utils/schemas';
-import type { VerifyOtpRequestBody } from '../types';
+import type { SendOtpRequestBody } from '../types';
 
-export function useSignInForm() {
-  const t = useTranslations();
-
+export function useSendOtpForm() {
   const schema = z.object({
     phoneNumber: phoneNumberZodValidator,
-    code: z.string().length(6, { error: t('login.codeRequired') }),
   });
+
   type FormValues = z.infer<typeof schema>;
-  type FormValuesToBody = (values: FormValues) => VerifyOtpRequestBody;
+  type FormValuesToBody = (values: FormValues) => SendOtpRequestBody;
 
   return useForm<FormValues, FormValuesToBody>({
     validate: zod4Resolver(schema),
     initialValues: {
       phoneNumber: '',
-      code: '',
+    },
+    transformValues: (values) => {
+      return {
+        phoneNumber: formatPhoneNumber(values.phoneNumber).replaceAll(' ', ''),
+      };
     },
   });
 }
