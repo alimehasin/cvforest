@@ -952,8 +952,6 @@ export interface components {
       email: string;
     };
     UserAccountsSetPasswordBody: {
-      /** Format: email */
-      email: string;
       password: string;
     };
     UserAccountsSetPasswordResponse: {

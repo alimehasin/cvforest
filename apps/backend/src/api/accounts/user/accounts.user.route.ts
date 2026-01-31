@@ -70,26 +70,11 @@ export const accounts = new Elysia({ prefix: '/accounts' })
     },
   )
 
+  .use(mustBeAuthed)
+
   .post(
     '/set-password',
-    async ({ t, body: { email, password } }) => {
-      const prisma = (await import('@db/client')).prisma;
-
-      // Verify user exists and email is verified
-      const user = await prisma.user.findUnique({
-        where: { email },
-      });
-
-      if (!user) {
-        throw new HttpError({
-          statusCode: 404,
-          message: t({
-            en: 'User not found',
-            ar: 'المستخدم غير موجود',
-          }),
-        });
-      }
-
+    async ({ t, user, body: { password } }) => {
       if (!user.emailVerified) {
         throw new HttpError({
           statusCode: 400,
@@ -100,33 +85,10 @@ export const accounts = new Elysia({ prefix: '/accounts' })
         });
       }
 
-      // Check if account already exists
-      const existingAccount = await prisma.account.findFirst({
-        where: { userId: user.id },
-      });
-
-      if (existingAccount) {
-        throw new HttpError({
-          statusCode: 409,
-          message: t({
-            en: 'Password already set',
-            ar: 'تم تعيين كلمة المرور بالفعل',
-          }),
-        });
-      }
-
-      // Use Bun's built-in password hashing
-      const hashedPassword = await Bun.password.hash(password, {
-        algorithm: 'bcrypt',
-        cost: 10,
-      });
-
-      await prisma.account.create({
-        data: {
+      await auth.api.setUserPassword({
+        body: {
           userId: user.id,
-          accountId: user.email,
-          providerId: 'credential',
-          password: hashedPassword,
+          newPassword: password,
         },
       });
 
@@ -145,8 +107,6 @@ export const accounts = new Elysia({ prefix: '/accounts' })
       },
     },
   )
-
-  .use(mustBeAuthed)
 
   .get(
     '/session',

@@ -3,11 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useKy } from '@/hooks/use-ky';
 import { useNotifications } from '@/hooks/use-notifications';
-
-interface SetPasswordRequestBody {
-  email: string;
-  password: string;
-}
+import type { SetPasswordRequestBody } from '../types';
 
 interface SetPasswordResponseBody {
   success: boolean;
@@ -20,9 +16,7 @@ export function useSetPasswordMut() {
   const n = useNotifications();
 
   return useMutation({
-    mutationFn: ({ email, password }: SetPasswordRequestBody) => {
-      const body = { email, password };
-
+    mutationFn: (body: SetPasswordRequestBody) => {
       return ky
         .post('accounts/set-password', { json: body })
         .json<SetPasswordResponseBody>();

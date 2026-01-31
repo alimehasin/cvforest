@@ -113,7 +113,6 @@ export const UserAccountsModel = {
 
   // Set Password
   UserAccountsSetPasswordBody: t.Object({
-    email: t.String({ format: 'email' }),
     password: t.String({ minLength: 8 }),
   }),
   UserAccountsSetPasswordResponse: t.Object({

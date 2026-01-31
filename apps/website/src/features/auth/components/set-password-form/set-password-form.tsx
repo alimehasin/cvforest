@@ -12,17 +12,13 @@ import { useTranslations } from 'next-intl';
 import { useSetPasswordForm } from '@/features/auth/hooks/use-set-password-form';
 import { useSetPasswordMut } from '@/features/auth/hooks/use-set-password-mut';
 
-interface SetPasswordFormProps {
-  email: string;
-}
-
-export function SetPasswordForm({ email }: SetPasswordFormProps) {
+export function SetPasswordForm() {
   const t = useTranslations();
   const form = useSetPasswordForm();
   const setPasswordMut = useSetPasswordMut();
 
   const handleSubmit = form.onSubmit(async ({ password }) => {
-    await setPasswordMut.mutateAsync({ email, password });
+    await setPasswordMut.mutateAsync({ password });
   });
 
   return (
