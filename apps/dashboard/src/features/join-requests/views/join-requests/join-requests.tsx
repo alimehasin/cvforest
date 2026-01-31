@@ -9,6 +9,7 @@ import { SearchInput } from '@/components/search-input';
 import { useJoinRequestsList } from '@/features/join-requests/hooks/use-join-requests-list';
 import type { JoinRequestsList } from '@/features/join-requests/types';
 import { constructImageUrl } from '@/utils/helpers';
+import { JoinRequestsRowExpansion } from '../../components/join-requests-row-expansion';
 
 interface JoinRequestsProps {
   initialData: JoinRequestsList;
@@ -28,14 +29,17 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
 
   return (
     <Stack>
-      <Group justify="space-between">
-        <SearchInput
-          value={filters.search}
-          onChange={(search) => setFilters({ search })}
-        />
-      </Group>
+      <SearchInput
+        value={filters.search}
+        onChange={(search) => setFilters({ search })}
+      />
 
       <DataTable
+        rowExpansion={{
+          content: ({ record }) => (
+            <JoinRequestsRowExpansion joinRequest={record} />
+          ),
+        }}
         {...getTableProps({
           query: joinRequests,
           columns: [
@@ -74,20 +78,15 @@ export function JoinRequests({ initialData }: JoinRequestsProps) {
               accessor: 'skills',
               title: t('joinRequests.skills'),
               width: 300,
-              render: ({ userSkills }) => {
-                if (!userSkills || userSkills.length === 0) {
-                  return null;
-                }
-                return (
-                  <Group gap={4}>
-                    {userSkills.map((userSkill) => (
-                      <Badge key={userSkill.id} variant="light" size="sm">
-                        {userSkill.skill.name}
-                      </Badge>
-                    ))}
-                  </Group>
-                );
-              },
+              render: ({ userSkills }) => (
+                <Group gap={4}>
+                  {userSkills.map((userSkill) => (
+                    <Badge key={userSkill.id} variant="light" size="sm">
+                      {userSkill.skill.name}
+                    </Badge>
+                  ))}
+                </Group>
+              ),
             },
             {
               accessor: 'createdAt',

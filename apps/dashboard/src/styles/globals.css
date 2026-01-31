@@ -27,3 +27,8 @@ body {
     box-shadow: 0 0 0 2px var(--mantine-primary-color-filled);
   }
 }
+
+.mantine-datatable-row-expansion-cell-content {
+  padding: var(--mantine-spacing-sm);
+  background-color: var(--mantine-color-nature-0);
+}
