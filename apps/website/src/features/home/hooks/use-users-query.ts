@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useDataTable } from '@/hooks/use-data-table';
 import { useKy } from '@/hooks/use-ky';
 import type { UserListQuery, UserListResponse } from '../types';
 

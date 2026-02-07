@@ -18,4 +18,17 @@ export const users = new Elysia({ prefix: '/users' })
         200: 'UserUsersListResponse',
       },
     },
+  )
+
+  .get(
+    '/:id',
+    async ({ params: { id }, t }) => {
+      return userUsersService.getById(id, t);
+    },
+    {
+      params: 'UserUsersGetParams',
+      response: {
+        200: 'UserUsersGetResponse',
+      },
+    },
   );

@@ -4,6 +4,8 @@ import type {
   Prisma,
   WorkLocationType,
 } from '@db/gen/prisma/client';
+import type { TranslationFn } from '@/types';
+import { HttpError } from '@/utils/error';
 import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
 import type { UserUsersModel } from './users.user.model';
 
@@ -75,5 +77,28 @@ export const userUsersService = {
     });
 
     return { total, data };
+  },
+
+  async getById(id: string, t: TranslationFn) {
+    const user = await prisma.user.findUnique({
+      where: { id, status: 'Approved' },
+      include: {
+        avatar: true,
+        governorate: true,
+        userSkills: { include: { skill: true } },
+      },
+    });
+
+    if (!user) {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'User not found',
+          ar: 'المستخدم غير موجود',
+        }),
+      });
+    }
+
+    return user;
   },
 };

@@ -37,4 +37,10 @@ export const UserUsersModel = {
     total: t.Number(),
     data: t.Array(UserWithRelations),
   }),
+
+  // Get
+  UserUsersGetParams: t.Object({
+    id: t.String({ format: 'uuid' }),
+  }),
+  UserUsersGetResponse: UserWithRelations,
 };

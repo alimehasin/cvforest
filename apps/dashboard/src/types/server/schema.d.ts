@@ -484,6 +484,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/user/users/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getUserUsersById'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1229,6 +1245,71 @@ export interface components {
             updatedAt: Record<string, never> | string | number;
           };
         }[];
+      }[];
+    };
+    UserUsersGetParams: {
+      /** Format: uuid */
+      id: string;
+    };
+    UserUsersGetResponse: {
+      id: string;
+      name: string;
+      email: string;
+      emailVerified: boolean;
+      image: null | string;
+      createdAt: Record<string, never> | string | number;
+      updatedAt: Record<string, never> | string | number;
+      phoneNumber: null | string;
+      phoneNumberVerified: null | boolean;
+      username: null | string;
+      displayUsername: null | string;
+      role: null | string;
+      banned: null | boolean;
+      banReason: null | string;
+      banExpires: null | (Record<string, never> | string | number);
+      gender: null | ('Male' | 'Female');
+      avatarId: null | string;
+      governorateId: null | string;
+      jobTitle: null | string;
+      experienceInYears: null | (string | number);
+      expectedSalaryMin: null | (string | number);
+      expectedSalaryMax: null | (string | number);
+      expectedSalaryCurrency: null | ('Iqd' | 'Usd');
+      availabilityType: null | ('FullTime' | 'PartTime' | 'Freelance');
+      workLocationType: null | ('OnSite' | 'Remote' | 'Hybrid');
+      bio: null | string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: null | boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
+      avatar: {
+        id: string;
+        key: string;
+        size: string | number;
+        type: 'Image' | 'Video' | 'Other';
+        isPublic: boolean;
+        userId: null | string;
+        createdAt: Record<string, never> | string | number;
+        updatedAt: Record<string, never> | string | number;
+      } | null;
+      governorate: {
+        id: string;
+        name: string;
+        createdAt: Record<string, never> | string | number;
+        updatedAt: Record<string, never> | string | number;
+      } | null;
+      userSkills: {
+        id: string;
+        userId: string;
+        skillId: string;
+        skill: {
+          id: string;
+          name: string;
+          createdAt: Record<string, never> | string | number;
+          updatedAt: Record<string, never> | string | number;
+        };
       }[];
     };
   };
@@ -2691,6 +2772,46 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['UserUsersListResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  getUserUsersById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserUsersGetResponse'];
         };
       };
       /** @description Response for status 400 */
