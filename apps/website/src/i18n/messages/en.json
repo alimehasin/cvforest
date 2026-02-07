@@ -184,6 +184,20 @@
     "revokeSuccess": "Revoked successfully",
     "userAgent": "User Agent"
   },
+  "userDetails": {
+    "about": "About",
+    "activeDays": "Active Days",
+    "bestDay": "Best Day",
+    "contactInfo": "Contact Info",
+    "contributions": "Contributions",
+    "expectedSalary": "Expected Salary",
+    "githubActivity": "GitHub Activity",
+    "githubError": "Unable to load GitHub contributions",
+    "portfolio": "Portfolio",
+    "professionalDetails": "Professional Details",
+    "skills": "Skills & Technologies",
+    "viewOnGithub": "View on GitHub"
+  },
   "users": {
     "email": "Email"
   }

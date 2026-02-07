@@ -184,6 +184,20 @@
     "revokeSuccess": "تم إلغاء الجلسة بنجاح",
     "userAgent": "مستخدم الويب"
   },
+  "userDetails": {
+    "about": "نبذة",
+    "activeDays": "أيام النشاط",
+    "bestDay": "أفضل يوم",
+    "contactInfo": "معلومات التواصل",
+    "contributions": "المساهمات",
+    "expectedSalary": "الراتب المتوقع",
+    "githubActivity": "نشاط GitHub",
+    "githubError": "تعذر تحميل مساهمات GitHub",
+    "portfolio": "المعرض",
+    "professionalDetails": "التفاصيل المهنية",
+    "skills": "المهارات والتقنيات",
+    "viewOnGithub": "عرض على GitHub"
+  },
   "users": {
     "email": "البريد الإلكتروني"
   }

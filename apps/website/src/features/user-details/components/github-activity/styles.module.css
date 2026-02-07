@@ -1,0 +1,37 @@
+/* ── GitHub activity wrapper ── */
+.calendarWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--mantine-spacing-xs);
+}
+
+.calendarWrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.calendarWrapper::-webkit-scrollbar-thumb {
+  background: var(--mantine-color-gray-3);
+  border-radius: 100vw;
+}
+
+.calendarWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── Stats row ── */
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: var(--mantine-font-size-xl);
+  font-weight: 700;
+  color: var(--mantine-color-primary-6);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-dimmed);
+  margin-top: 4px;
+}

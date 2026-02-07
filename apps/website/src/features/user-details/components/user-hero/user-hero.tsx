@@ -1,0 +1,126 @@
+import {
+  ActionIcon,
+  Avatar,
+  Badge,
+  Box,
+  Group,
+  Stack,
+  Text,
+  Title,
+  Tooltip,
+} from '@mantine/core';
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconMail,
+  IconWorld,
+} from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+import { constructImageUrl } from '@/utils/helpers';
+import type { UserDetailResponse } from '../../types';
+import cls from './styles.module.css';
+
+interface UserHeroProps {
+  user: UserDetailResponse;
+}
+
+export function UserHero({ user }: UserHeroProps) {
+  const t = useTranslations();
+
+  const socialLinks = [
+    {
+      url: user.githubUrl,
+      icon: IconBrandGithub,
+      label: 'GitHub',
+    },
+    {
+      url: user.linkedinUrl,
+      icon: IconBrandLinkedin,
+      label: 'LinkedIn',
+    },
+    {
+      url: user.portfolioUrl,
+      icon: IconWorld,
+      label: t('userDetails.portfolio'),
+    },
+  ].filter((link) => link.url);
+
+  return (
+    <Box>
+      {/* Gradient banner */}
+      <Box className={cls.banner} />
+
+      {/* Avatar + info */}
+      <Stack gap="md" px="md" className={cls.heroContent}>
+        <div className={cls.avatarWrapper}>
+          <div className={cls.avatarRing}>
+            <Avatar
+              size={112}
+              radius="50%"
+              name={user.name}
+              src={constructImageUrl(user.avatar?.key)}
+              color="primary"
+            />
+            {user.availableForHire && (
+              <Tooltip label={t('cvs.availableForHire')} withArrow>
+                <span className={cls.availableDot} />
+              </Tooltip>
+            )}
+          </div>
+        </div>
+
+        <Stack gap={4}>
+          <Group gap="sm" align="center">
+            <Title order={2}>{user.name}</Title>
+            {user.availableForHire && (
+              <Badge size="sm" radius="xl" className={cls.availableBadge}>
+                {t('cvs.availableForHire')}
+              </Badge>
+            )}
+          </Group>
+
+          {user.jobTitle && (
+            <Text size="lg" c="dimmed">
+              {user.jobTitle}
+            </Text>
+          )}
+        </Stack>
+
+        {/* Social links */}
+        {(socialLinks.length > 0 || user.email) && (
+          <Group gap="xs">
+            {socialLinks.map((link) => (
+              <Tooltip key={link.label} label={link.label} withArrow>
+                <ActionIcon
+                  component="a"
+                  href={link.url as string}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="light"
+                  size="lg"
+                  radius="xl"
+                  className={cls.socialButton}
+                >
+                  <link.icon size={18} />
+                </ActionIcon>
+              </Tooltip>
+            ))}
+
+            <Tooltip label={t('users.email')} withArrow>
+              <ActionIcon
+                component="a"
+                href={`mailto:${user.email}`}
+                variant="light"
+                size="lg"
+                radius="xl"
+                className={cls.socialButton}
+              >
+                <IconMail size={18} />
+              </ActionIcon>
+            </Tooltip>
+          </Group>
+        )}
+      </Stack>
+    </Box>
+  );
+}
