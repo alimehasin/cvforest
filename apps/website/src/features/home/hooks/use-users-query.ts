@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useKy } from '@/hooks/use-ky';
+import { objectToSearchParams } from '@/utils/helpers';
 import type { UserListQuery, UserListResponse } from '../types';
 
 interface UsersListProps {
@@ -21,7 +22,7 @@ export function useUsersList({ filters }: UsersListProps) {
     queryKey: ['/users', usersListQuery],
     queryFn: () => {
       return ky
-        .get('users', { searchParams: usersListQuery })
+        .get('users', { searchParams: objectToSearchParams(usersListQuery) })
         .json<UserListResponse>();
     },
   });

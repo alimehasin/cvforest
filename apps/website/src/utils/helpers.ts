@@ -27,3 +27,29 @@ export function formatPhoneNumber(pn: string): string {
 
   return phoneNumber.formatInternational();
 }
+
+type SearchParamsValue =
+  | string
+  | number
+  | boolean
+  | string[]
+  | number[]
+  | boolean[];
+
+type SearchParamsObject = Record<string, SearchParamsValue>;
+
+export function objectToSearchParams(obj: SearchParamsObject): URLSearchParams {
+  const params = new URLSearchParams();
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        params.append(key, String(item));
+      }
+    } else if (value !== null && value !== undefined) {
+      params.append(key, String(value));
+    }
+  }
+
+  return params;
+}
