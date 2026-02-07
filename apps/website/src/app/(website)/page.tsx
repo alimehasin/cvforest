@@ -1,5 +1,5 @@
-import { Hero } from '@/components/hero';
+import { Home } from '@/features/home/views/home';
 
-export default async function Home() {
-  return <Hero />;
+export default async function HomePage() {
+  return <Home />;
 }
