@@ -20,20 +20,12 @@ import {
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { constructImageUrl } from '@/utils/helpers';
+import {
+  translateAvailabilityType,
+  translateWorkLocationType,
+} from '@/utils/translation-maps';
 import type { UserListItem } from '../../types';
 import cls from './styles.module.css';
-
-const AVAILABILITY_KEYS: Record<string, string> = {
-  FullTime: 'cvs.fullTime',
-  PartTime: 'cvs.partTime',
-  Freelance: 'cvs.freelance',
-};
-
-const WORK_LOCATION_KEYS: Record<string, string> = {
-  OnSite: 'cvs.onSite',
-  Remote: 'cvs.remote',
-  Hybrid: 'cvs.hybrid',
-};
 
 export function UserCard({ user }: { user: UserListItem }) {
   const t = useTranslations();
@@ -114,21 +106,19 @@ export function UserCard({ user }: { user: UserListItem }) {
             </span>
           )}
 
-          {user.availabilityType &&
-            AVAILABILITY_KEYS[user.availabilityType] != null && (
-              <span className={cls.metaChip}>
-                <IconBriefcase size={12} />
-                {t(AVAILABILITY_KEYS[user.availabilityType] as string)}
-              </span>
-            )}
+          {user.availabilityType && (
+            <span className={cls.metaChip}>
+              <IconBriefcase size={12} />
+              {translateAvailabilityType(t, user.availabilityType)}
+            </span>
+          )}
 
-          {user.workLocationType &&
-            WORK_LOCATION_KEYS[user.workLocationType] != null && (
-              <span className={cls.metaChip}>
-                <IconWorld size={12} />
-                {t(WORK_LOCATION_KEYS[user.workLocationType] as string)}
-              </span>
-            )}
+          {user.workLocationType && (
+            <span className={cls.metaChip}>
+              <IconWorld size={12} />
+              {translateWorkLocationType(t, user.workLocationType)}
+            </span>
+          )}
         </Group>
 
         {/* Skills */}
