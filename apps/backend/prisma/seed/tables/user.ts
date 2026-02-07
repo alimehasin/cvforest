@@ -24,12 +24,15 @@ export async function seedUsers(prisma: PrismaClient) {
   });
 
   const promises = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 10_000; i++) {
     const promise = prisma.user.create({
       data: {
         name: genFullName(Gender.Male),
         email: `user${i}@example.com`,
-        status: dunna.basic.choice(Object.values(UserStatus)),
+        status: dunna.basic.boolean()
+          ? dunna.basic.choice(Object.values(UserStatus))
+          : 'Approved',
+
         gender: dunna.basic.choice(Object.values(Gender)),
         bio: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
         jobTitle: 'Software Engineer',
