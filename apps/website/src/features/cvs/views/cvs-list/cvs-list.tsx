@@ -2,9 +2,9 @@
 
 import { Stack, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import { BrowseGrid } from '../../components/browse-grid';
+import { CvsGrid } from '../../components/cvs-grid';
 
-export function Browse() {
+export function CvsList() {
   const t = useTranslations();
 
   return (
@@ -16,7 +16,7 @@ export function Browse() {
         </Text>
       </Stack>
 
-      <BrowseGrid />
+      <CvsGrid />
     </Stack>
   );
 }

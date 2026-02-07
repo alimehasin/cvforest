@@ -53,7 +53,7 @@ export function CvsSection() {
           <Button
             size="md"
             variant="light"
-            href="/browse"
+            href="/cvs"
             component={Link}
             rightSection={<IconArrowRight size={18} />}
           >

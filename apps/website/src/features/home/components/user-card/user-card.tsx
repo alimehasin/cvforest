@@ -60,7 +60,7 @@ export function UserCard({ user }: { user: UserListItem }) {
       className={cls.card}
       p={0}
       component={Link}
-      href={`/users/${user.id}`}
+      href={`/cvs/${user.id}`}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
       {/* Gradient header band */}

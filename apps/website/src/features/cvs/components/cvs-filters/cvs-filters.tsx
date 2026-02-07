@@ -17,12 +17,12 @@ import {
   translateWorkLocationType,
 } from '@/utils/translation-maps';
 
-interface BrowseFiltersProps {
+interface CvsFiltersProps {
   filters: Partial<CvListQuery>;
   setFilters: (update: Partial<CvListQuery>) => void;
 }
 
-export function BrowseFilters({ filters, setFilters }: BrowseFiltersProps) {
+export function CvsFilters({ filters, setFilters }: CvsFiltersProps) {
   const t = useTranslations();
   const skillsQuery = useSkillsQuery();
   const governoratesQuery = useGovernoratesQuery();

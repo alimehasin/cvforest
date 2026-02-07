@@ -12,11 +12,11 @@ import { IconMoodEmpty } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { SearchInput } from '@/components/search-input';
 import { UserCard } from '@/features/home/components/user-card';
-import { useBrowseUsers } from '../../hooks/use-browse-users';
-import { BrowseFilters } from '../browse-filters';
+import { useCvsList } from '../../hooks/use-cvs-list';
+import { CvsFilters } from '../cvs-filters';
 import cls from './styles.module.css';
 
-export function BrowseGrid() {
+export function CvsGrid() {
   const t = useTranslations();
   const {
     users,
@@ -27,7 +27,7 @@ export function BrowseGrid() {
     totalPages,
     filters,
     setFilters,
-  } = useBrowseUsers();
+  } = useCvsList();
 
   return (
     <Stack gap="xl">
@@ -39,7 +39,7 @@ export function BrowseGrid() {
         />
       </Group>
 
-      <BrowseFilters filters={filters} setFilters={setFilters} />
+      <CvsFilters filters={filters} setFilters={setFilters} />
 
       {users.isLoading ? (
         <SimpleGrid

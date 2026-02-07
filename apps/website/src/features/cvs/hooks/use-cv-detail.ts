@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useKy } from '@/hooks/use-ky';
 import type { UserDetailResponse } from '../types';
 
-export function useUserDetails({
+export function useCvDetail({
   id,
   initialData,
 }: {

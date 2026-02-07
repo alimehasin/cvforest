@@ -49,7 +49,7 @@ export async function Hero() {
 
             <Button
               size="lg"
-              href="/browse"
+              href="/cvs"
               variant="light"
               component={Link}
               leftSection={<IconBriefcase size={20} />}

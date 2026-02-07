@@ -14,7 +14,7 @@ const initialFilters: Partial<CvListQuery> = {
   experienceMax: undefined,
 };
 
-export function useBrowseUsers() {
+export function useCvsList() {
   const ky = useKy();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
