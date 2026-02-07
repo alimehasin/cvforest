@@ -3,6 +3,8 @@
   padding-top: var(--mantine-spacing-xl);
   border-top: 1px solid var(--mantine-color-gray-1);
   background-color: var(--mantine-color-white);
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: var(--mantine-radius-default);
 }
 
 .brand {
