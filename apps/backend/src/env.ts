@@ -35,13 +35,8 @@ export const env = createEnv({
     // OpenApi
     OPENAPI_ACCESS_MODE: z.enum(['public', 'hidden']).default('hidden'),
 
-    // Email
-    EMAIL_HOST: z.string(),
-    EMAIL_PORT: z.coerce.number(),
-    EMAIL_SECURE: z.enum(['true', 'false']).transform((str) => str === 'true'),
-    EMAIL_USER_USERNAME: z.string(),
-    EMAIL_USER_PASSWORD: z.string(),
-    EMAIL_FROM_ADDRESS: z.string(),
-    EMAIL_FROM_NAME: z.string(),
+    // Resend
+    RESEND_API_KEY: z.string(),
+    RESEND_FROM_ADDRESS: z.string(),
   },
 });
