@@ -1,16 +1,18 @@
+'use client';
+
 import { Anchor, Button, Container, Divider, Group } from '@mantine/core';
 import { IconLogin, IconUpload } from '@tabler/icons-react';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/components/link/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
 import cls from './styles.module.css';
 
 interface HeaderProps {
-  session?: SessionResponseBody;
+  session: SessionResponseBody | null;
 }
 
-export async function Header({ session }: HeaderProps) {
-  const t = await getTranslations();
+export function Header({ session }: HeaderProps) {
+  const t = useTranslations();
 
   return (
     <Container size="lg" strategy="grid" className={cls.header}>
@@ -26,14 +28,16 @@ export async function Header({ session }: HeaderProps) {
           </Group>
 
           {session ? (
-            <Button
-              href="/upload-cv"
-              variant="light"
-              component={Link}
-              leftSection={<IconUpload size={18} />}
-            >
-              {t('header.uploadCv')}
-            </Button>
+            <Group gap="xs">
+              <Button
+                href="/upload-cv"
+                variant="filled"
+                component={Link}
+                leftSection={<IconUpload size={18} />}
+              >
+                {t('header.uploadCv')}
+              </Button>
+            </Group>
           ) : (
             <>
               <Divider orientation="vertical" />

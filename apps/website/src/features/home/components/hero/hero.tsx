@@ -40,7 +40,7 @@ export async function Hero() {
           <Group gap="md" wrap="wrap" justify="center" className={cls.buttons}>
             <Button
               size="lg"
-              href="/sign-up"
+              href="/upload-cv"
               component={Link}
               leftSection={<IconUpload size={20} />}
             >

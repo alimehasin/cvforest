@@ -1,6 +1,6 @@
 import { Container } from '@mantine/core';
 import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
+import { Shell } from '@/components/shell';
 import type { SessionResponseBody } from '@/features/accounts/types';
 import { getKy } from '@/server/actions';
 
@@ -20,10 +20,9 @@ export default async function WebsiteLayout({ children }: WebsiteLayoutProps) {
   }
 
   return (
-    <div>
-      <Header session={session} />
+    <Shell session={session}>
       <Container size="xl">{children}</Container>
       <Footer />
-    </div>
+    </Shell>
   );
 }
