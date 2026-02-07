@@ -14,6 +14,12 @@
     "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
     "verifyEmail": "تحقق من بريدك الإلكتروني"
   },
+  "browse": {
+    "noResults": "لم يتم العثور على ملفات تطابق بحثك",
+    "searchPlaceholder": "ابحث بالاسم أو المسمى الوظيفي...",
+    "subtitle": "استعرض جميع المحترفين المتاحين على FindCV",
+    "title": "تصفح المواهب"
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء.",
     "areYouSureAboutThisAction": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",

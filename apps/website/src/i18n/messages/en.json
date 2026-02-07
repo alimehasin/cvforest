@@ -14,6 +14,12 @@
     "verificationCodeSent": "We've sent a 6-digit code to your email",
     "verifyEmail": "Verify Your Email"
   },
+  "browse": {
+    "noResults": "No profiles found matching your search",
+    "searchPlaceholder": "Search by name or job title...",
+    "subtitle": "Explore all professionals available on FindCV",
+    "title": "Browse Talent"
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "This action cannot be undone.",
     "areYouSureAboutThisAction": "Are you sure you want to perform this action?",
