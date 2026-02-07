@@ -1,7 +1,6 @@
 import {
   AvailabilityType,
   Currency,
-  UserStatus,
   WorkLocationType,
 } from '@db/gen/prisma/client';
 import { CvPlain } from '@db/gen/prismabox/Cv';
@@ -45,7 +44,6 @@ export const UserCvsModel = {
     ...sortingSchema,
 
     // Filters
-    status: t.Optional(t.Enum(UserStatus)),
     search: t.Optional(t.String()),
     skillIds: t.Optional(t.Union([t.Array(t.String()), t.String()])),
     governorateId: t.Optional(t.String({ format: 'uuid' })),

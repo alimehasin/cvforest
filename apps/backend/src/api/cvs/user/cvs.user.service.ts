@@ -17,7 +17,7 @@ export const userCvsService = {
 
     const where: Prisma.CvWhereInput = {
       // Default to Approved status if no status filter is provided
-      status: query.status ?? 'Approved',
+      status: 'Approved',
       ...(query.search && {
         OR: [
           { jobTitle: { contains: query.search, mode: 'insensitive' } },
