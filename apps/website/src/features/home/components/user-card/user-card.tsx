@@ -32,7 +32,7 @@ export function UserCard({ user }: { user: UserListItem }) {
   const t = useTranslations();
 
   const skills = user.userSkills.map((us) => us.skill);
-  const visibleSkills = skills.slice(0, 3);
+  const visibleSkills = skills.slice(0, 4);
   const remainingCount = skills.length - visibleSkills.length;
 
   const socialLinks = [
@@ -54,113 +54,127 @@ export function UserCard({ user }: { user: UserListItem }) {
   ].filter((link) => link.url);
 
   return (
-    <Link
+    <Paper
+      withBorder
+      radius="lg"
+      className={cls.card}
+      p={0}
+      component={Link}
       href={`/users/${user.id}`}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      <Paper withBorder radius="lg" className={cls.card} p={0}>
-        {/* Gradient header band */}
-        <Box className={cls.header} />
+      {/* Gradient header band */}
+      <Box className={cls.header} />
 
-        {/* Avatar overlapping the header */}
-        <div className={cls.avatarWrapper}>
-          <div className={cls.avatarRing}>
-            <Avatar
-              size={92}
-              radius="50%"
-              name={user.name}
-              src={constructImageUrl(user.avatar?.key)}
-              color="primary"
-            />
-            {user.availableForHire && (
-              <Tooltip label={t('cvs.availableForHire')} withArrow>
-                <span className={cls.availableDot} />
-              </Tooltip>
-            )}
-          </div>
+      {/* Avatar overlapping the header */}
+      <div className={cls.avatarWrapper}>
+        <div className={cls.avatarRing}>
+          <Avatar
+            size={92}
+            radius="50%"
+            name={user.name}
+            src={constructImageUrl(user.avatar?.key)}
+            color="primary"
+          />
+          {user.availableForHire && (
+            <Tooltip label={t('cvs.availableForHire')} withArrow>
+              <span className={cls.availableDot} />
+            </Tooltip>
+          )}
         </div>
+      </div>
 
-        {/* Card body */}
-        <Stack align="center" gap="xs" className={cls.body}>
-          {/* Identity */}
-          <Stack align="center" gap={2}>
-            <Text fw={700} size="md" ta="center" lineClamp={1}>
-              {user.name}
+      {/* Card body */}
+      <Stack align="center" gap="xs" className={cls.body}>
+        {/* Identity */}
+        <Stack align="center" gap={2}>
+          <Text fw={700} size="md" ta="center" lineClamp={1}>
+            {user.name}
+          </Text>
+
+          {user.jobTitle && (
+            <Text size="sm" c="dimmed" ta="center" lineClamp={1}>
+              {user.jobTitle}
             </Text>
+          )}
+        </Stack>
 
-            {user.jobTitle && (
-              <Text size="sm" c="dimmed" ta="center" lineClamp={1}>
-                {user.jobTitle}
-              </Text>
-            )}
-          </Stack>
-
-          {/* Meta chips */}
-          <Group gap={6} justify="center" wrap="wrap">
-            {user.governorate && (
-              <span className={cls.metaChip}>
-                <IconMapPin size={12} />
-                {user.governorate.name}
-              </span>
-            )}
-
-            {user.experienceInYears != null && (
-              <span className={cls.metaChip}>
-                <IconClock size={12} />
-                {t('cvs.yearsExperience', { number: user.experienceInYears })}
-              </span>
-            )}
-
-            {user.availabilityType && (
-              <span className={cls.metaChip}>
-                <IconBriefcase size={12} />
-                {translateAvailabilityType(t, user.availabilityType)}
-              </span>
-            )}
-
-            {user.workLocationType && (
-              <span className={cls.metaChip}>
-                <IconWorld size={12} />
-                {translateWorkLocationType(t, user.workLocationType)}
-              </span>
-            )}
-          </Group>
-
-          {/* Skills */}
-          {visibleSkills.length > 0 && (
-            <Group gap={6} justify="center" wrap="wrap">
-              {visibleSkills.map((skill) => (
-                <Badge
-                  key={skill.id}
-                  size="sm"
-                  variant="light"
-                  radius="xl"
-                  className={cls.skillPill}
-                >
-                  {skill.name}
-                </Badge>
-              ))}
-              {remainingCount > 0 && (
-                <Badge size="sm" variant="light" color="gray" radius="xl">
-                  +{remainingCount}
-                </Badge>
-              )}
-            </Group>
+        {/* Meta chips */}
+        <Group gap={6} justify="center" wrap="wrap">
+          {user.governorate && (
+            <span className={cls.metaChip}>
+              <IconMapPin size={12} />
+              {user.governorate.name}
+            </span>
           )}
 
-          {/* Social links footer */}
-          <Group w="100%" className={cls.socialFooter} justify="space-between">
-            <Group gap="xs">
-              {socialLinks.map((link) => (
-                <Tooltip key={link.label} label={link.label} withArrow>
-                  <ActionIcon
-                    size="sm"
-                    role="link"
-                    tabIndex={0}
-                    color="gray"
-                    variant="subtle"
-                    component="span"
-                    onClick={(e: React.MouseEvent) => {
+          {user.experienceInYears != null && (
+            <span className={cls.metaChip}>
+              <IconClock size={12} />
+              {t('cvs.yearsExperience', { number: user.experienceInYears })}
+            </span>
+          )}
+
+          {user.availabilityType && (
+            <span className={cls.metaChip}>
+              <IconBriefcase size={12} />
+              {translateAvailabilityType(t, user.availabilityType)}
+            </span>
+          )}
+
+          {user.workLocationType && (
+            <span className={cls.metaChip}>
+              <IconWorld size={12} />
+              {translateWorkLocationType(t, user.workLocationType)}
+            </span>
+          )}
+        </Group>
+
+        {/* Skills */}
+        {visibleSkills.length > 0 && (
+          <Group gap={6} justify="center" wrap="wrap">
+            {visibleSkills.map((skill) => (
+              <Badge
+                key={skill.id}
+                size="sm"
+                variant="light"
+                radius="xl"
+                className={cls.skillPill}
+              >
+                {skill.name}
+              </Badge>
+            ))}
+            {remainingCount > 0 && (
+              <Badge size="sm" variant="light" color="gray" radius="xl">
+                +{remainingCount}
+              </Badge>
+            )}
+          </Group>
+        )}
+
+        {/* Social links footer */}
+        <Group w="100%" className={cls.socialFooter} justify="space-between">
+          <Group gap="xs">
+            {socialLinks.map((link) => (
+              <Tooltip key={link.label} label={link.label} withArrow>
+                <ActionIcon
+                  size="sm"
+                  role="link"
+                  tabIndex={0}
+                  color="gray"
+                  variant="subtle"
+                  component="span"
+                  onClick={(e: React.MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(
+                      link.url as string,
+                      '_blank',
+                      'noopener,noreferrer',
+                    );
+                  }}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       e.stopPropagation();
                       window.open(
@@ -168,52 +182,41 @@ export function UserCard({ user }: { user: UserListItem }) {
                         '_blank',
                         'noopener,noreferrer',
                       );
-                    }}
-                    onKeyDown={(e: React.KeyboardEvent) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        window.open(
-                          link.url as string,
-                          '_blank',
-                          'noopener,noreferrer',
-                        );
-                      }
-                    }}
-                  >
-                    <link.icon size={16} />
-                  </ActionIcon>
-                </Tooltip>
-              ))}
-            </Group>
+                    }
+                  }}
+                >
+                  <link.icon size={16} />
+                </ActionIcon>
+              </Tooltip>
+            ))}
+          </Group>
 
-            <Tooltip label={t('users.email')}>
-              <ActionIcon
-                component="span"
-                role="link"
-                tabIndex={0}
-                size="sm"
-                color="gray"
-                variant="subtle"
-                onClick={(e: React.MouseEvent) => {
+          <Tooltip label={t('users.email')}>
+            <ActionIcon
+              size="sm"
+              role="link"
+              tabIndex={0}
+              color="gray"
+              component="span"
+              variant="subtle"
+              onClick={(e: React.MouseEvent) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `mailto:${user.email}`;
+              }}
+              onKeyDown={(e: React.KeyboardEvent) => {
+                if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
                   e.stopPropagation();
                   window.location.href = `mailto:${user.email}`;
-                }}
-                onKeyDown={(e: React.KeyboardEvent) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.location.href = `mailto:${user.email}`;
-                  }
-                }}
-              >
-                <IconMail />
-              </ActionIcon>
-            </Tooltip>
-          </Group>
-        </Stack>
-      </Paper>
-    </Link>
+                }
+              }}
+            >
+              <IconMail />
+            </ActionIcon>
+          </Tooltip>
+        </Group>
+      </Stack>
+    </Paper>
   );
 }

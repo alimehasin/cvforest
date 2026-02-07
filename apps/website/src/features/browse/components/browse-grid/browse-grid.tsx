@@ -43,23 +43,23 @@ export function BrowseGrid() {
 
       {users.isLoading ? (
         <SimpleGrid
-          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
           spacing="lg"
           className={cls.grid}
+          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
         >
           {Array.from({ length: 12 }).map((_, i) => (
             <Skeleton
-              key={`skeleton-${i.toString()}`}
               height={280}
               radius="lg"
+              key={`skeleton-${i.toString()}`}
             />
           ))}
         </SimpleGrid>
       ) : users.data?.data.length ? (
         <SimpleGrid
-          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
           spacing="lg"
           className={cls.grid}
+          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
         >
           {users.data.data.map((user) => (
             <UserCard key={user.id} user={user} />
