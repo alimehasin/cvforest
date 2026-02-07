@@ -1,10 +1,8 @@
-import { prisma } from '@db/client';
 import { Elysia } from 'elysia';
 import { init } from '@/init';
 import { mustBeAuthed } from '@/plugins/better-auth';
 import { auth } from '@/utils/auth';
 import { HttpError } from '@/utils/error';
-import { setBetterAuthHeaders } from '../accounts.helpers';
 import { UserAccountsModel } from './accounts.user.model';
 import { userAccountsService } from './accounts.user.service';
 
@@ -19,8 +17,8 @@ export const accounts = new Elysia({ prefix: '/accounts' })
 
       return {
         message: t({
-          en: 'Registration successful. Please check your email for verification code.',
-          ar: 'تم التسجيل بنجاح. يرجى التحقق من بريدك الإلكتروني للحصول على رمز التحقق.',
+          en: 'Registration successful. Please check your email for the verification link.',
+          ar: 'تم التسجيل بنجاح. يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.',
         }),
         user: {
           id: result.id,
@@ -55,70 +53,38 @@ export const accounts = new Elysia({ prefix: '/accounts' })
     },
   )
 
-  .post(
-    '/verify-email-otp',
-    async ({ t, set, body: { email, otp } }) => {
-      // Verify OTP using Better Auth
-      const result = await auth.api.verifyEmailOTP({
-        body: { email, otp },
-      });
-
-      if (!result || !result.user) {
+  .get(
+    '/verify-email',
+    async ({ t, query: { token } }) => {
+      const res = await auth.api.verifyEmail({ query: { token } }).catch(() => {
         throw new HttpError({
           statusCode: 400,
           message: t({
-            en: 'Invalid or expired verification code',
-            ar: 'رمز التحقق غير صالح أو منتهي الصلاحية',
+            en: 'Invalid token',
+            ar: 'الرمز غير صحيح',
+          }),
+        });
+      });
+
+      if (!res) {
+        throw new HttpError({
+          statusCode: 400,
+          message: t({
+            en: 'Invalid token',
+            ar: 'الرمز غير صحيح',
           }),
         });
       }
 
-      const password = crypto.randomUUID();
-
-      const account = await prisma.account.create({
-        data: {
-          userId: result.user.id,
-          accountId: result.user.id,
-          providerId: 'email',
-        },
-      });
-
-      await auth.api.setUserPassword({
-        body: {
-          newPassword: password,
-          userId: result.user.id,
-        },
-      });
-
-      const res = await auth.api
-        .signInEmail({
-          returnHeaders: true,
-          body: { email, password },
-        })
-        .catch(() => {
-          throw new HttpError({
-            statusCode: 401,
-            message: t({
-              en: 'Invalid email or password',
-              ar: 'البريد الإلكتروني أو كلمة المرور غير صحيحة',
-            }),
-          });
-        });
-
-      setBetterAuthHeaders(set, res.headers);
-
-      await prisma.account.update({
-        where: { id: account.id },
-        data: { password: null },
-      });
-
-      return res;
+      return {
+        message: t({
+          en: 'Email verified successfully',
+          ar: 'تم التحقق من البريد الإلكتروني بنجاح',
+        }),
+      };
     },
     {
-      body: 'UserAccountsVerifyOtpBody',
-      response: {
-        200: 'UserAccountsVerifyOtpResponse',
-      },
+      query: 'VerifyEmailQuery',
     },
   )
 

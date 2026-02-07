@@ -24,6 +24,7 @@ export const env = createEnv({
     BETTER_AUTH_SECRET: z.string(),
     BETTER_AUTH_BASE_URL: z.string(),
     BETTER_AUTH_COOKIE_DOMAIN: z.string(),
+    BETTER_AUTH_VERIFICATION_CALLBACK_URL: z.url(),
 
     // Storage
     STORAGE_REGION: z.string(),

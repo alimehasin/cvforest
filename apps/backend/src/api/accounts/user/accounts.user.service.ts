@@ -86,12 +86,8 @@ export const userAccountsService = {
       },
     });
 
-    // Send OTP via Better Auth emailOTP plugin
-    await auth.api.sendVerificationOTP({
-      body: {
-        email: user.email,
-        type: 'email-verification',
-      },
+    await auth.api.sendVerificationEmail({
+      body: { email: user.email },
     });
 
     return {

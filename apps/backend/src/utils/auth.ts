@@ -1,13 +1,7 @@
 import { prisma } from '@db/client';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
-import {
-  admin,
-  emailOTP,
-  openAPI,
-  phoneNumber,
-  username,
-} from 'better-auth/plugins';
+import { admin, phoneNumber, username } from 'better-auth/plugins';
 import { env } from '@/env';
 import { sendEmail } from './email';
 
@@ -32,6 +26,19 @@ export const auth = betterAuth({
     enabled: true,
   },
 
+  emailVerification: {
+    autoSignInAfterVerification: true,
+    sendVerificationEmail: async ({ user, token }) => {
+      const url = `${env.BETTER_AUTH_VERIFICATION_CALLBACK_URL}?token=${encodeURIComponent(token)}`;
+
+      void sendEmail({
+        to: user.email,
+        subject: 'CV Forest - Verify your email',
+        html: `<p>Click the link to verify your email: <a href="${url}">${url}</a></p>`,
+      });
+    },
+  },
+
   user: {
     additionalFields: {
       gender: { type: 'string', enum: ['Male', 'Female'] },
@@ -42,21 +49,6 @@ export const auth = betterAuth({
   plugins: [
     admin({}),
     username({}),
-
-    openAPI({
-      disableDefaultReference: true,
-    }),
-
-    emailOTP({
-      otpLength: 8,
-      sendVerificationOTP: async ({ email, otp, type }) => {
-        await sendEmail({
-          to: email,
-          subject: 'CV Forest - Verification OTP',
-          html: `<p>Your verification OTP is <b>${otp}</b> for <b>${type}</b></p>`,
-        });
-      },
-    }),
 
     phoneNumber({
       sendOTP: async ({ code, phoneNumber }) => {

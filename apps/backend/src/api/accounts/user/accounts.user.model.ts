@@ -84,10 +84,8 @@ export const UserAccountsModel = {
     message: t.String(),
   }),
 
-  // Verify OTP
-  UserAccountsVerifyOtpBody: t.Object({
-    email: t.String({ format: 'email' }),
-    otp: t.String({ minLength: 8, maxLength: 8 }),
+  // Verify email (link callback)
+  VerifyEmailQuery: t.Object({
+    token: t.String(),
   }),
-  UserAccountsVerifyOtpResponse: t.Any(),
 };
