@@ -1,4 +1,5 @@
 import { Elysia } from 'elysia';
+import { env } from '@/env';
 import { init } from '@/init';
 import { mustBeAuthed } from '@/plugins/better-auth';
 import { auth } from '@/utils/auth';
@@ -55,7 +56,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
 
   .get(
     '/verify-email',
-    async ({ t, query: { token } }) => {
+    async ({ t, redirect, query: { token } }) => {
       const res = await auth.api.verifyEmail({ query: { token } }).catch(() => {
         throw new HttpError({
           statusCode: 400,
@@ -76,12 +77,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
         });
       }
 
-      return {
-        message: t({
-          en: 'Email verified successfully',
-          ar: 'تم التحقق من البريد الإلكتروني بنجاح',
-        }),
-      };
+      return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_SUCCESS_URL);
     },
     {
       query: 'VerifyEmailQuery',

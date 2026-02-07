@@ -1,7 +1,7 @@
 import { VerifyEmail } from '@/features/accounts/views/verify-email';
 
 interface VerifyEmailPageProps {
-  searchParams: Promise<{ email: string }>;
+  searchParams: Promise<{ email?: string }>;
 }
 
 export default async function VerifyEmailPage({
@@ -9,5 +9,5 @@ export default async function VerifyEmailPage({
 }: VerifyEmailPageProps) {
   const { email } = await searchParams;
 
-  return <VerifyEmail email={email} />;
+  return <VerifyEmail email={email ?? undefined} />;
 }

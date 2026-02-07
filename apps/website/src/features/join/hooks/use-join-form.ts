@@ -1,80 +1,38 @@
 import { useForm } from '@mantine/form';
-import {
-  AvailabilityType,
-  Currency,
-  Gender,
-  WorkLocationType,
-} from '@repo/backend/prisma/enums';
+import { Gender } from '@repo/backend/prisma/enums';
 import { zod4Resolver } from 'mantine-form-zod-resolver';
 import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 import { phoneNumberZodValidator } from '@/utils/schemas';
 import type { RegisterRequestBody } from '../types';
 
+const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+
 export function useJoinForm() {
   const t = useTranslations();
 
   const schema = z
     .object({
-      // Personal Information - Required
       name: z.string().min(1, { message: t('join.nameRequired') }),
       email: z.email({ message: t('join.emailInvalid') }),
-      phoneNumber: phoneNumberZodValidator,
-      gender: z.enum([Gender.Male, Gender.Female], {
-        message: t('join.genderRequired'),
-      }),
-      governorateId: z.uuid({ message: t('join.governorateRequired') }),
-
-      // Professional Information - Required
-      jobTitle: z.string().min(1, { message: t('join.jobTitleRequired') }),
-      experienceInYears: z.number().min(0, {
-        message: t('join.experienceRequired'),
-      }),
-
-      // Professional Information - Optional
-      expectedSalaryMin: z.number().min(0).optional().or(z.literal(0)),
-      expectedSalaryMax: z.number().min(0).optional().or(z.literal(0)),
-      expectedSalaryCurrency: z.enum(Currency).optional(),
-      availabilityType: z.enum(AvailabilityType).optional(),
-      workLocationType: z.enum(WorkLocationType).optional(),
-      availableForHire: z.boolean().optional(),
-      bio: z.string().optional().or(z.literal('')),
-
-      // Skills - Optional
-      skillIds: z.array(z.string()).optional(),
-
-      // Social Links - Optional
-      githubUrl: z
-        .url({ message: t('join.githubUrlInvalid') })
+      password: z
+        .string()
+        .min(8, { message: t('join.passwordInvalid') })
+        .max(128, { message: t('join.passwordInvalid') })
+        .regex(strongPasswordRegex, { message: t('join.passwordInvalid') }),
+      confirmPassword: z
+        .string()
+        .min(1, { message: t('join.confirmPasswordMismatch') }),
+      phoneNumber: z
+        .union([z.literal(''), phoneNumberZodValidator])
         .optional()
-        .or(z.literal('')),
-      linkedinUrl: z
-        .url({ message: t('join.linkedinUrlInvalid') })
-        .optional()
-        .or(z.literal('')),
-      portfolioUrl: z
-        .url({ message: t('join.portfolioUrlInvalid') })
-        .optional()
-        .or(z.literal('')),
+        .default(''),
+      gender: z.enum([Gender.Male, Gender.Female]).optional(),
     })
-    .refine(
-      (data) => {
-        // If both salary fields are provided, max should be >= min
-        if (
-          data.expectedSalaryMin &&
-          data.expectedSalaryMax &&
-          data.expectedSalaryMin > 0 &&
-          data.expectedSalaryMax > 0
-        ) {
-          return data.expectedSalaryMax >= data.expectedSalaryMin;
-        }
-        return true;
-      },
-      {
-        message: t('join.salaryValidation'),
-        path: ['expectedSalaryMax'],
-      },
-    );
+    .refine((data) => data.password === data.confirmPassword, {
+      message: t('join.confirmPasswordMismatch'),
+      path: ['confirmPassword'],
+    });
 
   type FormValues = z.infer<typeof schema>;
   type FormValuesToBody = (values: FormValues) => RegisterRequestBody;
@@ -85,45 +43,20 @@ export function useJoinForm() {
     initialValues: {
       name: '',
       email: '',
+      password: '',
+      confirmPassword: '',
       phoneNumber: '',
-      gender: 'Male',
-      governorateId: '',
-      jobTitle: '',
-      experienceInYears: 0,
-      expectedSalaryMin: 0,
-      expectedSalaryMax: 0,
-      expectedSalaryCurrency: undefined,
-      availabilityType: undefined,
-      workLocationType: undefined,
-      availableForHire: undefined,
-      bio: undefined,
-      skillIds: [],
-      githubUrl: undefined,
-      linkedinUrl: undefined,
-      portfolioUrl: undefined,
+      gender: undefined,
     },
-    transformValues: (values) => {
-      const body: Partial<RegisterRequestBody> = {
+    transformValues: (values): RegisterRequestBody => {
+      const phone = values.phoneNumber?.replaceAll(' ', '')?.trim();
+      return {
         name: values.name,
         email: values.email,
-        phoneNumber: values.phoneNumber.replaceAll(' ', ''),
-        gender: values.gender,
-        governorateId: values.governorateId || undefined,
-        jobTitle: values.jobTitle,
-        experienceInYears: values.experienceInYears,
-        expectedSalaryMin: values.expectedSalaryMin || undefined,
-        expectedSalaryMax: values.expectedSalaryMax || undefined,
-        expectedSalaryCurrency: values.expectedSalaryCurrency || undefined,
-        availabilityType: values.availabilityType || undefined,
-        workLocationType: values.workLocationType || undefined,
-        availableForHire: values.availableForHire || undefined,
-        bio: values.bio || undefined,
-        githubUrl: values.githubUrl || undefined,
-        linkedinUrl: values.linkedinUrl || undefined,
-        portfolioUrl: values.portfolioUrl || undefined,
+        password: values.password,
+        ...(phone ? { phoneNumber: phone } : {}),
+        ...(values.gender ? { gender: values.gender } : {}),
       };
-
-      return body as RegisterRequestBody;
     },
   });
 }

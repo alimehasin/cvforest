@@ -7,11 +7,14 @@
     "success": "Success"
   },
   "auth": {
+    "emailVerifiedSuccess": "Your email has been verified. You can now sign in.",
     "invalidCode": "Invalid or expired verification code",
     "passwordPlaceholder": "Enter your password",
     "passwordSetSuccess": "Password set successfully",
     "setPassword": "Set Your Password",
     "verificationCodeSent": "We've sent a 6-digit code to your email",
+    "verificationLinkInstructions": "Click the link in the email to verify your account.",
+    "verificationLinkSent": "We sent a verification link to",
     "verifyEmail": "Verify Your Email"
   },
   "browse": {
@@ -109,6 +112,13 @@
     "name": "Full Name",
     "namePlaceholder": "John Doe",
     "nameRequired": "Name is required",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters, one uppercase, one lowercase, one number",
+    "passwordRequired": "Password is required",
+    "passwordInvalid": "Password must be at least 8 characters with one uppercase, one lowercase, and one number",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "confirmPasswordMismatch": "Passwords do not match",
     "pageDescription": "Create your professional profile and get discovered by recruiters",
     "pageTitle": "Join CV Forest",
     "personalInfoDescription": "Tell us about yourself",
@@ -120,7 +130,7 @@
     "portfolioUrlInvalid": "Please enter a valid URL",
     "professionalInfoDescription": "Your work experience and career details",
     "professionalInfoSection": "Professional Information",
-    "registrationSuccess": "Registration successful! Check your email for verification code.",
+    "registrationSuccess": "Registration successful! Check your email for the verification link.",
     "salaryPlaceholder": "1000",
     "salaryValidation": "Maximum salary must be greater than or equal to minimum salary",
     "signIn": "Sign In",

@@ -7,11 +7,14 @@
     "success": "نجحت"
   },
   "auth": {
+    "emailVerifiedSuccess": "تم التحقق من بريدك الإلكتروني. يمكنك الآن تسجيل الدخول.",
     "invalidCode": "رمز التحقق غير صالح أو منتهي الصلاحية",
     "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
     "passwordSetSuccess": "تم تعيين كلمة المرور بنجاح",
     "setPassword": "تعيين كلمة المرور",
     "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
+    "verificationLinkInstructions": "انقر على الرابط في البريد للتحقق من حسابك.",
+    "verificationLinkSent": "أرسلنا رابط التحقق إلى",
     "verifyEmail": "تحقق من بريدك الإلكتروني"
   },
   "browse": {
@@ -109,6 +112,13 @@
     "name": "الاسم الكامل",
     "namePlaceholder": "John Doe",
     "nameRequired": "الاسم مطلوب",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "8 أحرف على الأقل، حرف كبير، حرف صغير، ورقم",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordInvalid": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل مع حرف كبير وحرف صغير ورقم",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+    "confirmPasswordMismatch": "كلمتا المرور غير متطابقتين",
     "pageDescription": "أنشئ ملفك المهني واجذب انتباه أصحاب العمل",
     "pageTitle": "انضم إلى CV Forest",
     "personalInfoDescription": "أخبرنا عن نفسك",
@@ -120,7 +130,7 @@
     "portfolioUrlInvalid": "يرجى إدخال رابط صحيح",
     "professionalInfoDescription": "خبرتك العملية وتفاصيل مسيرتك المهنية",
     "professionalInfoSection": "المعلومات المهنية",
-    "registrationSuccess": "تم التسجيل بنجاح! تحقق من بريدك الإلكتروني للحصول على رمز التحقق.",
+    "registrationSuccess": "تم التسجيل بنجاح! تحقق من بريدك الإلكتروني للحصول على رابط التحقق.",
     "salaryPlaceholder": "1000",
     "salaryValidation": "يجب أن يكون الراتب الأقصى أكبر من أو يساوي الراتب الأدنى",
     "signIn": "تسجيل الدخول",
