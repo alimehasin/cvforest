@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia';
 import { accounts } from '@/api/accounts/user/accounts.user.route';
+import { cvs } from '@/api/cvs/user/cvs.user.route';
 import { files } from '@/api/files/user/files.user.route';
 import { governorates } from '@/api/governorates/user/governorates.user.route';
 import { skills } from '@/api/skills/user/skills.user.route';
@@ -10,4 +11,5 @@ export const user = new Elysia({ prefix: '/user', tags: ['User'] })
   .use(accounts)
   .use(governorates)
   .use(skills)
-  .use(files);
+  .use(files)
+  .use(cvs);

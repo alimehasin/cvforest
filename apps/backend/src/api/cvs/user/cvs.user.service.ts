@@ -1,0 +1,127 @@
+import { prisma } from '@db/client';
+import type { Prisma } from '@db/gen/prisma/client';
+import type { TranslationFn } from '@/types';
+import { HttpError } from '@/utils/error';
+import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
+import type { UserCvsModel } from './cvs.user.model';
+
+export const userCvsService = {
+  async list(query: typeof UserCvsModel.UserCvsListQuery.static) {
+    // Normalize skillIds to array
+    const skillIdsArray =
+      query.skillIds === undefined
+        ? undefined
+        : Array.isArray(query.skillIds)
+          ? query.skillIds
+          : [query.skillIds];
+
+    const where: Prisma.CvWhereInput = {
+      // Default to Approved status if no status filter is provided
+      status: query.status ?? 'Approved',
+      ...(query.search && {
+        OR: [
+          { jobTitle: { contains: query.search, mode: 'insensitive' } },
+          {
+            user: {
+              OR: [
+                { name: { contains: query.search, mode: 'insensitive' } },
+                { email: { contains: query.search, mode: 'insensitive' } },
+              ],
+            },
+          },
+        ],
+      }),
+
+      // Filter by skills (CV must have at least one of the specified skills)
+      ...(skillIdsArray &&
+        skillIdsArray.length > 0 && {
+          userSkills: {
+            some: { skillId: { in: skillIdsArray } },
+          },
+        }),
+
+      // Filter by governorate (through user relation)
+      ...(query.governorateId && {
+        user: { governorateId: query.governorateId },
+      }),
+
+      // Filter by availability type
+      ...(query.availabilityType && {
+        availabilityType: query.availabilityType,
+      }),
+
+      // Filter by work location type
+      ...(query.workLocationType && {
+        workLocationType: query.workLocationType,
+      }),
+
+      // Filter by experience range
+      ...(query.experienceMin !== undefined && {
+        experienceInYears: {
+          gte: query.experienceMin,
+        },
+      }),
+
+      ...(query.experienceMax !== undefined && {
+        experienceInYears: {
+          lte: query.experienceMax,
+        },
+      }),
+
+      // Filter by available for hire
+      ...(query.availableForHire !== undefined && {
+        availableForHire: query.availableForHire,
+      }),
+    };
+
+    const total = await prisma.cv.count({ where });
+
+    const data = await prisma.cv.findMany({
+      ...parsePaginationProps(query),
+      ...parseSortingProps(query),
+
+      where,
+      include: {
+        userSkills: { include: { skill: true } },
+        user: { include: { avatar: true, governorate: true } },
+      },
+    });
+
+    return { total, data };
+  },
+
+  async getById(
+    id: string,
+    t: TranslationFn,
+  ): Promise<typeof UserCvsModel.UserCvsGetResponse.static> {
+    const cv = await prisma.cv.findUnique({
+      where: { id },
+      include: {
+        userSkills: { include: { skill: true } },
+        user: { include: { avatar: true, governorate: true } },
+      },
+    });
+
+    if (!cv) {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'CV not found',
+          ar: 'السيرة الذاتية غير موجودة',
+        }),
+      });
+    }
+
+    if (cv.status !== 'Approved') {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'CV not found',
+          ar: 'السيرة الذاتية غير موجودة',
+        }),
+      });
+    }
+
+    return cv;
+  },
+};
