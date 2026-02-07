@@ -1,0 +1,37 @@
+.footer {
+  margin-top: var(--mantine-spacing-xl);
+  padding-top: var(--mantine-spacing-xl);
+  background-color: var(--mantine-color-gray-0);
+  border-top: 1px solid var(--mantine-color-gray-1);
+}
+
+.brand {
+  text-decoration: none;
+}
+
+.brief {
+  line-height: 1.6;
+}
+
+.sectionTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.link {
+  color: var(--mantine-color-dimmed);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.link:hover {
+  color: var(--mantine-color-primary-filled);
+}
+
+.socialIcon {
+  transition: transform 150ms ease;
+}
+
+.socialIcon:hover {
+  transform: scale(1.1);
+}

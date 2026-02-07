@@ -1,4 +1,5 @@
 import { Container } from '@mantine/core';
+import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 
 interface WebsiteLayoutProps {
@@ -10,6 +11,7 @@ export default async function WebsiteLayout({ children }: WebsiteLayoutProps) {
     <Container size="xl">
       <Header />
       {children}
+      <Footer />
     </Container>
   );
 }

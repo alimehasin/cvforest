@@ -33,6 +33,20 @@
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "footer": {
+    "aboutUs": "About Us",
+    "brief": "FindCV is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
+    "company": "Company",
+    "contactUs": "Contact Us",
+    "copyright": "\u00a9 {year} FindCV. All rights reserved.",
+    "courses": "Courses",
+    "followUs": "Follow Us",
+    "home": "Home",
+    "plans": "Plans",
+    "privacyPolicy": "Privacy Policy",
+    "quickLinks": "Quick Links",
+    "termsOfService": "Terms of Service"
+  },
   "dataTable": {
     "noRecords": "No records to show",
     "recordsPerPageLabel": "Records per page"
