@@ -43,7 +43,7 @@ enum Currency {
   Usd
 }
 
-enum UserStatus {
+enum CvStatus {
   Pending
   Approved
   Rejected
@@ -108,7 +108,7 @@ model Cv {
   portfolioUrl           String
   availableForHire       Boolean
 
-  status UserStatus @default(Pending)
+  status CvStatus @default(Pending)
 
   // Metadata
   createdAt DateTime @default(now())

@@ -1,6 +1,7 @@
 import {
   AvailabilityType,
   Currency,
+  CvStatus,
   type PrismaClient,
   WorkLocationType,
 } from '@db/gen/prisma/client';
@@ -37,6 +38,10 @@ export async function seedCvs(prisma: PrismaClient) {
         githubUrl: 'https://github.com/alimehasin',
         linkedinUrl: 'https://linkedin.com/alimehasin',
         portfolioUrl: 'https://alimehasin.com',
+
+        status: dunna.basic.boolean()
+          ? 'Approved'
+          : dunna.basic.choice(Object.values(CvStatus)),
 
         userSkills: {
           createMany: {

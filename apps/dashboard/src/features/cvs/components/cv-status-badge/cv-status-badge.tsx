@@ -1,12 +1,12 @@
 import { Badge, type MantineColor } from '@mantine/core';
-import type { UserStatus } from '@repo/backend/prisma/enums';
+import type { CvStatus } from '@repo/backend/prisma/enums';
 import { useTranslations } from 'next-intl';
-import { translateUserStatus } from '@/utils/translation-maps';
+import { translateCvStatus } from '@/utils/translation-maps';
 
-export function CvStatusBadge({ status }: { status: UserStatus }) {
+export function CvStatusBadge({ status }: { status: CvStatus }) {
   const t = useTranslations();
 
-  const colors: Record<UserStatus, MantineColor> = {
+  const colors: Record<CvStatus, MantineColor> = {
     Pending: 'gray',
     Approved: 'green',
     Rejected: 'red',
@@ -14,7 +14,7 @@ export function CvStatusBadge({ status }: { status: UserStatus }) {
 
   return (
     <Badge color={colors[status]} variant="light" size="sm">
-      {translateUserStatus(t, status)}
+      {translateCvStatus(t, status)}
     </Badge>
   );
 }

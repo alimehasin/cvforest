@@ -1,6 +1,5 @@
 import { prisma } from '@db/client';
 import type { Prisma } from '@db/gen/prisma/client';
-import { UserStatus } from '@db/gen/prisma/client';
 import type { TranslationFn } from '@/types';
 import { HttpError } from '@/utils/error';
 import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
@@ -88,7 +87,7 @@ export const adminCvsService = {
     await prisma.cv.update({
       where: { id },
       data: {
-        status: UserStatus.Approved,
+        status: 'Approved',
       },
     });
 
@@ -121,7 +120,7 @@ export const adminCvsService = {
     await prisma.cv.update({
       where: { id },
       data: {
-        status: UserStatus.Rejected,
+        status: 'Rejected',
       },
     });
 

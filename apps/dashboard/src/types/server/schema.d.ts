@@ -1263,8 +1263,6 @@ export interface components {
       sortingColumn: string;
       /** @default desc */
       sortingDirection: string;
-      /** @enum {string} */
-      status?: 'Pending' | 'Approved' | 'Rejected';
       search?: string;
       skillIds?: string[] | string;
       /** Format: uuid */
@@ -2948,7 +2946,6 @@ export interface operations {
         pageSize: number;
         sortingColumn: string;
         sortingDirection: string;
-        status?: 'Pending' | 'Approved' | 'Rejected';
         search?: string;
         skillIds?: string[] | string;
         governorateId?: string;

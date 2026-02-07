@@ -1,10 +1,4 @@
 import { prisma } from '@db/client';
-import {
-  AvailabilityType,
-  Currency,
-  UserStatus,
-  WorkLocationType,
-} from '@db/gen/prisma/enums';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import {
@@ -42,42 +36,6 @@ export const auth = betterAuth({
     additionalFields: {
       gender: { type: 'string', enum: ['Male', 'Female'] },
       avatarId: { type: 'string', required: false },
-
-      // Professional Information
-      jobTitle: { type: 'string', required: false },
-      experienceInYears: { type: 'number', required: false },
-      expectedSalaryMin: { type: 'number', required: false },
-      expectedSalaryMax: { type: 'number', required: false },
-      expectedSalaryCurrency: {
-        type: 'string',
-        enum: Currency,
-        required: false,
-      },
-      availabilityType: {
-        type: 'string',
-        enum: AvailabilityType,
-        required: false,
-      },
-      workLocationType: {
-        type: 'string',
-        enum: WorkLocationType,
-        required: false,
-      },
-      bio: { type: 'string', required: false },
-      githubUrl: { type: 'string', required: false },
-      linkedinUrl: { type: 'string', required: false },
-      portfolioUrl: { type: 'string', required: false },
-      availableForHire: { type: 'boolean', required: false },
-
-      // Contact & Profile
-      phoneNumber: { type: 'string', required: false },
-      phoneNumberVerified: { type: 'boolean', required: false, input: false },
-      username: { type: 'string', required: false },
-      displayUsername: { type: 'string', required: false },
-      governorateId: { type: 'string', required: false },
-
-      // System fields
-      status: { type: 'string', enum: UserStatus, required: false },
     },
   },
 

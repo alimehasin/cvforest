@@ -16,7 +16,6 @@ export function useUsersList({ filters }: UsersListProps) {
     pageSize: 12,
     sortingColumn: 'createdAt',
     sortingDirection: 'desc',
-    status: 'Approved',
   };
 
   const users = useQuery({

@@ -1,8 +1,8 @@
 import type {
   AvailabilityType,
   Currency,
+  CvStatus,
   Gender,
-  UserStatus,
   WorkLocationType,
 } from '@repo/backend/prisma/enums';
 import type { TranslationFn } from '@/types';
@@ -51,8 +51,8 @@ export function translateCurrency(t: TranslationFn, currency: Currency) {
   return map[currency];
 }
 
-export function translateUserStatus(t: TranslationFn, status: UserStatus) {
-  const map: Record<UserStatus, string> = {
+export function translateCvStatus(t: TranslationFn, status: CvStatus) {
+  const map: Record<CvStatus, string> = {
     Pending: t('users.statusPending'),
     Approved: t('users.statusApproved'),
     Rejected: t('users.statusRejected'),

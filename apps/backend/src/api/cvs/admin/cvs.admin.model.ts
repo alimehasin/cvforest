@@ -1,4 +1,4 @@
-import { UserStatus } from '@db/gen/prisma/client';
+import { CvStatus } from '@db/gen/prisma/client';
 import { CvPlain } from '@db/gen/prismabox/Cv';
 import { FilePlain } from '@db/gen/prismabox/File';
 import { GovernoratePlain } from '@db/gen/prismabox/Governorate';
@@ -40,7 +40,7 @@ export const AdminCvsModel = {
     ...sortingSchema,
 
     // Filters
-    status: t.Optional(t.Enum(UserStatus)),
+    status: t.Optional(t.Enum(CvStatus)),
     search: t.Optional(t.String()),
   }),
   AdminCvsListResponse: t.Object({

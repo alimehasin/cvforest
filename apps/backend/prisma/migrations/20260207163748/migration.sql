@@ -14,7 +14,7 @@ CREATE TYPE "Gender" AS ENUM ('Male', 'Female');
 CREATE TYPE "Currency" AS ENUM ('Iqd', 'Usd');
 
 -- CreateEnum
-CREATE TYPE "UserStatus" AS ENUM ('Pending', 'Approved', 'Rejected');
+CREATE TYPE "CvStatus" AS ENUM ('Pending', 'Approved', 'Rejected');
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -56,7 +56,7 @@ CREATE TABLE "Cv" (
     "linkedinUrl" TEXT NOT NULL,
     "portfolioUrl" TEXT NOT NULL,
     "availableForHire" BOOLEAN NOT NULL,
-    "status" "UserStatus" NOT NULL DEFAULT 'Pending',
+    "status" "CvStatus" NOT NULL DEFAULT 'Pending',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
