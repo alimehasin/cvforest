@@ -1,4 +1,4 @@
-import { Anchor, Button, Container, Divider, Group } from '@mantine/core';
+import { Anchor, Button, Container, Group } from '@mantine/core';
 import { IconLogin } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/components/link/link';
@@ -19,8 +19,6 @@ export async function Header() {
             <Button variant="subtle">{t('header.plans')}</Button>
             <Button variant="subtle">{t('header.courses')}</Button>
           </Group>
-
-          <Divider orientation="vertical" />
 
           <Button
             href="/join"

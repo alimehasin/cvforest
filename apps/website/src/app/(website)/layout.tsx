@@ -8,10 +8,10 @@ interface WebsiteLayoutProps {
 
 export default async function WebsiteLayout({ children }: WebsiteLayoutProps) {
   return (
-    <Container size="xl">
+    <div>
       <Header />
-      {children}
+      <Container size="xl">{children}</Container>
       <Footer />
-    </Container>
+    </div>
   );
 }

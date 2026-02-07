@@ -14,31 +14,29 @@
     "verificationCodeSent": "We've sent a 6-digit code to your email",
     "verifyEmail": "Verify Your Email"
   },
-  "cvs": {
-    "availableForHire": "Available for hire",
-    "browseAll": "Browse All Talent",
-    "freelance": "Freelance",
-    "fullTime": "Full Time",
-    "hybrid": "Hybrid",
-    "onSite": "On-Site",
-    "partTime": "Part Time",
-    "remote": "Remote",
-    "subtitle": "Discover top professionals ready for new opportunities",
-    "title": "Latest CVs",
-    "yearsExperience": "{number} years exp."
-  },
   "confirmDelete": {
     "actionCannotBeUndone": "This action cannot be undone.",
     "areYouSureAboutThisAction": "Are you sure you want to perform this action?",
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "cvs": {
+    "availableForHire": "Available for hire",
+    "browseAll": "Browse All Talent",
+    "subtitle": "Discover top professionals ready for new opportunities",
+    "title": "Latest CVs",
+    "yearsExperience": "{number} years exp."
+  },
+  "dataTable": {
+    "noRecords": "No records to show",
+    "recordsPerPageLabel": "Records per page"
+  },
   "footer": {
     "aboutUs": "About Us",
     "brief": "FindCV is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
     "company": "Company",
     "contactUs": "Contact Us",
-    "copyright": "\u00a9 {year} FindCV. All rights reserved.",
+    "copyright": "© {year} FindCV. All rights reserved.",
     "courses": "Courses",
     "followUs": "Follow Us",
     "home": "Home",
@@ -46,10 +44,6 @@
     "privacyPolicy": "Privacy Policy",
     "quickLinks": "Quick Links",
     "termsOfService": "Terms of Service"
-  },
-  "dataTable": {
-    "noRecords": "No records to show",
-    "recordsPerPageLabel": "Records per page"
   },
   "header": {
     "courses": "Courses",
@@ -177,5 +171,8 @@
     "revokeAllSuccess": "All other sessions were revoked successfully",
     "revokeSuccess": "Revoked successfully",
     "userAgent": "User Agent"
+  },
+  "users": {
+    "email": "Email"
   }
 }
