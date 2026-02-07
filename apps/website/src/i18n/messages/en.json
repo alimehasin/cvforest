@@ -14,6 +14,12 @@
     "verificationCodeSent": "We've sent a 6-digit code to your email",
     "verifyEmail": "Verify Your Email"
   },
+  "cvs": {
+    "browseAll": "Browse All Talent",
+    "subtitle": "Discover top professionals ready for new opportunities",
+    "title": "Latest CVs",
+    "yearsExperience": "{number} years exp."
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "This action cannot be undone.",
     "areYouSureAboutThisAction": "Are you sure you want to perform this action?",

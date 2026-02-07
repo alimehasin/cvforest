@@ -14,6 +14,12 @@
     "verificationCodeSent": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى بريدك الإلكتروني",
     "verifyEmail": "تحقق من بريدك الإلكتروني"
   },
+  "cvs": {
+    "browseAll": "تصفح جميع المواهب",
+    "subtitle": "اكتشف أفضل المحترفين المستعدين لفرص جديدة",
+    "title": "أحدث السير الذاتية",
+    "yearsExperience": "{number} سنوات خبرة"
+  },
   "confirmDelete": {
     "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء.",
     "areYouSureAboutThisAction": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
