@@ -1,11 +1,11 @@
 import { useDebouncedValue } from '@mantine/hooks';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import type { UserListQuery, UserListResponse } from '@/features/home/types';
+import type { CvListQuery, CvListResponse } from '@/features/home/types';
 import { useKy } from '@/hooks/use-ky';
 import { BROWSE_PAGE_SIZE } from '@/utils/constants';
 
-const initialFilters: Partial<UserListQuery> = {
+const initialFilters: Partial<CvListQuery> = {
   governorateId: undefined,
   skillIds: [],
   availabilityType: undefined,
@@ -20,9 +20,9 @@ export function useBrowseUsers() {
   const [search, setSearch] = useState('');
   const [debouncedSearch] = useDebouncedValue(search, 300);
   const [filters, setFiltersState] =
-    useState<Partial<UserListQuery>>(initialFilters);
+    useState<Partial<CvListQuery>>(initialFilters);
 
-  const query: UserListQuery = {
+  const query: CvListQuery = {
     page,
     pageSize: BROWSE_PAGE_SIZE,
     sortingColumn: 'createdAt',
@@ -61,9 +61,9 @@ export function useBrowseUsers() {
   }
 
   const users = useQuery({
-    queryKey: ['/users', query],
+    queryKey: ['/cvs', query],
     queryFn: () => {
-      return ky.get('users', { searchParams }).json<UserListResponse>();
+      return ky.get('cvs', { searchParams }).json<CvListResponse>();
     },
   });
 
@@ -74,7 +74,7 @@ export function useBrowseUsers() {
     setPage(1);
   }
 
-  function setFilters(update: Partial<UserListQuery>) {
+  function setFilters(update: Partial<CvListQuery>) {
     setFiltersState((prev) => ({ ...prev, ...update }));
     setPage(1);
   }

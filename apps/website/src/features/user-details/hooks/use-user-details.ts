@@ -13,9 +13,9 @@ export function useUserDetails({
 
   return useQuery({
     initialData,
-    queryKey: ['/users', id],
+    queryKey: ['/cvs', id],
     queryFn: () => {
-      return ky.get(`users/${id}`).json<UserDetailResponse>();
+      return ky.get(`cvs/${id}`).json<UserDetailResponse>();
     },
   });
 }

@@ -1,29 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
 import { useKy } from '@/hooks/use-ky';
 import { objectToSearchParams } from '@/utils/helpers';
-import type { UserListQuery, UserListResponse } from '../types';
+import type { CvListQuery, CvListResponse } from '../types';
 
 interface UsersListProps {
-  filters: Partial<UserListQuery>;
+  filters: Partial<CvListQuery>;
 }
 
 export function useUsersList({ filters }: UsersListProps) {
   const ky = useKy();
 
-  const usersListQuery: UserListQuery = {
+  const usersListQuery: CvListQuery = {
     ...filters,
     page: 1,
     pageSize: 12,
     sortingColumn: 'createdAt',
     sortingDirection: 'desc',
+    status: 'Approved',
   };
 
   const users = useQuery({
-    queryKey: ['/users', usersListQuery],
+    queryKey: ['/cvs', usersListQuery],
     queryFn: () => {
       return ky
-        .get('users', { searchParams: objectToSearchParams(usersListQuery) })
-        .json<UserListResponse>();
+        .get('cvs', { searchParams: objectToSearchParams(usersListQuery) })
+        .json<CvListResponse>();
     },
   });
 

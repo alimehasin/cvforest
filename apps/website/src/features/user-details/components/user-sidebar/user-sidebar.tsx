@@ -83,22 +83,22 @@ export function UserSidebar({ user }: UserSidebarProps) {
             value={
               <Text
                 component="a"
-                href={`mailto:${user.email}`}
+                href={`mailto:${user.user.email}`}
                 c="primary"
                 fz="sm"
                 td="none"
                 style={{ cursor: 'pointer' }}
               >
-                {user.email}
+                {user.user.email}
               </Text>
             }
           />
 
-          {user.phoneNumber && (
+          {user.user.phoneNumber && (
             <InfoRow
               icon={IconPhone}
               label={t('profiles.phone')}
-              value={<PhoneNumber phone={user.phoneNumber} />}
+              value={<PhoneNumber phone={user.user.phoneNumber} />}
             />
           )}
 
@@ -115,11 +115,11 @@ export function UserSidebar({ user }: UserSidebarProps) {
         <Stack gap="xs">
           <Title order={5}>{t('userDetails.professionalDetails')}</Title>
 
-          {user.governorate && (
+          {user.user.governorate && (
             <InfoRow
               icon={IconMapPin}
               label={t('join.governorate')}
-              value={user.governorate.name}
+              value={user.user.governorate.name}
             />
           )}
 

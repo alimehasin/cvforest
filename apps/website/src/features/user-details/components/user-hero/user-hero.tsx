@@ -58,8 +58,8 @@ export function UserHero({ user }: UserHeroProps) {
               <Avatar
                 size={112}
                 radius="50%"
-                name={user.name}
-                src={constructImageUrl(user.avatar?.key)}
+                name={user.user.name}
+                src={constructImageUrl(user.user.avatar?.key)}
                 color="primary"
               />
               {user.availableForHire && (
@@ -72,7 +72,7 @@ export function UserHero({ user }: UserHeroProps) {
 
           <Stack gap={4} mt="md">
             <Group gap="sm" align="center">
-              <Title order={2}>{user.name}</Title>
+              <Title order={2}>{user.user.name}</Title>
               {user.availableForHire && (
                 <Badge size="sm" radius="xl" className={cls.availableBadge}>
                   {t('cvs.availableForHire')}
@@ -89,7 +89,7 @@ export function UserHero({ user }: UserHeroProps) {
         </Group>
 
         {/* Social links */}
-        {(socialLinks.length > 0 || user.email) && (
+        {(socialLinks.length > 0 || user.user.email) && (
           <Group gap="xs">
             {socialLinks.map((link) => (
               <Tooltip key={link.label} label={link.label} withArrow>
@@ -111,7 +111,7 @@ export function UserHero({ user }: UserHeroProps) {
             <Tooltip label={t('users.email')} withArrow>
               <ActionIcon
                 component="a"
-                href={`mailto:${user.email}`}
+                href={`mailto:${user.user.email}`}
                 variant="light"
                 size="lg"
                 radius="xl"

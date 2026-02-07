@@ -7,10 +7,10 @@ interface UserPageProps {
 }
 
 export default async function UserPage({ params }: UserPageProps) {
+  const ky = await getKy();
   const { id } = await params;
 
-  const ky = await getKy();
-  const user = await ky.get(`users/${id}`).json<UserDetailResponse>();
+  const user = await ky.get(`cvs/${id}`).json<UserDetailResponse>();
 
   return <UserDetails id={id} initialData={user} />;
 }

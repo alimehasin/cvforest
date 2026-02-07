@@ -9,7 +9,7 @@ import {
   IconTools,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import type { UserListQuery } from '@/features/home/types';
+import type { CvListQuery } from '@/features/home/types';
 import { useGovernoratesQuery } from '@/features/join/hooks/use-governorates-query';
 import { useSkillsQuery } from '@/features/join/hooks/use-skills-query';
 import {
@@ -18,14 +18,14 @@ import {
 } from '@/utils/translation-maps';
 
 interface BrowseFiltersProps {
-  filters: Partial<UserListQuery>;
-  setFilters: (update: Partial<UserListQuery>) => void;
+  filters: Partial<CvListQuery>;
+  setFilters: (update: Partial<CvListQuery>) => void;
 }
 
 export function BrowseFilters({ filters, setFilters }: BrowseFiltersProps) {
   const t = useTranslations();
-  const governoratesQuery = useGovernoratesQuery();
   const skillsQuery = useSkillsQuery();
+  const governoratesQuery = useGovernoratesQuery();
 
   const governorateOptions =
     governoratesQuery.data?.map((gov) => ({
@@ -86,7 +86,9 @@ export function BrowseFilters({ filters, setFilters }: BrowseFiltersProps) {
         data={availabilityOptions}
         value={filters.availabilityType}
         onChange={(value) => {
-          setFilters({ availabilityType: value ?? undefined });
+          setFilters({
+            availabilityType: (value ?? undefined) as AvailabilityType,
+          });
         }}
       />
 
@@ -97,7 +99,9 @@ export function BrowseFilters({ filters, setFilters }: BrowseFiltersProps) {
         data={workLocationOptions}
         value={filters.workLocationType}
         onChange={(value) => {
-          setFilters({ workLocationType: value ?? undefined });
+          setFilters({
+            workLocationType: (value ?? undefined) as WorkLocationType,
+          });
         }}
       />
 

@@ -72,8 +72,8 @@ export function UserCard({ user }: { user: UserListItem }) {
           <Avatar
             size={92}
             radius="50%"
-            name={user.name}
-            src={constructImageUrl(user.avatar?.key)}
+            name={user.user.name}
+            src={constructImageUrl(user.user.avatar?.key)}
             color="primary"
           />
           {user.availableForHire && (
@@ -89,7 +89,7 @@ export function UserCard({ user }: { user: UserListItem }) {
         {/* Identity */}
         <Stack align="center" gap={2}>
           <Text fw={700} size="md" ta="center" lineClamp={1}>
-            {user.name}
+            {user.user.name}
           </Text>
 
           {user.jobTitle && (
@@ -101,10 +101,10 @@ export function UserCard({ user }: { user: UserListItem }) {
 
         {/* Meta chips */}
         <Group gap={6} justify="center" wrap="wrap">
-          {user.governorate && (
+          {user.user.governorate && (
             <span className={cls.metaChip}>
               <IconMapPin size={12} />
-              {user.governorate.name}
+              {user.user.governorate.name}
             </span>
           )}
 
@@ -204,13 +204,13 @@ export function UserCard({ user }: { user: UserListItem }) {
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault();
                 e.stopPropagation();
-                window.location.href = `mailto:${user.email}`;
+                window.location.href = `mailto:${user.user.email}`;
               }}
               onKeyDown={(e: React.KeyboardEvent) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
                   e.stopPropagation();
-                  window.location.href = `mailto:${user.email}`;
+                  window.location.href = `mailto:${user.user.email}`;
                 }
               }}
             >
