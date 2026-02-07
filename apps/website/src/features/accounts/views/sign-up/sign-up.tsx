@@ -1,25 +1,20 @@
 import { Container, Stack, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import { Header } from '@/components/header';
 import { SignUpForm } from '../../components/sign-up-form';
 
 export function SignUp() {
   const t = useTranslations();
 
   return (
-    <div>
-      <Header />
+    <Container size="xs" component={Stack} mt="md">
+      <div>
+        <Title order={1}>{t('signup.pageTitle')}</Title>
+        <Text c="dimmed" size="lg">
+          {t('signup.pageDescription')}
+        </Text>
+      </div>
 
-      <Container size="xs" component={Stack} mt="md">
-        <div>
-          <Title order={1}>{t('signup.pageTitle')}</Title>
-          <Text c="dimmed" size="lg">
-            {t('signup.pageDescription')}
-          </Text>
-        </div>
-
-        <SignUpForm />
-      </Container>
-    </div>
+      <SignUpForm />
+    </Container>
   );
 }

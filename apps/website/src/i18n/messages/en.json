@@ -73,7 +73,9 @@
   "header": {
     "courses": "Courses",
     "plans": "Plans",
-    "signUp": "Sign Up"
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "uploadCv": "Upload CV"
   },
   "hero": {
     "ctaDeveloper": "Upload Your CV",
@@ -146,8 +148,6 @@
     "password": "Password",
     "passwordInvalid": "Password must be at least 8 characters and contain uppercase, lowercase, and a number",
     "passwordPlaceholder": "Enter your password",
-    "personalInfoDescription": "Enter your personal information",
-    "personalInfoSection": "Personal Information",
     "phoneNumber": "Phone Number",
     "phoneNumberPlaceholder": "Enter your phone number",
     "registrationSuccess": "Registration successful! Please check your email to verify your account.",

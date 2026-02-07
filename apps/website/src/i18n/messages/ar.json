@@ -73,7 +73,9 @@
   "header": {
     "courses": "الدورات",
     "plans": "الخطط",
-    "signUp": "التسجيل"
+    "signIn": "تسجيل الدخول",
+    "signUp": "التسجيل",
+    "uploadCv": "رفع السيرة الذاتية"
   },
   "hero": {
     "ctaDeveloper": "ارفع سيرتك الذاتية",
@@ -146,8 +148,6 @@
     "password": "كلمة المرور",
     "passwordInvalid": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على أحرف كبيرة وصغيرة ورقم",
     "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
-    "personalInfoDescription": "أدخل معلوماتك الشخصية",
-    "personalInfoSection": "المعلومات الشخصية",
     "phoneNumber": "رقم الهاتف",
     "phoneNumberPlaceholder": "أدخل رقم هاتفك",
     "registrationSuccess": "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني للتحقق من حسابك.",

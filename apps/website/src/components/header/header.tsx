@@ -1,10 +1,15 @@
-import { Anchor, Button, Container, Group } from '@mantine/core';
-import { IconLogin } from '@tabler/icons-react';
+import { Anchor, Button, Container, Divider, Group } from '@mantine/core';
+import { IconLogin, IconUpload } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/components/link/link';
+import type { SessionResponseBody } from '@/features/accounts/types';
 import cls from './styles.module.css';
 
-export async function Header() {
+interface HeaderProps {
+  session?: SessionResponseBody;
+}
+
+export async function Header({ session }: HeaderProps) {
   const t = await getTranslations();
 
   return (
@@ -20,14 +25,40 @@ export async function Header() {
             <Button variant="subtle">{t('header.courses')}</Button>
           </Group>
 
-          <Button
-            href="/sign-up"
-            variant="light"
-            component={Link}
-            leftSection={<IconLogin size={18} />}
-          >
-            {t('header.signUp')}
-          </Button>
+          {session ? (
+            <Button
+              href="/upload-cv"
+              variant="light"
+              component={Link}
+              leftSection={<IconUpload size={18} />}
+            >
+              {t('header.uploadCv')}
+            </Button>
+          ) : (
+            <>
+              <Divider orientation="vertical" />
+
+              <Group gap={4}>
+                <Button
+                  href="/sign-in"
+                  variant="subtle"
+                  component={Link}
+                  leftSection={<IconLogin size={18} />}
+                >
+                  {t('header.signIn')}
+                </Button>
+
+                <Button
+                  href="/sign-up"
+                  variant="filled"
+                  component={Link}
+                  leftSection={<IconLogin size={18} />}
+                >
+                  {t('header.signUp')}
+                </Button>
+              </Group>
+            </>
+          )}
         </Group>
       </Group>
     </Container>

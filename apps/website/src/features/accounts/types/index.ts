@@ -15,3 +15,8 @@ export type SignUpResponseBody = GetResponseBody<
   'post',
   201
 >;
+
+export type SessionResponseBody = GetResponseBody<
+  '/user/accounts/session',
+  'get'
+>;
