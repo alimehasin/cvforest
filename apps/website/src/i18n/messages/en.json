@@ -22,7 +22,7 @@
     "noResults": "No profiles found matching your search",
     "searchPlaceholder": "Search by name or job title...",
     "skillsPlaceholder": "Skills",
-    "subtitle": "Explore all professionals available on FindCV",
+    "subtitle": "Explore all professionals available on CV Forest",
     "title": "Browse Talent",
     "workLocationPlaceholder": "Work location"
   },
@@ -45,10 +45,10 @@
   },
   "footer": {
     "aboutUs": "About Us",
-    "brief": "FindCV is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
+    "brief": "CV Forest is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
     "company": "Company",
     "contactUs": "Contact Us",
-    "copyright": "© {year} FindCV. All rights reserved.",
+    "copyright": "© {year} CV Forest. All rights reserved.",
     "courses": "Courses",
     "followUs": "Follow Us",
     "home": "Home",
@@ -110,7 +110,7 @@
     "namePlaceholder": "John Doe",
     "nameRequired": "Name is required",
     "pageDescription": "Create your professional profile and get discovered by recruiters",
-    "pageTitle": "Join FindCV",
+    "pageTitle": "Join CV Forest",
     "personalInfoDescription": "Tell us about yourself",
     "personalInfoSection": "Personal Information",
     "phoneNumber": "Phone Number",
@@ -145,8 +145,8 @@
     "password": "Password"
   },
   "meta": {
-    "description": "FindCV | A platform for finding CVs",
-    "title": "FindCV | Dashboard"
+    "description": "CV Forest | A platform for finding CVs",
+    "title": "CV Forest | Dashboard"
   },
   "notFound": {
     "description": "The page you requested might have been moved, deleted, or you might have entered the wrong URL.",

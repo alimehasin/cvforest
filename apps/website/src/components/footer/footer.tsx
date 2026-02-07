@@ -39,7 +39,7 @@ export async function Footer() {
         <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="xl">
           <Stack gap="sm">
             <Anchor fz="h3" fw={600} href="/" className={cls.brand}>
-              FindCV
+              CV Forest
             </Anchor>
             <Text size="sm" c="dimmed" className={cls.brief}>
               {t('footer.brief')}

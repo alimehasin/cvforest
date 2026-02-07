@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: apps/backend/Dockerfile
     command: "bun run start"
-    container_name: findcv-backend
+    container_name: cvforest-backend
     restart: unless-stopped
     environment:
       - NODE_ENV=${NODE_ENV}
@@ -30,7 +30,7 @@ services:
         - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
         - NEXT_PUBLIC_STORAGE_BASE_URL=${NEXT_PUBLIC_STORAGE_BASE_URL}
     command: "bun run start"
-    container_name: findcv-dashboard
+    container_name: cvforest-dashboard
     restart: unless-stopped
     environment:
       - API_BASE_URL=${API_BASE_URL}
@@ -46,7 +46,7 @@ services:
         - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
         - NEXT_PUBLIC_STORAGE_BASE_URL=${NEXT_PUBLIC_STORAGE_BASE_URL}
     command: "bun run start"
-    container_name: findcv-website
+    container_name: cvforest-website
     restart: unless-stopped
     environment:
       - API_BASE_URL=${API_BASE_URL}

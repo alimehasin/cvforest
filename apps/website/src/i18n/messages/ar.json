@@ -22,7 +22,7 @@
     "noResults": "لم يتم العثور على ملفات تطابق بحثك",
     "searchPlaceholder": "ابحث بالاسم أو المسمى الوظيفي...",
     "skillsPlaceholder": "المهارات",
-    "subtitle": "استعرض جميع المحترفين المتاحين على FindCV",
+    "subtitle": "استعرض جميع المحترفين المتاحين على CV Forest",
     "title": "تصفح المواهب",
     "workLocationPlaceholder": "موقع العمل"
   },
@@ -45,10 +45,10 @@
   },
   "footer": {
     "aboutUs": "من نحن",
-    "brief": "FindCV هي منصة تحترم الخصوصية تربط المطورين الموهوبين بأصحاب العمل من خلال ملفات شخصية مهنية ومنظمة.",
+    "brief": "CV Forest هي منصة تحترم الخصوصية تربط المطورين الموهوبين بأصحاب العمل من خلال ملفات شخصية مهنية ومنظمة.",
     "company": "الشركة",
     "contactUs": "اتصل بنا",
-    "copyright": "© {year} FindCV. جميع الحقوق محفوظة.",
+    "copyright": "© {year} CV Forest. جميع الحقوق محفوظة.",
     "courses": "الدورات",
     "followUs": "تابعنا",
     "home": "الرئيسية",
@@ -110,7 +110,7 @@
     "namePlaceholder": "John Doe",
     "nameRequired": "الاسم مطلوب",
     "pageDescription": "أنشئ ملفك المهني واجذب انتباه أصحاب العمل",
-    "pageTitle": "انضم إلى FindCV",
+    "pageTitle": "انضم إلى CV Forest",
     "personalInfoDescription": "أخبرنا عن نفسك",
     "personalInfoSection": "المعلومات الشخصية",
     "phoneNumber": "رقم الهاتف",
@@ -145,8 +145,8 @@
     "password": "كلمة المرور"
   },
   "meta": {
-    "description": "FindCV | منصة للعثور على السير الذاتية",
-    "title": "FindCV | لوحة التحكم"
+    "description": "CV Forest | منصة للعثور على السير الذاتية",
+    "title": "CV Forest | لوحة التحكم"
   },
   "notFound": {
     "description": "قد تكون الصفحة المطلوبة قد تم نقلها أو حذفها، أو ربما أدخلت رابطاً خاطئاً.",

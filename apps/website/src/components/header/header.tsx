@@ -11,7 +11,7 @@ export async function Header() {
     <Container size="lg" strategy="grid" className={cls.header}>
       <Group p="sm" justify="space-between">
         <Anchor fz="h2" fw={600} href="/">
-          FindCV
+          CV Forest
         </Anchor>
 
         <Group>

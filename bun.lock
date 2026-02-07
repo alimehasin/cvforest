@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "findcv",
+      "name": "cvforest",
       "devDependencies": {
         "@biomejs/biome": "^2.3.14",
         "@changesets/cli": "^2.29.8",
