@@ -19,6 +19,10 @@ export async function seedUsers(prisma: PrismaClient) {
   const skills = await prisma.skill.findMany();
   const governorates = await prisma.governorate.findMany();
 
+  const files = await prisma.file.findMany({
+    where: { key: { startsWith: 'avatar-' } },
+  });
+
   const promises = [];
   for (let i = 0; i < 100; i++) {
     const promise = prisma.user.create({
@@ -29,6 +33,7 @@ export async function seedUsers(prisma: PrismaClient) {
         gender: dunna.basic.choice(Object.values(Gender)),
         bio: 'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
         jobTitle: 'Software Engineer',
+        avatarId: dunna.basic.choice(files).id,
         experienceInYears: dunna.basic.integer({ min: 0, max: 10 }),
         expectedSalaryMin: dunna.basic.integer({ min: 0, max: 100000 }),
         expectedSalaryMax: dunna.basic.integer({ min: 0, max: 100000 }),
