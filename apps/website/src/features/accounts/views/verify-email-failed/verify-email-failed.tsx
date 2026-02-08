@@ -4,16 +4,16 @@ import { Button, Container, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-export function VerifyEmailSuccess() {
+export function VerifyEmailFailed() {
   const t = useTranslations();
 
   return (
     <Container size="xs" py={60}>
       <Stack>
         <Stack>
-          <Title>{t('auth.emailVerifiedSuccessTitle')}</Title>
+          <Title>{t('auth.emailVerificationFailedTitle')}</Title>
 
-          <Text>{t('auth.emailVerifiedSuccessDescription')}</Text>
+          <Text>{t('auth.emailVerificationFailedDescription')}</Text>
         </Stack>
 
         <Button component={Link} href="/sign-in" variant="light">

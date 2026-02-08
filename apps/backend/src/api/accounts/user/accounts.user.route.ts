@@ -68,13 +68,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
       });
 
       if (!res) {
-        throw new HttpError({
-          statusCode: 400,
-          message: t({
-            en: 'Invalid token',
-            ar: 'الرمز غير صحيح',
-          }),
-        });
+        return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_FAILED_URL);
       }
 
       return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_SUCCESS_URL);
