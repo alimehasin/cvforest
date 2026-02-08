@@ -38,6 +38,9 @@ export function Header({ session }: HeaderProps) {
               >
                 {t('header.uploadCv')}
               </Button>
+
+              <Divider orientation="vertical" />
+
               <HeaderUserButton session={session} />
             </Group>
           ) : (
