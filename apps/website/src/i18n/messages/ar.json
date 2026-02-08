@@ -12,7 +12,11 @@
     "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
     "verificationLinkInstructions": "انقر على الرابط في البريد للتحقق من حسابك.",
     "verificationLinkSent": "أرسلنا رابط التحقق إلى",
-    "verifyEmail": "تحقق من بريدك الإلكتروني"
+    "verifyEmail": "تحقق من بريدك الإلكتروني",
+    "emailVerificationFailedTitle": "فشل التحقق من بريدك الإلكتروني",
+    "emailVerificationFailedDescription": "رمز التحقق غير صالح أو منتهي الصلاحية.",
+    "emailVerifiedSuccessTitle": "تم التحقق من بريدك الإلكتروني بنجاح",
+    "emailVerifiedSuccessDescription": "تم التحقق من بريدك الإلكتروني بنجاح. يمكنك الآن تسجيل الدخول."
   },
   "availability": {
     "freelance": "عمل حر",

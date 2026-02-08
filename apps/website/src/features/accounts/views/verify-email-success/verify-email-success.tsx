@@ -14,12 +14,20 @@ export function VerifyEmailSuccess({ error }: VerifyEmailSuccessProps) {
   return (
     <Container size="xs" py={60}>
       <Stack>
-        <Title>{t('auth.verifyEmail')}</Title>
         {error ? (
-          <Text c="red">{t('auth.invalidCode')}</Text>
+          <Stack>
+            <Title>{t('auth.emailVerificationFailedTitle')}</Title>
+
+            <Text c="red">{t('auth.emailVerificationFailedDescription')}</Text>
+          </Stack>
         ) : (
-          <Text>{t('auth.emailVerifiedSuccess')}</Text>
+          <Stack>
+            <Title>{t('auth.emailVerifiedSuccessTitle')}</Title>
+
+            <Text>{t('auth.emailVerifiedSuccessDescription')}</Text>
+          </Stack>
         )}
+
         <Button component={Link} href="/sign-in" variant="light">
           {t('signIn.signIn')}
         </Button>

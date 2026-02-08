@@ -1,7 +1,7 @@
 'use client';
 
 import { Anchor, Button, Container, Divider, Group } from '@mantine/core';
-import { IconLogin, IconUpload } from '@tabler/icons-react';
+import { IconUpload } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/components/link/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
@@ -48,21 +48,11 @@ export function Header({ session }: HeaderProps) {
               <Divider orientation="vertical" />
 
               <Group gap={4}>
-                <Button
-                  href="/sign-in"
-                  variant="subtle"
-                  component={Link}
-                  leftSection={<IconLogin size={18} />}
-                >
+                <Button href="/sign-in" variant="subtle" component={Link}>
                   {t('header.signIn')}
                 </Button>
 
-                <Button
-                  href="/sign-up"
-                  variant="filled"
-                  component={Link}
-                  leftSection={<IconLogin size={18} />}
-                >
+                <Button href="/sign-up" variant="filled" component={Link}>
                   {t('header.signUp')}
                 </Button>
               </Group>

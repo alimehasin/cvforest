@@ -12,7 +12,11 @@
     "passwordPlaceholder": "Enter your password",
     "verificationLinkInstructions": "Click the link in the email to verify your account.",
     "verificationLinkSent": "We sent a verification link to",
-    "verifyEmail": "Verify Your Email"
+    "verifyEmail": "Verify Your Email",
+    "emailVerificationFailedTitle": "Email Verification Failed",
+    "emailVerificationFailedDescription": "The verification code is invalid or expired.",
+    "emailVerifiedSuccessTitle": "Email Verified Successfully",
+    "emailVerifiedSuccessDescription": "Your email has been verified. You can now sign in."
   },
   "availability": {
     "freelance": "Freelance",
