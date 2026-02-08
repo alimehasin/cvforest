@@ -128,11 +128,13 @@
     "userAgent": "User Agent"
   },
   "signIn": {
+    "dontHaveAccount": "Don't have an account?",
     "email": "Email",
     "pageDescription": "Sign in to access your account",
     "pageTitle": "Sign in",
     "password": "Password",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "signUp": "Sign up"
   },
   "signup": {
     "alreadyHaveAccount": "Already have an account?",

@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Anchor,
   Box,
   Button,
   Container,
@@ -12,6 +13,7 @@ import {
   Title,
 } from '@mantine/core';
 import { IconKey, IconLogin, IconUser } from '@tabler/icons-react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useSignInForm } from '../../hooks/use-sign-in-form';
 import { useSignInMut } from '../../hooks/use-sign-in-mut';
@@ -64,6 +66,13 @@ export function SignIn() {
               >
                 {t('signIn.signIn')}
               </Button>
+
+              <Text ta="center" c="dimmed" size="sm">
+                {t('signIn.dontHaveAccount')}{' '}
+                <Anchor href="/sign-up" component={Link} c="blue" fw={500}>
+                  {t('signIn.signUp')}
+                </Anchor>
+              </Text>
             </Stack>
           </form>
         </Paper>

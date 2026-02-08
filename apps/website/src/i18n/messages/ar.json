@@ -128,11 +128,13 @@
     "userAgent": "مستخدم الويب"
   },
   "signIn": {
+    "dontHaveAccount": "ليس لديك حساب؟",
     "email": "البريد الإلكتروني",
     "pageDescription": "قم بتسجيل الدخول للوصول إلى حسابك",
     "pageTitle": "تسجيل الدخول",
     "password": "كلمة المرور",
-    "signIn": "تسجيل الدخول"
+    "signIn": "تسجيل الدخول",
+    "signUp": "التسجيل"
   },
   "signup": {
     "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
