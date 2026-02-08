@@ -1,10 +1,10 @@
 'use client';
 
 import { Anchor, Button, Container, Divider, Group } from '@mantine/core';
-import { IconUpload } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/components/link/link';
+import { Link } from '@/components/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
+import { CvButton } from './cv-button/cv-button';
 import cls from './styles.module.css';
 import { UserButton } from './user-button';
 
@@ -30,14 +30,7 @@ export function Header({ session }: HeaderProps) {
 
           {session ? (
             <Group gap="xs">
-              <Button
-                href="/upload-cv"
-                variant="filled"
-                component={Link}
-                leftSection={<IconUpload size={18} />}
-              >
-                {t('header.uploadCv')}
-              </Button>
+              <CvButton cv={session.user.cv} />
 
               <Divider orientation="vertical" />
 

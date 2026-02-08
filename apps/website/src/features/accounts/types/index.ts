@@ -20,3 +20,4 @@ export type SessionResponseBody = GetResponseBody<
   '/user/accounts/session',
   'get'
 >;
+export type CvBody = SessionResponseBody['user']['cv'];
