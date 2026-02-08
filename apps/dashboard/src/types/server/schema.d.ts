@@ -1096,7 +1096,6 @@ export interface components {
         name: string;
         /** Format: email */
         email: string;
-        role: null | string;
         avatar: null | {
           id: string;
           key: string;
