@@ -7,6 +7,7 @@
     "success": "Success"
   },
   "auth": {
+    "backToSignIn": "Back to sign in",
     "emailVerifiedSuccess": "Your email has been verified. You can now sign in.",
     "invalidCode": "Invalid or expired verification code",
     "passwordPlaceholder": "Enter your password",

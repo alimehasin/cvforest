@@ -4,6 +4,7 @@ import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { admin, phoneNumber, username } from 'better-auth/plugins';
 import { env } from '@/env';
 import { sendEmail } from './email';
+import { getVerifyEmailHtml } from './email-templates/verify-email';
 
 export const auth = betterAuth({
   basePath: '/',
@@ -34,7 +35,7 @@ export const auth = betterAuth({
       void sendEmail({
         to: user.email,
         subject: 'CV Forest - Verify your email',
-        html: `<p>Click the link to verify your email: <a href="${url}">${url}</a></p>`,
+        html: getVerifyEmailHtml(url),
       });
     },
   },

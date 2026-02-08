@@ -1,6 +1,17 @@
 'use client';
 
-import { Container, Stack, Text, Title } from '@mantine/core';
+import {
+  Anchor,
+  Box,
+  Container,
+  Paper,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+} from '@mantine/core';
+import { IconMail } from '@tabler/icons-react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 interface VerifyEmailProps {
@@ -11,17 +22,39 @@ export function VerifyEmail({ email }: VerifyEmailProps) {
   const t = useTranslations();
 
   return (
-    <Container size="xs" py={60}>
-      <Stack>
-        <Title>{t('auth.verifyEmail')}</Title>
-        <Text>
-          {email
-            ? `${t('auth.verificationLinkSent')} ${email}.`
-            : t('auth.verificationLinkSent')}
-        </Text>
-        <Text size="sm" c="dimmed">
-          {t('auth.verificationLinkInstructions')}
-        </Text>
+    <Container size="xs" pt={200}>
+      <Stack gap="lg" align="center">
+        <Paper withBorder shadow="sm" p={{ base: 'md', sm: 'lg' }} w="100%">
+          <Stack align="center" gap="md" ta="center">
+            <ThemeIcon size={64} radius="xl" variant="light" color="primary">
+              <IconMail size={36} />
+            </ThemeIcon>
+
+            <Box>
+              <Title order={1}>{t('auth.verifyEmail')}</Title>
+              <Text size="lg" c="dimmed" mt="xs">
+                {email ? (
+                  <>
+                    {t('auth.verificationLinkSent')}{' '}
+                    <Text component="span" fw={600} inherit>
+                      {email}
+                    </Text>
+                    .
+                  </>
+                ) : (
+                  t('auth.verificationLinkSent')
+                )}
+              </Text>
+              <Text size="sm" c="dimmed" mt="xs">
+                {t('auth.verificationLinkInstructions')}
+              </Text>
+            </Box>
+
+            <Anchor href="/sign-in" component={Link} size="sm" c="dimmed">
+              {t('auth.backToSignIn')}
+            </Anchor>
+          </Stack>
+        </Paper>
       </Stack>
     </Container>
   );

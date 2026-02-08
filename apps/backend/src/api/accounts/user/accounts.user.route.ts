@@ -56,22 +56,18 @@ export const accounts = new Elysia({ prefix: '/accounts' })
 
   .get(
     '/verify-email',
-    async ({ t, redirect, query: { token } }) => {
-      const res = await auth.api.verifyEmail({ query: { token } }).catch(() => {
-        throw new HttpError({
-          statusCode: 400,
-          message: t({
-            en: 'Invalid token',
-            ar: 'الرمز غير صحيح',
-          }),
-        });
-      });
+    async ({ redirect, query: { token } }) => {
+      try {
+        const res = await auth.api.verifyEmail({ query: { token } });
 
-      if (!res) {
+        if (!res) {
+          return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_FAILED_URL);
+        }
+
+        return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_SUCCESS_URL);
+      } catch {
         return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_FAILED_URL);
       }
-
-      return redirect(env.BETTER_AUTH_VERIFICATION_CALLBACK_SUCCESS_URL);
     },
     {
       query: 'VerifyEmailQuery',
