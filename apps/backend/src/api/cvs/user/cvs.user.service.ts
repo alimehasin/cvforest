@@ -124,4 +124,51 @@ export const userCvsService = {
 
     return cv;
   },
+
+  async create(
+    t: TranslationFn,
+    userId: string,
+    body: typeof UserCvsModel.UserCvsCreateBody.static,
+  ): Promise<typeof UserCvsModel.UserCvsCreateResponse.static> {
+    const existing = await prisma.cv.findUnique({
+      where: { userId },
+    });
+
+    if (existing) {
+      throw new HttpError({
+        statusCode: 409,
+        message: t({
+          en: 'You already have a CV. Each account can have only one CV.',
+          ar: 'لديك سيرة ذاتية بالفعل. يمكن أن يكون لكل حساب سيرة ذاتية واحدة فقط.',
+        }),
+      });
+    }
+
+    const cv = await prisma.cv.create({
+      data: {
+        userId,
+        jobTitle: body.jobTitle,
+        experienceInYears: body.experienceInYears,
+        expectedSalaryMin: body.expectedSalaryMin,
+        expectedSalaryMax: body.expectedSalaryMax,
+        expectedSalaryCurrency: body.expectedSalaryCurrency,
+        availabilityType: body.availabilityType,
+        workLocationType: body.workLocationType,
+        bio: body.bio,
+        githubUrl: body.githubUrl,
+        linkedinUrl: body.linkedinUrl,
+        portfolioUrl: body.portfolioUrl,
+        availableForHire: body.availableForHire,
+        userSkills: {
+          create: body.skillIds.map((skillId) => ({ skillId })),
+        },
+      },
+      include: {
+        userSkills: { include: { skill: true } },
+        user: { include: { avatar: true, governorate: true } },
+      },
+    });
+
+    return cv;
+  },
 };

@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia';
 import { init } from '@/init';
+import { mustBeAuthed } from '@/plugins/better-auth';
 import { UserCvsModel } from './cvs.user.model';
 import { userCvsService } from './cvs.user.service';
 
@@ -28,6 +29,22 @@ export const cvs = new Elysia({ prefix: '/cvs' })
     {
       response: {
         200: 'UserCvsGetResponse',
+      },
+    },
+  )
+
+  .use(mustBeAuthed)
+
+  .post(
+    '/',
+    async ({ t, user, body }) => {
+      return userCvsService.create(t, user.id, body);
+    },
+    {
+      successStatus: 201,
+      body: 'UserCvsCreateBody',
+      response: {
+        201: 'UserCvsCreateResponse',
       },
     },
   );

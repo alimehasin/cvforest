@@ -63,4 +63,25 @@ export const UserCvsModel = {
 
   // Get
   UserCvsGetResponse: CvWithRelations,
+
+  // Create
+  UserCvsCreateBody: t.Object({
+    jobTitle: t.String({ minLength: 1 }),
+    experienceInYears: t.Number({ minimum: 0 }),
+    expectedSalaryMin: t.Number({ minimum: 0 }),
+    expectedSalaryMax: t.Number({ minimum: 0 }),
+    expectedSalaryCurrency: t.Enum(Currency),
+    availabilityType: t.Enum(AvailabilityType),
+    workLocationType: t.Enum(WorkLocationType),
+    bio: t.String({ minLength: 64 }),
+    githubUrl: t.String({ format: 'uri' }),
+    linkedinUrl: t.String({ format: 'uri' }),
+    portfolioUrl: t.String({ format: 'uri' }),
+    availableForHire: t.Boolean(),
+    skillIds: t.Array(t.String({ format: 'uuid' }), {
+      minItems: 3,
+      maxItems: 12,
+    }),
+  }),
+  UserCvsCreateResponse: CvWithRelations,
 };
