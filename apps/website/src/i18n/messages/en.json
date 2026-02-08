@@ -191,6 +191,7 @@
     "pageTitle": "Upload Your CV",
     "portfolioUrl": "Portfolio / Website URL",
     "salaryMaxRequired": "Max salary is required",
+    "salaryMinMustBeLessThanMax": "Min salary must be less than or equal to max salary",
     "salaryMinRequired": "Min salary is required",
     "sectionAboutLinks": "About & links",
     "sectionAboutLinksDescription": "Short bio and your profile links",

@@ -191,6 +191,7 @@
     "pageTitle": "رفع السيرة الذاتية",
     "portfolioUrl": "رابط المعرض أو الموقع",
     "salaryMaxRequired": "الحد الأقصى للراتب مطلوب",
+    "salaryMinMustBeLessThanMax": "الحد الأدنى للراتب يجب أن يكون أقل من أو يساوي الحد الأقصى",
     "salaryMinRequired": "الحد الأدنى للراتب مطلوب",
     "sectionAboutLinks": "نبذة وروابط",
     "sectionAboutLinksDescription": "نبذة قصيرة وروابط ملفك الشخصي",

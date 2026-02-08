@@ -135,6 +135,16 @@ export const userCvsService = {
     userId: string,
     body: typeof UserCvsModel.UserCvsCreateBody.static,
   ): Promise<typeof UserCvsModel.UserCvsCreateResponse.static> {
+    if (body.expectedSalaryMin > body.expectedSalaryMax) {
+      throw new HttpError({
+        statusCode: 400,
+        message: t({
+          en: 'Min salary must be less than or equal to max salary.',
+          ar: 'الحد الأدنى للراتب يجب أن يكون أقل من أو يساوي الحد الأقصى.',
+        }),
+      });
+    }
+
     const existing = await prisma.cv.findUnique({
       where: { userId },
     });
