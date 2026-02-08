@@ -1,7 +1,8 @@
 import { Elysia } from 'elysia';
 import { env } from '@/env';
 import { init } from '@/init';
-import { mustBeAuthed } from '@/plugins/better-auth';
+import { mustBeUser } from '@/plugins/better-auth';
+import { genRateLimit } from '@/plugins/rate-limit';
 import { auth } from '@/utils/auth';
 import { HttpError } from '@/utils/error';
 import { UserAccountsModel } from './accounts.user.model';
@@ -11,30 +12,39 @@ export const accounts = new Elysia({ prefix: '/accounts' })
   .use(init)
   .model(UserAccountsModel)
 
-  .post(
-    '/sign-up',
-    async ({ body, t }) => {
-      const result = await userAccountsService.signUpUser(t, body);
+  .group('', (app) => {
+    return (
+      app
 
-      return {
-        message: t({
-          en: 'Registration successful. Please check your email for the verification link.',
-          ar: 'تم التسجيل بنجاح. يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.',
-        }),
-        user: {
-          id: result.id,
-          name: result.name,
-          email: result.email,
-        },
-      };
-    },
-    {
-      body: 'UserAccountsSignUpBody',
-      response: {
-        201: 'UserAccountsSignUpResponse',
-      },
-    },
-  )
+        // Rate Limiter
+        .use(genRateLimit({ max: 2, durationInSeconds: 60 }))
+
+        .post(
+          '/sign-up',
+          async ({ body, t }) => {
+            const result = await userAccountsService.signUpUser(t, body);
+
+            return {
+              message: t({
+                en: 'Registration successful. Please check your email for the verification link.',
+                ar: 'تم التسجيل بنجاح. يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.',
+              }),
+              user: {
+                id: result.id,
+                name: result.name,
+                email: result.email,
+              },
+            };
+          },
+          {
+            body: 'UserAccountsSignUpBody',
+            response: {
+              201: 'UserAccountsSignUpResponse',
+            },
+          },
+        )
+    );
+  })
 
   .post(
     '/sign-in',
@@ -74,7 +84,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
     },
   )
 
-  .use(mustBeAuthed)
+  .use(mustBeUser)
 
   .get(
     '/session',
@@ -100,7 +110,6 @@ export const accounts = new Elysia({ prefix: '/accounts' })
         user: {
           id: user.id,
           name: user.name,
-          role: user.role,
           email: user.email,
           avatar: user.avatar,
           cv: user.cv,

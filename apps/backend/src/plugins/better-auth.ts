@@ -25,13 +25,13 @@ export const betterAuth = new Elysia({ name: 'better-auth' })
       },
     },
 
-    mustBeAuthed: {
+    mustBeUser: {
       async resolve({ status, request: { headers } }) {
         const session = await auth.api.getSession({
           headers,
         });
 
-        if (!session) {
+        if (!session || session.user.role !== 'user') {
           return status(401);
         }
 
@@ -65,9 +65,9 @@ export const maybeAuthed = new Elysia({ name: 'maybe-authed' })
   .guard({ maybeAuthed: true })
   .as('scoped');
 
-export const mustBeAuthed = new Elysia({ name: 'must-be-authed' })
+export const mustBeUser = new Elysia({ name: 'must-be-user' })
   .use(betterAuth)
-  .guard({ mustBeAuthed: true })
+  .guard({ mustBeUser: true })
   .as('scoped');
 
 export const mustBeAdmin = new Elysia({ name: 'must-be-admin' })

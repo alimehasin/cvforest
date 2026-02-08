@@ -1,6 +1,6 @@
 import { Elysia } from 'elysia';
 import { init } from '@/init';
-import { mustBeAuthed } from '@/plugins/better-auth';
+import { mustBeUser } from '@/plugins/better-auth';
 import { UserCvsModel } from './cvs.user.model';
 import { userCvsService } from './cvs.user.service';
 
@@ -33,7 +33,7 @@ export const cvs = new Elysia({ prefix: '/cvs' })
     },
   )
 
-  .use(mustBeAuthed)
+  .use(mustBeUser)
 
   .post(
     '/',

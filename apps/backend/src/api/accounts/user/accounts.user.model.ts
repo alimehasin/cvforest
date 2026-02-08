@@ -48,7 +48,6 @@ export const UserAccountsModel = {
       id: t.String(),
       name: t.String(),
       email: t.String({ format: 'email' }),
-      role: __nullable__(t.String()),
       avatar: __nullable__(t.Object({ id: t.String(), key: t.String() })),
       cv: __nullable__(CvPlain),
     }),

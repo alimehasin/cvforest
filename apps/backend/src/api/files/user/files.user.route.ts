@@ -1,12 +1,12 @@
 import { Elysia } from 'elysia';
 import { init } from '@/init';
-import { mustBeAuthed } from '@/plugins/better-auth';
+import { mustBeUser } from '@/plugins/better-auth';
 import { UserFilesModel } from './files.user.model';
 import { userFilesService } from './files.user.service';
 
 export const files = new Elysia({ prefix: '/files' })
   .use(init)
-  .use(mustBeAuthed)
+  .use(mustBeUser)
   .model(UserFilesModel)
 
   .post(

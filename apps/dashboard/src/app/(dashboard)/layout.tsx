@@ -18,7 +18,7 @@ export default async function DashboardLayout({
       return redirect('/accounts/sign-in');
     });
 
-  if (!session || session.user.role !== 'admin') {
+  if (!session) {
     return redirect('/accounts/sign-in');
   }
 

@@ -16,7 +16,7 @@ export default async function AuthedLayout({ children }: AuthedLayoutProps) {
       return redirect('/sign-in');
     });
 
-  if (!session || session.user.role !== 'user') {
+  if (!session) {
     return redirect('/sign-in');
   }
 
