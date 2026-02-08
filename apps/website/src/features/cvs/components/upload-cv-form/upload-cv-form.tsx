@@ -79,23 +79,44 @@ export function UploadCvForm() {
           label={t('uploadCv.sectionProfessional')}
           description={t('uploadCv.sectionProfessionalDescription')}
         >
-          <SimpleGrid cols={2} style={{ alignItems: 'end' }}>
-            <TextInput
-              key={form.key('jobTitle')}
-              label={t('uploadCv.jobTitle')}
-              placeholder={t('uploadCv.jobTitlePlaceholder')}
-              leftSection={<IconBriefcase size={18} />}
-              {...form.getInputProps('jobTitle')}
-            />
+          <Stack>
+            <SimpleGrid cols={2} style={{ alignItems: 'end' }}>
+              <TextInput
+                key={form.key('jobTitle')}
+                label={t('uploadCv.jobTitle')}
+                placeholder={t('uploadCv.jobTitlePlaceholder')}
+                leftSection={<IconBriefcase size={18} />}
+                {...form.getInputProps('jobTitle')}
+              />
 
-            <NumberInput
-              key={form.key('experienceInYears')}
-              min={0}
-              label={t('uploadCv.experienceInYears')}
-              leftSection={<IconUser size={18} />}
-              {...form.getInputProps('experienceInYears')}
-            />
+              <NumberInput
+                key={form.key('experienceInYears')}
+                min={0}
+                label={t('uploadCv.experienceInYears')}
+                leftSection={<IconUser size={18} />}
+                {...form.getInputProps('experienceInYears')}
+              />
+            </SimpleGrid>
 
+            <MultiSelect
+              key={form.key('skillIds')}
+              clearable
+              searchable
+              label={t('uploadCv.skills')}
+              placeholder={t('browse.skillsPlaceholder')}
+              data={skillOptions}
+              disabled={skillsQuery.isLoading}
+              leftSection={<IconTools size={18} />}
+              {...form.getInputProps('skillIds')}
+            />
+          </Stack>
+        </FormSection>
+
+        <FormSection
+          label={t('uploadCv.sectionSalary')}
+          description={t('uploadCv.sectionSalaryDescription')}
+        >
+          <SimpleGrid cols={3}>
             <Select
               key={form.key('availabilityType')}
               label={t('uploadCv.availabilityType')}
@@ -111,18 +132,6 @@ export function UploadCvForm() {
               {...form.getInputProps('workLocationType')}
             />
 
-            <MultiSelect
-              key={form.key('skillIds')}
-              clearable
-              searchable
-              label={t('uploadCv.skills')}
-              placeholder={t('browse.skillsPlaceholder')}
-              data={skillOptions}
-              disabled={skillsQuery.isLoading}
-              leftSection={<IconTools size={18} />}
-              {...form.getInputProps('skillIds')}
-            />
-
             <Select
               key={form.key('availableForHire')}
               label={t('uploadCv.availableForHire')}
@@ -133,14 +142,7 @@ export function UploadCvForm() {
               }
               error={form.errors.availableForHire}
             />
-          </SimpleGrid>
-        </FormSection>
 
-        <FormSection
-          label={t('uploadCv.sectionSalary')}
-          description={t('uploadCv.sectionSalaryDescription')}
-        >
-          <SimpleGrid cols={3}>
             <NumberInput
               key={form.key('expectedSalaryMin')}
               min={0}
