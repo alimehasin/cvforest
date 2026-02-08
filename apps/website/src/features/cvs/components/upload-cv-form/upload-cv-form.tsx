@@ -113,8 +113,8 @@ export function UploadCvForm() {
         </FormSection>
 
         <FormSection
-          label={t('uploadCv.sectionSalary')}
-          description={t('uploadCv.sectionSalaryDescription')}
+          label={t('uploadCv.sectionAvailabilityAndSalary')}
+          description={t('uploadCv.sectionAvailabilityAndSalaryDescription')}
         >
           <SimpleGrid cols={3}>
             <Select
