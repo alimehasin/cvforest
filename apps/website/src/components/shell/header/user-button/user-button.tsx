@@ -5,11 +5,11 @@ import { Link } from '@/components/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
 import { constructImageUrl } from '@/utils/helpers';
 
-interface HeaderUserButtonProps {
+interface UserButtonProps {
   session: SessionResponseBody;
 }
 
-export function HeaderUserButton({ session }: HeaderUserButtonProps) {
+export function UserButton({ session }: UserButtonProps) {
   return (
     <Avatar
       size="md"

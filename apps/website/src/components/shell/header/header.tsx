@@ -5,8 +5,8 @@ import { IconUpload } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/components/link/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
-import { HeaderUserButton } from './header-user-button';
 import cls from './styles.module.css';
+import { UserButton } from './user-button';
 
 interface HeaderProps {
   session: SessionResponseBody | null;
@@ -41,7 +41,7 @@ export function Header({ session }: HeaderProps) {
 
               <Divider orientation="vertical" />
 
-              <HeaderUserButton session={session} />
+              <UserButton session={session} />
             </Group>
           ) : (
             <>
