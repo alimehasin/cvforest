@@ -19,7 +19,7 @@ import cls from './styles.module.css';
 export function CvsGrid() {
   const t = useTranslations();
   const {
-    users,
+    cvs,
     search,
     setSearch,
     page,
@@ -41,7 +41,7 @@ export function CvsGrid() {
 
       <CvsFilters filters={filters} setFilters={setFilters} />
 
-      {users.isLoading ? (
+      {cvs.isLoading ? (
         <SimpleGrid
           spacing="lg"
           className={cls.grid}
@@ -55,13 +55,13 @@ export function CvsGrid() {
             />
           ))}
         </SimpleGrid>
-      ) : users.data?.data.length ? (
+      ) : cvs.data?.data.length ? (
         <SimpleGrid
           spacing="lg"
           className={cls.grid}
           cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
         >
-          {users.data.data.map((user) => (
+          {cvs.data.data.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
         </SimpleGrid>

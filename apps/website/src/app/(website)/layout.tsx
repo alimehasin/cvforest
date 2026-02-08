@@ -21,7 +21,7 @@ export default async function WebsiteLayout({ children }: WebsiteLayoutProps) {
 
   return (
     <Shell session={session}>
-      <Container size="xl">{children}</Container>
+      <Container size="lg">{children}</Container>
       <Footer />
     </Shell>
   );

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { CvListQuery, CvListResponse } from '@/features/home/types';
 import { useKy } from '@/hooks/use-ky';
 import { BROWSE_PAGE_SIZE } from '@/utils/constants';
+import { objectToSearchParams } from '@/utils/helpers';
 
 const initialFilters: Partial<CvListQuery> = {
   governorateId: undefined,
@@ -46,28 +47,16 @@ export function useCvsList() {
       : {}),
   };
 
-  const searchParams = new URLSearchParams();
-  for (const [key, value] of Object.entries(query)) {
-    if (value === undefined) {
-      continue;
-    }
-    if (Array.isArray(value)) {
-      for (const v of value) {
-        searchParams.append(key, String(v));
-      }
-    } else {
-      searchParams.append(key, String(value));
-    }
-  }
-
-  const users = useQuery({
+  const cvs = useQuery({
     queryKey: ['/cvs', query],
     queryFn: () => {
-      return ky.get('cvs', { searchParams }).json<CvListResponse>();
+      return ky
+        .get('cvs', { searchParams: objectToSearchParams(query) })
+        .json<CvListResponse>();
     },
   });
 
-  const totalPages = Math.ceil((users.data?.total ?? 0) / BROWSE_PAGE_SIZE);
+  const totalPages = Math.ceil((cvs.data?.total ?? 0) / BROWSE_PAGE_SIZE);
 
   function handleSearch(value: string) {
     setSearch(value);
@@ -80,7 +69,7 @@ export function useCvsList() {
   }
 
   return {
-    users,
+    cvs,
     search,
     setSearch: handleSearch,
     page,
