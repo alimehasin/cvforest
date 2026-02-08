@@ -1,6 +1,13 @@
-import type { GetResponseBody } from '@/types/server/helpers';
+import type { GetRequestBody, GetResponseBody } from '@/types/server/helpers';
 
 export type UserDetailResponse = GetResponseBody<'/user/cvs/{id}', 'get'>;
+
+export type UserCvsCreateBody = GetRequestBody<'/user/cvs/', 'post'>;
+export type UserCvsCreateResponseBody = GetResponseBody<
+  '/user/cvs/',
+  'post',
+  201
+>;
 
 export type GovernorateListResponseBody = GetResponseBody<
   '/user/governorates/',

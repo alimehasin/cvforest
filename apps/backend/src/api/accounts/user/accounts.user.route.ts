@@ -100,6 +100,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
         user: {
           id: user.id,
           name: user.name,
+          role: user.role,
           email: user.email,
           avatar: user.avatar,
         },
