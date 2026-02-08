@@ -47,13 +47,21 @@ export function SignUpForm() {
           />
 
           <TextInput
+            required
             label={t('signup.email')}
             placeholder={t('signup.emailPlaceholder')}
             leftSection={<IconAt size={18} />}
             type="email"
-            required
             key={form.key('email')}
             {...form.getInputProps('email')}
+          />
+
+          <PhoneNumberInput
+            label={t('signup.phoneNumber')}
+            placeholder={t('signup.phoneNumberPlaceholder')}
+            leftSection={<IconPhone size={18} />}
+            key={form.key('phoneNumber')}
+            {...form.getInputProps('phoneNumber')}
           />
 
           <PasswordInput
@@ -72,14 +80,6 @@ export function SignUpForm() {
             leftSection={<IconLock size={18} />}
             key={form.key('confirmPassword')}
             {...form.getInputProps('confirmPassword')}
-          />
-
-          <PhoneNumberInput
-            label={t('signup.phoneNumber')}
-            placeholder={t('signup.phoneNumberPlaceholder')}
-            leftSection={<IconPhone size={18} />}
-            key={form.key('phoneNumber')}
-            {...form.getInputProps('phoneNumber')}
           />
 
           <Select
