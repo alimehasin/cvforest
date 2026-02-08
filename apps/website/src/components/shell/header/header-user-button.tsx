@@ -11,13 +11,13 @@ interface HeaderUserButtonProps {
 
 export function HeaderUserButton({ session }: HeaderUserButtonProps) {
   return (
-    <Link href="/profile">
-      <Avatar
-        size="md"
-        radius="xl"
-        name={session.user.name}
-        src={constructImageUrl(session.user.avatar?.key)}
-      />
-    </Link>
+    <Avatar
+      size="md"
+      radius="xl"
+      href="/profile"
+      component={Link}
+      name={session.user.name}
+      src={constructImageUrl(session.user.avatar?.key)}
+    />
   );
 }
