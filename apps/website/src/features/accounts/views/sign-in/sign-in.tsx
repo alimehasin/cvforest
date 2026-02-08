@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Box,
   Button,
   Container,
   Paper,
@@ -27,12 +28,12 @@ export function SignIn() {
   return (
     <Container size="xs" pt={200}>
       <Stack gap="lg">
-        <div>
+        <Box ta="center">
           <Title order={1}>{t('signIn.pageTitle')}</Title>
           <Text c="dimmed" size="lg">
             {t('signIn.pageDescription')}
           </Text>
-        </div>
+        </Box>
 
         <Paper withBorder shadow="sm" p={{ base: 'md', sm: 'lg' }}>
           <form onSubmit={handleSubmit}>

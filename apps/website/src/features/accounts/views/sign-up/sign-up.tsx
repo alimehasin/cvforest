@@ -1,4 +1,4 @@
-import { Container, Stack, Text, Title } from '@mantine/core';
+import { Box, Container, Stack, Text, Title } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { SignUpForm } from '../../components/sign-up-form';
 
@@ -7,12 +7,12 @@ export function SignUp() {
 
   return (
     <Container size="xs" component={Stack} mt="md">
-      <div>
+      <Box ta="center">
         <Title order={1}>{t('signup.pageTitle')}</Title>
         <Text c="dimmed" size="lg">
           {t('signup.pageDescription')}
         </Text>
-      </div>
+      </Box>
 
       <SignUpForm />
     </Container>
