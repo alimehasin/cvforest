@@ -31,3 +31,9 @@ body {
 .mantine-Textarea-input {
   border-radius: var(--mantine-radius-default);
 }
+
+.rtl-rotate-180 {
+  @mixin rtl {
+    transform: rotate(180deg);
+  }
+}

@@ -53,7 +53,9 @@ export function CvsSection() {
             variant="light"
             href="/cvs"
             component={Link}
-            rightSection={<IconArrowRight size={18} />}
+            rightSection={
+              <IconArrowRight className="rtl-rotate-180" size={18} />
+            }
           >
             {t('cvs.browseAll')}
           </Button>
