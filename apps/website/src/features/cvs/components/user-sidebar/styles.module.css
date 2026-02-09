@@ -24,12 +24,6 @@
   border-top: 1px solid var(--mantine-color-gray-1);
 }
 
-@media (prefers-color-scheme: dark) {
-  .infoRow + .infoRow {
-    border-top-color: var(--mantine-color-dark-5);
-  }
-}
-
 /* ── Salary highlight ── */
 .salaryValue {
   font-weight: 700;
@@ -50,11 +44,4 @@
   color: var(--mantine-color-dimmed);
   white-space: nowrap;
   line-height: 1.6;
-}
-
-@media (prefers-color-scheme: dark) {
-  .metaChip {
-    background: var(--mantine-color-dark-5);
-    border-color: var(--mantine-color-dark-4);
-  }
 }
