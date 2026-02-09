@@ -1,23 +1,14 @@
 'use client';
 
-import {
-  Button,
-  SimpleGrid,
-  Skeleton,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Button, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/components/link/link';
-import { useCvsList } from '@/features/cvs/hooks/use-cvs-list';
-import { CvCard } from '../cv-card';
+import { CvsGrid } from '@/features/cvs/components/cvs-grid';
 import cls from './styles.module.css';
 
 export function CvsSection() {
   const t = useTranslations();
-  const { cvs } = useCvsList();
 
   return (
     <section className={cls.section}>
@@ -31,21 +22,7 @@ export function CvsSection() {
           </Text>
         </Stack>
 
-        <SimpleGrid
-          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
-          spacing="lg"
-          className={cls.grid}
-        >
-          {cvs.isLoading
-            ? Array.from({ length: 8 }).map((_, i) => (
-                <Skeleton
-                  key={`skeleton-${i.toString()}`}
-                  height={280}
-                  radius="lg"
-                />
-              ))
-            : cvs.data?.data.map((cv) => <CvCard key={cv.id} cv={cv} />)}
-        </SimpleGrid>
+        <CvsGrid compact gridClassName={cls.grid} />
 
         <Stack align="center">
           <Button

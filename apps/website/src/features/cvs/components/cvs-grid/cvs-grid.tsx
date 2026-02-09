@@ -16,8 +16,14 @@ import { useCvsList } from '../../hooks/use-cvs-list';
 import { CvsFilters } from '../cvs-filters';
 import cls from './styles.module.css';
 
-export function CvsGrid() {
+interface CvsGridProps {
+  compact?: boolean;
+  gridClassName?: string;
+}
+
+export function CvsGrid({ compact = false, gridClassName }: CvsGridProps = {}) {
   const t = useTranslations();
+
   const {
     cvs,
     search,
@@ -31,23 +37,26 @@ export function CvsGrid() {
 
   return (
     <Stack gap="xl">
-      <Group>
-        <SearchInput
-          value={search}
-          onChange={setSearch}
-          placeholder={t('browse.searchPlaceholder')}
-        />
-      </Group>
-
-      <CvsFilters filters={filters} setFilters={setFilters} />
+      {!compact && (
+        <>
+          <Group>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder={t('browse.searchPlaceholder')}
+            />
+          </Group>
+          <CvsFilters filters={filters} setFilters={setFilters} />
+        </>
+      )}
 
       {cvs.isLoading ? (
         <SimpleGrid
           spacing="lg"
-          className={cls.grid}
-          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
+          className={gridClassName ?? cls.grid}
+          cols={{ base: 1, xs: 2, md: 3 }}
         >
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: compact ? 8 : 12 }).map((_, i) => (
             <Skeleton
               height={280}
               radius="lg"
@@ -58,8 +67,8 @@ export function CvsGrid() {
       ) : cvs.data?.data.length ? (
         <SimpleGrid
           spacing="lg"
-          className={cls.grid}
-          cols={{ base: 1, xs: 2, md: 3, lg: 4 }}
+          className={gridClassName ?? cls.grid}
+          cols={{ base: 1, xs: 2, md: 3 }}
         >
           {cvs.data.data.map((cv) => (
             <CvCard key={cv.id} cv={cv} />
@@ -78,7 +87,7 @@ export function CvsGrid() {
         </Stack>
       )}
 
-      {totalPages > 1 && (
+      {!compact && totalPages > 1 && (
         <Group justify="center">
           <Pagination total={totalPages} value={page} onChange={setPage} />
         </Group>
