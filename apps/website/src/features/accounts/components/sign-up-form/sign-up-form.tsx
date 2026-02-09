@@ -40,7 +40,7 @@ export function SignUpForm() {
           <TextInput
             required
             label={t('signup.name')}
-            placeholder={t('signup.namePlaceholder')}
+            description={t('signup.nameDescription')}
             leftSection={<IconUser size={18} />}
             key={form.key('name')}
             {...form.getInputProps('name')}
@@ -50,7 +50,7 @@ export function SignUpForm() {
             required
             type="email"
             label={t('signup.email')}
-            placeholder={t('signup.emailPlaceholder')}
+            description={t('signup.emailDescription')}
             leftSection={<IconAt size={18} />}
             key={form.key('email')}
             {...form.getInputProps('email')}
@@ -58,7 +58,6 @@ export function SignUpForm() {
 
           <PhoneNumberInput
             label={t('signup.phoneNumber')}
-            placeholder={t('signup.phoneNumberPlaceholder')}
             description={t('signup.phoneNumberDescription')}
             leftSection={<IconPhone size={18} />}
             key={form.key('phoneNumber')}
@@ -68,7 +67,6 @@ export function SignUpForm() {
           <PasswordInput
             required
             label={t('signup.password')}
-            placeholder={t('signup.passwordPlaceholder')}
             description={t('signup.passwordDescription')}
             leftSection={<IconLock size={18} />}
             key={form.key('password')}
@@ -78,7 +76,7 @@ export function SignUpForm() {
           <PasswordInput
             required
             label={t('signup.confirmPassword')}
-            placeholder={t('signup.confirmPasswordPlaceholder')}
+            description={t('signup.confirmPasswordDescription')}
             leftSection={<IconLock size={18} />}
             key={form.key('confirmPassword')}
             {...form.getInputProps('confirmPassword')}
@@ -87,8 +85,8 @@ export function SignUpForm() {
           <Select
             clearable
             label={t('signup.gender')}
+            description={t('signup.genderDescription')}
             leftSection={<IconUser size={18} />}
-            placeholder={t('signup.gender')}
             data={[
               { label: t('gender.male'), value: Gender.Male },
               { label: t('gender.female'), value: Gender.Female },
