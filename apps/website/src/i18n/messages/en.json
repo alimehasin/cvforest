@@ -39,12 +39,12 @@
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "courses": {
+    "comingSoon": "Coming soon"
+  },
   "currency": {
     "iqd": "IQD",
     "usd": "USD"
-  },
-  "courses": {
-    "comingSoon": "Coming soon"
   },
   "cvs": {
     "availableForHire": "Available for hire",
@@ -83,7 +83,6 @@
     "cvApproved": "CV Approved",
     "cvRejected": "CV Rejected",
     "cvUnderReview": "CV Under Review",
-    "plans": "Plans",
     "signIn": "Sign In",
     "signOut": "Sign Out",
     "signUp": "Sign Up",

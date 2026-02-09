@@ -39,12 +39,12 @@
     "cancel": "إلغاء",
     "confirm": "تأكيد"
   },
+  "courses": {
+    "comingSoon": "قريباً"
+  },
   "currency": {
     "iqd": "دينار عراقي",
     "usd": "دولار أمريكي"
-  },
-  "courses": {
-    "comingSoon": "قريباً"
   },
   "cvs": {
     "availableForHire": "متاح للتوظيف",
@@ -83,7 +83,6 @@
     "cvApproved": "موافق عليها",
     "cvRejected": "مرفوض",
     "cvUnderReview": "قيد المراجعة",
-    "plans": "الخطط",
     "signIn": "تسجيل الدخول",
     "signOut": "تسجيل الخروج",
     "signUp": "التسجيل",
