@@ -10,7 +10,7 @@
     "backToSignIn": "العودة لتسجيل الدخول",
     "emailVerificationFailedDescription": "رمز التحقق غير صالح أو منتهي الصلاحية.",
     "emailVerificationFailedTitle": "فشل التحقق من بريدك الإلكتروني",
-    "emailVerifiedSuccessDescription": "تم التحقق من بريدك الإلكتروني بنجاح. يمكنك الآن تسجيل الدخول.",
+    "emailVerifiedSuccessDescription": "تم التحقق من بريدك الإلكتروني بنجاح. يمكنك الآن الانتقال الى الصحفة الرئيسية.",
     "emailVerifiedSuccessTitle": "تم التحقق من بريدك الإلكتروني بنجاح",
     "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
     "verificationLinkInstructions": "انقر على الرابط في البريد للتحقق من حسابك.",

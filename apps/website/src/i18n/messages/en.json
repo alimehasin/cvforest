@@ -10,7 +10,7 @@
     "backToSignIn": "Back to sign in",
     "emailVerificationFailedDescription": "The verification code is invalid or expired.",
     "emailVerificationFailedTitle": "Email Verification Failed",
-    "emailVerifiedSuccessDescription": "Your email has been verified. You can now sign in.",
+    "emailVerifiedSuccessDescription": "Your email has been verified. You can now navigate to home page.",
     "emailVerifiedSuccessTitle": "Email Verified Successfully",
     "passwordPlaceholder": "Enter your password",
     "verificationLinkInstructions": "Click the link in the email to verify your account.",

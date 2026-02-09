@@ -22,12 +22,12 @@ export function VerifyEmail({ email }: VerifyEmailProps) {
   const t = useTranslations();
 
   return (
-    <Container size="xs" pt={200}>
+    <Container size="sm" pt={200}>
       <Stack gap="lg" align="center">
         <Paper withBorder shadow="sm" p={{ base: 'md', sm: 'lg' }} w="100%">
           <Stack align="center" gap="md" ta="center">
-            <ThemeIcon size={64} radius="xl" variant="light" color="primary">
-              <IconMail size={36} />
+            <ThemeIcon size={96} radius="100vw" variant="light" color="primary">
+              <IconMail size={64} />
             </ThemeIcon>
 
             <Box>
