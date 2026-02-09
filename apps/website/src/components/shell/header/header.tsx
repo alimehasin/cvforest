@@ -23,7 +23,9 @@ export function Header({ session }: HeaderProps) {
         </Anchor>
 
         <Group>
-          <Button variant="subtle">{t('header.courses')}</Button>
+          <Button href="/courses" variant="subtle" component={Link}>
+            {t('header.courses')}
+          </Button>
 
           {session ? (
             <Group gap="xs">

@@ -43,6 +43,9 @@
     "iqd": "IQD",
     "usd": "USD"
   },
+  "courses": {
+    "comingSoon": "Coming soon"
+  },
   "cvs": {
     "availableForHire": "Available for hire",
     "browseAll": "Browse All Talent",

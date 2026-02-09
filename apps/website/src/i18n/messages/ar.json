@@ -43,6 +43,9 @@
     "iqd": "دينار عراقي",
     "usd": "دولار أمريكي"
   },
+  "courses": {
+    "comingSoon": "قريباً"
+  },
   "cvs": {
     "availableForHire": "متاح للتوظيف",
     "browseAll": "تصفح جميع المواهب",
