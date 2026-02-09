@@ -2,7 +2,6 @@ import {
   ActionIcon,
   Avatar,
   Badge,
-  Box,
   Group,
   Paper,
   Stack,
@@ -63,44 +62,40 @@ export function CvCard({ cv }: { cv: CvListItem }) {
       href={`/cvs/${cv.id}`}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      {/* Gradient header band */}
-      <Box className={cls.header} />
+      <Stack align="flex-start" gap="md" className={cls.body}>
+        {/* Identity row: avatar + name/job (left-aligned) */}
+        <Group
+          align="flex-start"
+          gap="md"
+          wrap="nowrap"
+          className={cls.identityRow}
+        >
+          <div className={cls.avatarWrapper}>
+            <div className={cls.avatarRing}>
+              <Avatar
+                size={68}
+                radius="50%"
+                color="primary"
+                name={cv.user.name}
+                src={constructImageUrl(cv.user.avatar?.key)}
+              />
+            </div>
+          </div>
 
-      {/* Avatar overlapping the header */}
-      <div className={cls.avatarWrapper}>
-        <div className={cls.avatarRing}>
-          <Avatar
-            size={92}
-            radius="50%"
-            name={cv.user.name}
-            src={constructImageUrl(cv.user.avatar?.key)}
-            color="primary"
-          />
-          {cv.availableForHire && (
-            <Tooltip label={t('cvs.availableForHire')} withArrow>
-              <span className={cls.availableDot} />
-            </Tooltip>
-          )}
-        </div>
-      </div>
-
-      {/* Card body */}
-      <Stack align="center" gap="xs" className={cls.body}>
-        {/* Identity */}
-        <Stack align="center" gap={2}>
-          <Text fw={700} size="md" ta="center" lineClamp={1}>
-            {cv.user.name}
-          </Text>
-
-          {cv.jobTitle && (
-            <Text size="sm" c="dimmed" ta="center" lineClamp={1}>
-              {cv.jobTitle}
+          <Stack align="flex-start" gap={2} className={cls.identityText}>
+            <Text fw={700} size="lg" lineClamp={1}>
+              {cv.user.name}
             </Text>
-          )}
-        </Stack>
+            {cv.jobTitle && (
+              <Text size="sm" c="dimmed" lineClamp={1}>
+                {cv.jobTitle}
+              </Text>
+            )}
+          </Stack>
+        </Group>
 
         {/* Meta chips */}
-        <Group gap={6} justify="center" wrap="wrap">
+        <Group gap={6} justify="flex-start" wrap="wrap">
           {cv.user.governorate && (
             <span className={cls.metaChip}>
               <IconMapPin size={12} />
@@ -131,9 +126,9 @@ export function CvCard({ cv }: { cv: CvListItem }) {
         </Group>
 
         {/* Skills */}
-        <Box className={cls.skillsRow}>
+        <div className={cls.skillsRow}>
           {visibleSkills.length > 0 && (
-            <Group gap={6} justify="center" wrap="wrap">
+            <Group gap={6} justify="flex-start" wrap="wrap">
               {visibleSkills.map((skill) => (
                 <Badge
                   key={skill.id}
@@ -152,7 +147,7 @@ export function CvCard({ cv }: { cv: CvListItem }) {
               )}
             </Group>
           )}
-        </Box>
+        </div>
 
         {/* Social links footer */}
         <Group w="100%" className={cls.socialFooter} justify="space-between">

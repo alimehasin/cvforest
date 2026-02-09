@@ -1,46 +1,29 @@
-/* ── Card shell ── */
 .card {
   overflow: hidden;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    border-inline-start-color 0.25s ease;
   cursor: pointer;
   position: relative;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.08),
-    0 4px 10px rgba(0, 0, 0, 0.04);
-  border-color: var(--mantine-color-primary-3);
-}
-
-/* ── Gradient header band ── */
-.header {
-  height: 80px;
-  background: linear-gradient(
-    135deg,
-    var(--mantine-color-primary-5) 0%,
-    var(--mantine-color-primary-3) 50%,
-    var(--mantine-color-primary-6) 100%
-  );
-  position: relative;
-  transition: filter 0.25s ease;
-}
-
-.card:hover .header {
-  filter: brightness(1.08);
-}
-
-/* ── Avatar wrapper ── */
 .avatarWrapper {
   position: relative;
-  margin-top: -46px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 0;
   z-index: 1;
+}
+
+.identityText {
+  min-width: 0;
+}
+
+.identityRow {
+  width: 100%;
 }
 
 .avatarRing {
@@ -52,39 +35,12 @@
   line-height: 0;
 }
 
-/* ── Availability pulse indicator ── */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-  }
-}
-
-.availableDot {
-  position: absolute;
-  bottom: 6px;
-  inset-inline-end: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #22c55e;
-  border: 2.5px solid var(--mantine-color-white);
-  animation: pulse 2s ease-in-out infinite;
-  z-index: 2;
-}
-
-/* ── Body content ── */
 .body {
-  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md)
-    var(--mantine-spacing-md);
+  padding: var(--mantine-spacing-md);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* ── Meta chip ── */
 .metaChip {
   display: inline-flex;
   align-items: center;
@@ -99,7 +55,6 @@
   line-height: 1.6;
 }
 
-/* ── Skill pill ── */
 .skillPill {
   background: linear-gradient(
     135deg,
@@ -111,17 +66,17 @@
   font-weight: 500;
 }
 
-/* ── Skills row (fixed height for consistent card layout) ── */
 .skillsRow {
-  min-height: 3.5rem; /* ~56px, fits 2 lines of sm badges */
+  min-height: 3.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-/* ── Social footer ── */
 .socialFooter {
-  border-top: 1px solid var(--mantine-color-gray-2);
-  padding-top: var(--mantine-spacing-sm);
-  margin-top: var(--mantine-spacing-xs);
+  border-block-start: 1px solid var(--mantine-color-gray-2);
+  padding-block-start: var(--mantine-spacing-sm);
+  margin-block-start: var(--mantine-spacing-xs);
+  width: 100%;
 }
