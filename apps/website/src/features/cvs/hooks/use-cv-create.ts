@@ -21,6 +21,7 @@ export function useCvCreate() {
       queryClient.invalidateQueries({ queryKey: ['/cvs'] });
       n.success(t('uploadCv.successMessage'));
       router.push('/profile');
+      router.refresh();
     },
   });
 }
