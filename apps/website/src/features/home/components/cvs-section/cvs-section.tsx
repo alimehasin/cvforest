@@ -12,7 +12,7 @@ export function CvsSection() {
 
   return (
     <section className={cls.section}>
-      <Stack gap="xl" py={60}>
+      <Stack gap="xl">
         <Stack align="center" gap="xs" className={cls.header}>
           <Title order={2} ta="center" className={cls.title}>
             {t('cvs.title')}
