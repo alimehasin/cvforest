@@ -49,3 +49,12 @@ export function translateCurrency(t: TranslationFn, currency: Currency) {
 
   return map[currency];
 }
+
+export function translateAvailableForHire(
+  t: TranslationFn,
+  availableForHire: boolean,
+) {
+  return availableForHire
+    ? t('uploadCv.availableForHireYes')
+    : t('uploadCv.availableForHireNo');
+}

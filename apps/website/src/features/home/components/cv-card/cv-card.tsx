@@ -16,6 +16,7 @@ import {
   IconClock,
   IconMail,
   IconMapPin,
+  IconUserCheck,
   IconWorld,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -26,6 +27,7 @@ import {
   translateWorkLocationType,
 } from '@/utils/translation-maps';
 import type { CvListItem } from '../../types';
+import { AvailableForHireText } from './available-for-hire-text';
 import { InfoItem } from './info-item';
 
 export function CvCard({ cv }: { cv: CvListItem }) {
@@ -108,6 +110,13 @@ export function CvCard({ cv }: { cv: CvListItem }) {
           <InfoItem
             icon={IconWorld}
             value={translateWorkLocationType(t, cv.workLocationType)}
+          />
+
+          <InfoItem
+            icon={IconUserCheck}
+            value={
+              <AvailableForHireText availableForHire={cv.availableForHire} />
+            }
           />
         </Stack>
 
