@@ -1,5 +1,6 @@
 import { prisma } from '@db/client';
 import type { Prisma } from '@db/gen/prisma/client';
+import { userAccountsService } from '@/api/accounts/user/accounts.user.service';
 import type { TranslationFn } from '@/types';
 import { HttpError } from '@/utils/error';
 import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
@@ -134,10 +135,12 @@ export const userCvsService = {
     userId: string,
     body: typeof UserCvsModel.UserCvsCreateBody.static,
   ): Promise<typeof UserCvsModel.UserCvsCreateResponse.static> {
+    const { profile, ...cvBody } = body;
+
     if (
-      body.expectedSalaryMin !== undefined &&
-      body.expectedSalaryMax !== undefined &&
-      body.expectedSalaryMin > body.expectedSalaryMax
+      cvBody.expectedSalaryMin !== undefined &&
+      cvBody.expectedSalaryMax !== undefined &&
+      cvBody.expectedSalaryMin > cvBody.expectedSalaryMax
     ) {
       throw new HttpError({
         statusCode: 400,
@@ -162,24 +165,26 @@ export const userCvsService = {
       });
     }
 
+    if (profile && Object.keys(profile).length > 0) {
+      await userAccountsService.updateProfile(userId, profile);
+    }
+
     const cv = await prisma.cv.create({
       data: {
         userId,
-        jobTitle: body.jobTitle,
-        experienceInYears: body.experienceInYears,
-        expectedSalaryMin: body.expectedSalaryMin,
-        expectedSalaryMax: body.expectedSalaryMax,
-        expectedSalaryCurrency: body.expectedSalaryCurrency,
-        availabilityType: body.availabilityType,
-        workLocationType: body.workLocationType,
-        bio: body.bio,
-        githubUrl: body.githubUrl,
-        linkedinUrl: body.linkedinUrl,
-        portfolioUrl: body.portfolioUrl,
-        availableForHire: body.availableForHire,
-        userSkills: {
-          create: body.skillIds.map((skillId) => ({ skillId })),
-        },
+        jobTitle: cvBody.jobTitle,
+        experienceInYears: cvBody.experienceInYears,
+        expectedSalaryMin: cvBody.expectedSalaryMin,
+        expectedSalaryMax: cvBody.expectedSalaryMax,
+        expectedSalaryCurrency: cvBody.expectedSalaryCurrency,
+        availabilityType: cvBody.availabilityType,
+        workLocationType: cvBody.workLocationType,
+        bio: cvBody.bio,
+        githubUrl: cvBody.githubUrl,
+        linkedinUrl: cvBody.linkedinUrl,
+        portfolioUrl: cvBody.portfolioUrl,
+        availableForHire: cvBody.availableForHire,
+        userSkills: { create: cvBody.skillIds.map((skillId) => ({ skillId })) },
       },
       include: {
         userSkills: { include: { skill: true } },

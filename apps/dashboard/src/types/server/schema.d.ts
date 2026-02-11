@@ -1436,6 +1436,19 @@ export interface components {
       portfolioUrl?: string;
       availableForHire: boolean;
       skillIds: string[];
+      profile?: {
+        name?: string;
+        /** Format: email */
+        email?: string;
+        /** @description يجب ادخال رقم هاتف عراقي صحيح مثال +9647701234567 */
+        phoneNumber?: string;
+        /** @enum {string} */
+        gender?: 'Male' | 'Female';
+        birthDate?: Record<string, never> | string | number;
+        /** Format: uuid */
+        avatarId?: string;
+        governorateId?: (string | null) | null;
+      };
     };
     UserCvsCreateResponse: {
       id: string;

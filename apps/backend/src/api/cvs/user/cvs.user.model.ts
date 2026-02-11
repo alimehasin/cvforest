@@ -9,6 +9,7 @@ import { GovernoratePlain } from '@db/gen/prismabox/Governorate';
 import { SkillPlain } from '@db/gen/prismabox/Skill';
 import { UserPlain } from '@db/gen/prismabox/User';
 import { t } from 'elysia';
+import { UserAccountsModel } from '@/api/accounts/user/accounts.user.model';
 import { paginationSchema, sortingSchema } from '@/utils/schemas';
 
 // User response with relations
@@ -70,6 +71,7 @@ export const UserCvsModel = {
 
   // Create
   UserCvsCreateBody: t.Object({
+    profile: t.Optional(UserAccountsModel.UserAccountsProfileUpdateBody),
     jobTitle: t.String({ minLength: 1 }),
     experienceInYears: t.Number({ minimum: 0 }),
     expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
