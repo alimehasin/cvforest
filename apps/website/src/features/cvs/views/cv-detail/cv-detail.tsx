@@ -12,15 +12,17 @@ import type { UserDetailResponse } from '@/features/cvs/types';
 interface CvDetailProps {
   id: string;
   initialData: UserDetailResponse;
+  /** Optional actions rendered inside the hero cover (e.g. edit button for "my CV") */
+  heroActions?: React.ReactNode;
 }
 
-export function CvDetail({ id, initialData }: CvDetailProps) {
+export function CvDetail({ id, initialData, heroActions }: CvDetailProps) {
   const { data: user } = useCvDetail({ id, initialData });
 
   return (
-    <Stack gap="xl" py="xl">
+    <Stack gap="xl">
       {/* Hero section */}
-      <UserHero user={user} />
+      <UserHero user={user} actions={heroActions} />
 
       {/* Two-column layout: main content + sidebar */}
       <Grid gutter="xl">

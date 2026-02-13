@@ -21,18 +21,23 @@ export function CvMine({ cv }: CvMineProps) {
   }
 
   return (
-    <Stack gap="xl" py="xl">
-      <Button
-        variant="light"
-        leftSection={<IconPencil size={18} />}
-        component={Link}
-        href="/cv/mine/edit"
-        style={{ alignSelf: 'flex-end' }}
-      >
-        {t('cvMine.editCv')}
-      </Button>
-
-      <CvDetail id={data.id} initialData={data} />
+    <Stack gap="xl" p={0}>
+      <CvDetail
+        id={data.id}
+        initialData={data}
+        heroActions={
+          <Button
+            variant="light"
+            color="white"
+            leftSection={<IconPencil size={18} />}
+            component={Link}
+            href="/cv/mine/edit"
+            style={{ alignSelf: 'flex-end' }}
+          >
+            {t('cvMine.editCv')}
+          </Button>
+        }
+      />
     </Stack>
   );
 }

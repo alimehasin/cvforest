@@ -37,6 +37,23 @@
   pointer-events: none;
 }
 
+.coverActions {
+  position: absolute;
+  top: var(--mantine-spacing-md);
+  inset-inline-end: var(--mantine-spacing-md);
+  z-index: 1;
+}
+
+/* Pending CV: yellow/amber cover instead of green */
+.bannerPending {
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-yellow-6) 0%,
+    var(--mantine-color-yellow-4) 40%,
+    var(--mantine-color-yellow-7) 100%
+  );
+}
+
 /* ── Avatar wrapper ── */
 .avatarWrapper {
   position: relative;
@@ -67,19 +84,6 @@
   100% {
     box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
   }
-}
-
-.availableDot {
-  position: absolute;
-  bottom: 8px;
-  inset-inline-end: 8px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #22c55e;
-  border: 3px solid var(--mantine-color-white);
-  animation: pulse 2s ease-in-out infinite;
-  z-index: 2;
 }
 
 /* ── Availability badge ── */

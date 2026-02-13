@@ -11,7 +11,7 @@ interface ShellProps {
 
 export function Shell({ session, children }: ShellProps) {
   return (
-    <AppShell padding="md" header={{ height: 60 }}>
+    <AppShell padding="xl" header={{ height: 60 }}>
       <AppShellHeader>
         <Header session={session} />
       </AppShellHeader>

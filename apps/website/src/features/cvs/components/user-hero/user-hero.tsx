@@ -22,9 +22,11 @@ import cls from './styles.module.css';
 
 interface UserHeroProps {
   user: UserDetailResponse;
+  /** Optional actions rendered inside the cover (e.g. edit button) */
+  actions?: React.ReactNode;
 }
 
-export function UserHero({ user }: UserHeroProps) {
+export function UserHero({ user, actions }: UserHeroProps) {
   const t = useTranslations();
 
   const socialLinks = [
@@ -48,7 +50,15 @@ export function UserHero({ user }: UserHeroProps) {
   return (
     <Box>
       {/* Gradient banner */}
-      <Box className={cls.banner} />
+      <Box
+        className={
+          user.status === 'Pending'
+            ? `${cls.banner} ${cls.bannerPending}`
+            : cls.banner
+        }
+      >
+        {actions && <div className={cls.coverActions}>{actions}</div>}
+      </Box>
 
       <Group justify="space-between">
         {/* Avatar + info */}
@@ -62,11 +72,6 @@ export function UserHero({ user }: UserHeroProps) {
                 src={constructImageUrl(user.user.avatar?.key)}
                 color="primary"
               />
-              {user.availableForHire && (
-                <Tooltip label={t('cvs.availableForHire')} withArrow>
-                  <span className={cls.availableDot} />
-                </Tooltip>
-              )}
             </div>
           </div>
 
