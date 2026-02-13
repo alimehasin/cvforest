@@ -47,7 +47,6 @@
     "usd": "USD"
   },
   "cvMine": {
-    "cancel": "Cancel",
     "editCv": "Edit my CV",
     "saveChanges": "Save changes",
     "updateSuccess": "Your CV has been updated."
@@ -69,7 +68,6 @@
     "aboutUs": "About Us",
     "brief": "CV Forest is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
     "company": "Company",
-    "contactUs": "Contact Us",
     "copyright": "© {year} CV Forest. All rights reserved.",
     "courses": "Courses",
     "followUs": "Follow Us",

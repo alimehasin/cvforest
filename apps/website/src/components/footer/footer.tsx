@@ -13,20 +13,37 @@ import {
   IconBrandLinkedin,
   IconBrandX,
 } from '@tabler/icons-react';
+import dayjs from 'dayjs';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/components/link/link';
 import { FooterLanguageSwitcher } from './footer-language-switcher';
 import cls from './styles.module.css';
 
-const socialLinks = [
-  { icon: IconBrandX, href: 'https://x.com', label: 'X' },
-  { icon: IconBrandLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: IconBrandGithub, href: 'https://github.com', label: 'GitHub' },
-];
-
 export async function Footer() {
   const t = await getTranslations();
-  const currentYear = new Date().getFullYear();
+  const currentYear = dayjs().year();
+
+  const socialLinks = [
+    { icon: IconBrandX, href: 'https://x.com', label: 'X' },
+    { icon: IconBrandGithub, href: 'https://github.com', label: 'GitHub' },
+    {
+      icon: IconBrandLinkedin,
+      href: 'https://linkedin.com',
+      label: 'LinkedIn',
+    },
+  ];
+
+  const quickLinks = [
+    { href: '/', label: t('footer.home') },
+    { href: '/plans', label: t('footer.plans') },
+    { href: '/courses', label: t('footer.courses') },
+  ];
+
+  const companyLinks = [
+    { href: '/about', label: t('footer.aboutUs') },
+    { href: '/privacy', label: t('footer.privacyPolicy') },
+    { href: '/terms', label: t('footer.termsOfService') },
+  ];
 
   return (
     <footer className={cls.footer}>
@@ -46,63 +63,40 @@ export async function Footer() {
               <Text fw={600} size="sm" className={cls.sectionTitle}>
                 {t('footer.quickLinks')}
               </Text>
-              <Anchor component={Link} href="/" size="sm" className={cls.link}>
-                {t('footer.home')}
-              </Anchor>
-              <Anchor
-                component={Link}
-                href="/plans"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.plans')}
-              </Anchor>
-              <Anchor
-                component={Link}
-                href="/courses"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.courses')}
-              </Anchor>
+
+              <Stack gap="xs">
+                {quickLinks.map((link) => (
+                  <Anchor
+                    key={link.href}
+                    component={Link}
+                    href={link.href}
+                    size="sm"
+                    className={cls.link}
+                  >
+                    {link.label}
+                  </Anchor>
+                ))}
+              </Stack>
             </Stack>
 
             <Stack gap="sm">
               <Text fw={600} size="sm" className={cls.sectionTitle}>
                 {t('footer.company')}
               </Text>
-              <Anchor
-                component={Link}
-                href="/about"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.aboutUs')}
-              </Anchor>
-              <Anchor
-                component={Link}
-                href="/contact"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.contactUs')}
-              </Anchor>
-              <Anchor
-                component={Link}
-                href="/privacy"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.privacyPolicy')}
-              </Anchor>
-              <Anchor
-                component={Link}
-                href="/terms"
-                size="sm"
-                className={cls.link}
-              >
-                {t('footer.termsOfService')}
-              </Anchor>
+
+              <Stack gap="xs">
+                {companyLinks.map((link) => (
+                  <Anchor
+                    key={link.href}
+                    component={Link}
+                    href={link.href}
+                    size="sm"
+                    className={cls.link}
+                  >
+                    {link.label}
+                  </Anchor>
+                ))}
+              </Stack>
             </Stack>
 
             <Stack gap="sm">
