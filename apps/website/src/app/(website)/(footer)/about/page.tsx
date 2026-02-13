@@ -6,13 +6,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
 
   return {
-    title: t('meta.whoTitle'),
-    description: t('meta.whoDescription'),
+    title: t('meta.aboutTitle'),
+    description: t('meta.aboutDescription'),
   };
 }
 
-export default async function WhoPage() {
-  const content = await getPageContent('who');
+export default async function AboutPage() {
+  const content = await getPageContent('about');
 
   return <div>{content}</div>;
 }

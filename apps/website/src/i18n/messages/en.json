@@ -100,14 +100,14 @@
     "title": "Connect Talent with Opportunity"
   },
   "meta": {
+    "aboutDescription": "About CV Forest",
+    "aboutTitle": "About us",
     "description": "CV Forest | A platform for finding CVs",
-    "privacyDescription": "",
-    "privacyTitle": "",
-    "termsDescription": "",
-    "termsTitle": "",
-    "title": "CV Forest | Dashboard",
-    "whoDescription": "",
-    "whoTitle": ""
+    "privacyDescription": "Privacy Policy",
+    "privacyTitle": "Privacy Policy",
+    "termsDescription": "Terms of Service",
+    "termsTitle": "Terms of Service",
+    "title": "CV Forest | Dashboard"
   },
   "notFound": {
     "description": "The page you requested might have been moved, deleted, or you might have entered the wrong URL.",

@@ -100,14 +100,14 @@
     "title": "اربط المواهب بالفرص"
   },
   "meta": {
+    "aboutDescription": "عن CV Forest",
+    "aboutTitle": "عنا",
     "description": "CV Forest | منصة للعثور على السير الذاتية",
-    "privacyDescription": "",
-    "privacyTitle": "",
-    "termsDescription": "",
-    "termsTitle": "",
-    "title": "CV Forest | لوحة التحكم",
-    "whoDescription": "",
-    "whoTitle": ""
+    "privacyDescription": "سياسة الخصوصية",
+    "privacyTitle": "سياسة الخصوصية",
+    "termsDescription": "شروط الخدمة",
+    "termsTitle": "شروط الخدمة",
+    "title": "CV Forest | لوحة التحكم"
   },
   "notFound": {
     "description": "قد تكون الصفحة المطلوبة قد تم نقلها أو حذفها، أو ربما أدخلت رابطاً خاطئاً.",
