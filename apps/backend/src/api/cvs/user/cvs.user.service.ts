@@ -130,6 +130,86 @@ export const userCvsService = {
     return cv;
   },
 
+  async getByUserId(
+    userId: string,
+    t: TranslationFn,
+  ): Promise<typeof UserCvsModel.UserCvsGetResponse.static> {
+    const cv = await prisma.cv.findUnique({
+      where: { userId },
+      include: {
+        userSkills: { include: { skill: true } },
+        user: { include: { avatar: true, governorate: true } },
+      },
+    });
+
+    if (!cv) {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'CV not found',
+          ar: 'السيرة الذاتية غير موجودة',
+        }),
+      });
+    }
+
+    return cv;
+  },
+
+  async update(
+    userId: string,
+    t: TranslationFn,
+    body: typeof UserCvsModel.UserCvsUpdateBody.static,
+  ): Promise<typeof UserCvsModel.UserCvsUpdateResponse.static> {
+    const cv = await prisma.cv.findUnique({
+      where: { userId },
+    });
+
+    if (!cv) {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'CV not found',
+          ar: 'السيرة الذاتية غير موجودة',
+        }),
+      });
+    }
+
+    const { profile, skillIds, ...cvBody } = body;
+
+    if (
+      cvBody.expectedSalaryMin !== undefined &&
+      cvBody.expectedSalaryMax !== undefined &&
+      cvBody.expectedSalaryMin > cvBody.expectedSalaryMax
+    ) {
+      throw new HttpError({
+        statusCode: 400,
+        message: t({
+          en: 'Min salary must be less than or equal to max salary.',
+          ar: 'الحد الأدنى للراتب يجب أن يكون أقل من أو يساوي الحد الأقصى.',
+        }),
+      });
+    }
+
+    if (profile && Object.keys(profile).length > 0) {
+      await userAccountsService.updateProfile(userId, profile);
+    }
+
+    return await prisma.cv.update({
+      where: { userId },
+      include: {
+        userSkills: { include: { skill: true } },
+        user: { include: { avatar: true, governorate: true } },
+      },
+      data: {
+        ...cvBody,
+        userSkills: skillIds && {
+          deleteMany: {},
+          create: skillIds.map((skillId) => ({ skillId })),
+        },
+      },
+    });
+  },
+
   async create(
     t: TranslationFn,
     userId: string,

@@ -90,4 +90,28 @@ export const UserCvsModel = {
     }),
   }),
   UserCvsCreateResponse: CvWithRelations,
+
+  // Update (partial)
+  UserCvsUpdateBody: t.Object({
+    profile: t.Optional(UserAccountsModel.UserAccountsProfileUpdateBody),
+    jobTitle: t.Optional(t.String({ minLength: 1 })),
+    experienceInYears: t.Optional(t.Number({ minimum: 0 })),
+    expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
+    expectedSalaryMax: t.Optional(t.Number({ minimum: 0 })),
+    expectedSalaryCurrency: t.Optional(t.Enum(Currency)),
+    availabilityType: t.Optional(t.Enum(AvailabilityType)),
+    workLocationType: t.Optional(t.Enum(WorkLocationType)),
+    bio: t.Optional(t.String({ minLength: 64 })),
+    githubUrl: t.Optional(t.String({ format: 'uri' })),
+    linkedinUrl: t.Optional(t.String({ format: 'uri' })),
+    portfolioUrl: t.Optional(t.String({ format: 'uri' })),
+    availableForHire: t.Optional(t.Boolean()),
+    skillIds: t.Optional(
+      t.Array(t.String({ format: 'uuid' }), {
+        minItems: 3,
+        maxItems: 12,
+      }),
+    ),
+  }),
+  UserCvsUpdateResponse: CvWithRelations,
 };

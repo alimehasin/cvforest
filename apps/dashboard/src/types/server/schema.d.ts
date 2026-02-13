@@ -516,6 +516,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/user/cvs/mine': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getUserCvsMine'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations['patchUserCvsMine'];
+    trace?: never;
+  };
   '/user/cvs/{id}': {
     parameters: {
       query?: never;
@@ -1451,6 +1467,106 @@ export interface components {
       skillIds: string[];
     };
     UserCvsCreateResponse: {
+      id: string;
+      userId: string;
+      jobTitle: string;
+      experienceInYears: string | number;
+      /** @enum {string} */
+      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      /** @enum {string} */
+      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      bio: string;
+      githubUrl: null | string;
+      linkedinUrl: null | string;
+      portfolioUrl: null | string;
+      availableForHire: boolean;
+      /** @enum {string} */
+      status: 'Pending' | 'Approved' | 'Rejected';
+      createdAt: Record<string, never> | string | number;
+      updatedAt: Record<string, never> | string | number;
+      user: {
+        id: string;
+        name: string;
+        image: null | string;
+        email: string;
+        emailVerified: boolean;
+        phoneNumber: null | string;
+        phoneNumberVerified: null | boolean;
+        username: null | string;
+        displayUsername: null | string;
+        role: null | string;
+        banned: null | boolean;
+        banReason: null | string;
+        banExpires: null | (Record<string, never> | string | number);
+        gender: null | ('Male' | 'Female');
+        avatarId: null | string;
+        governorateId: null | string;
+        createdAt: Record<string, never> | string | number;
+        updatedAt: Record<string, never> | string | number;
+        avatar: {
+          id: string;
+          key: string;
+          size: string | number;
+          type: 'Image' | 'Video' | 'Other';
+          isPublic: boolean;
+          userId: null | string;
+          createdAt: Record<string, never> | string | number;
+          updatedAt: Record<string, never> | string | number;
+        } | null;
+        governorate: {
+          id: string;
+          name: string;
+          createdAt: Record<string, never> | string | number;
+          updatedAt: Record<string, never> | string | number;
+        } | null;
+      };
+      userSkills: {
+        id: string;
+        cvId: string;
+        skillId: string;
+        skill: {
+          id: string;
+          name: string;
+          createdAt: Record<string, never> | string | number;
+          updatedAt: Record<string, never> | string | number;
+        };
+      }[];
+    };
+    UserCvsUpdateBody: {
+      profile?: {
+        name?: string;
+        /** Format: email */
+        email?: string;
+        /** @description يجب ادخال رقم هاتف عراقي صحيح مثال +9647701234567 */
+        phoneNumber?: string;
+        /** @enum {string} */
+        gender?: 'Male' | 'Female';
+        birthDate?: Record<string, never> | string | number;
+        /** Format: uuid */
+        avatarId?: string;
+        governorateId?: (string | null) | null;
+      };
+      jobTitle?: string;
+      experienceInYears?: number;
+      expectedSalaryMin?: number;
+      expectedSalaryMax?: number;
+      /** @enum {string} */
+      expectedSalaryCurrency?: 'Iqd' | 'Usd';
+      /** @enum {string} */
+      availabilityType?: 'FullTime' | 'PartTime' | 'Freelance';
+      /** @enum {string} */
+      workLocationType?: 'OnSite' | 'Remote' | 'Hybrid';
+      bio?: string;
+      /** Format: uri */
+      githubUrl?: string;
+      /** Format: uri */
+      linkedinUrl?: string;
+      /** Format: uri */
+      portfolioUrl?: string;
+      availableForHire?: boolean;
+      skillIds?: string[];
+    };
+    UserCvsUpdateResponse: {
       id: string;
       userId: string;
       jobTitle: string;
@@ -3096,6 +3212,88 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['UserCvsCreateResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  getUserCvsMine: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserCvsGetResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  patchUserCvsMine: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UserCvsUpdateBody'];
+        'application/x-www-form-urlencoded': components['schemas']['UserCvsUpdateBody'];
+        'multipart/form-data': components['schemas']['UserCvsUpdateBody'];
+      };
+    };
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['UserCvsUpdateResponse'];
         };
       };
       /** @description Response for status 400 */

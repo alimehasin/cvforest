@@ -21,10 +21,12 @@ export const cvs = new Elysia({ prefix: '/cvs' })
     },
   )
 
+  .use(mustBeUser)
+
   .get(
-    '/:id',
-    async ({ params: { id }, t }) => {
-      return userCvsService.getById(id, t);
+    '/mine',
+    async ({ user, t }) => {
+      return userCvsService.getByUserId(user.id, t);
     },
     {
       response: {
@@ -33,7 +35,18 @@ export const cvs = new Elysia({ prefix: '/cvs' })
     },
   )
 
-  .use(mustBeUser)
+  .patch(
+    '/mine',
+    async ({ user, t, body }) => {
+      return userCvsService.update(user.id, t, body);
+    },
+    {
+      body: 'UserCvsUpdateBody',
+      response: {
+        200: 'UserCvsUpdateResponse',
+      },
+    },
+  )
 
   .post(
     '/',
@@ -45,6 +58,18 @@ export const cvs = new Elysia({ prefix: '/cvs' })
       body: 'UserCvsCreateBody',
       response: {
         201: 'UserCvsCreateResponse',
+      },
+    },
+  )
+
+  .get(
+    '/:id',
+    async ({ params: { id }, t }) => {
+      return userCvsService.getById(id, t);
+    },
+    {
+      response: {
+        200: 'UserCvsGetResponse',
       },
     },
   );
