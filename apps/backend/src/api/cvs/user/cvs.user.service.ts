@@ -45,14 +45,14 @@ export const userCvsService = {
         user: { governorateId: query.governorateId },
       }),
 
-      // Filter by availability type
+      // Filter by availability type (array has)
       ...(query.availabilityType && {
-        availabilityType: query.availabilityType,
+        availabilityTypes: { has: query.availabilityType },
       }),
 
-      // Filter by work location type
+      // Filter by work location type (array has)
       ...(query.workLocationType && {
-        workLocationType: query.workLocationType,
+        workLocationTypes: { has: query.workLocationType },
       }),
 
       // Filter by experience range
@@ -257,8 +257,8 @@ export const userCvsService = {
         expectedSalaryMin: cvBody.expectedSalaryMin,
         expectedSalaryMax: cvBody.expectedSalaryMax,
         expectedSalaryCurrency: cvBody.expectedSalaryCurrency,
-        availabilityType: cvBody.availabilityType,
-        workLocationType: cvBody.workLocationType,
+        availabilityTypes: cvBody.availabilityTypes,
+        workLocationTypes: cvBody.workLocationTypes,
         bio: cvBody.bio,
         githubUrl: cvBody.githubUrl,
         linkedinUrl: cvBody.linkedinUrl,

@@ -100,13 +100,14 @@ model Cv {
   expectedSalaryMin      Int?
   expectedSalaryMax      Int?
   expectedSalaryCurrency Currency?
-  availabilityType       AvailabilityType
-  workLocationType       WorkLocationType
   bio                    String
   githubUrl              String?
   linkedinUrl            String?
   portfolioUrl           String?
   availableForHire       Boolean
+
+  availabilityTypes AvailabilityType[]
+  workLocationTypes WorkLocationType[]
 
   status CvStatus @default(Pending)
 

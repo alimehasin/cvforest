@@ -104,12 +104,24 @@ export function CvCard({ cv }: { cv: CvListItem }) {
 
           <InfoItem
             icon={IconBriefcase}
-            value={translateAvailabilityType(t, cv.availabilityType)}
+            value={
+              cv.availabilityTypes?.length
+                ? cv.availabilityTypes
+                    .map((a) => translateAvailabilityType(t, a))
+                    .join(', ')
+                : '-'
+            }
           />
 
           <InfoItem
             icon={IconWorld}
-            value={translateWorkLocationType(t, cv.workLocationType)}
+            value={
+              cv.workLocationTypes?.length
+                ? cv.workLocationTypes
+                    .map((w) => translateWorkLocationType(t, w))
+                    .join(', ')
+                : '-'
+            }
           />
 
           <InfoItem

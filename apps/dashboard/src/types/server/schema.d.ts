@@ -934,9 +934,9 @@ export interface components {
         expectedSalaryMax: null | (string | number);
         expectedSalaryCurrency: null | ('Iqd' | 'Usd');
         /** @enum {string} */
-        availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+        availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
         /** @enum {string} */
-        workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+        workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
         bio: string;
         githubUrl: null | string;
         linkedinUrl: null | string;
@@ -1004,9 +1004,9 @@ export interface components {
       expectedSalaryMax: null | (string | number);
       expectedSalaryCurrency: null | ('Iqd' | 'Usd');
       /** @enum {string} */
-      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio: string;
       githubUrl: null | string;
       linkedinUrl: null | string;
@@ -1123,8 +1123,8 @@ export interface components {
           expectedSalaryMin: null | (string | number);
           expectedSalaryMax: null | (string | number);
           expectedSalaryCurrency: null | ('Iqd' | 'Usd');
-          availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
-          workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+          availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
+          workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
           bio: string;
           githubUrl: null | string;
           linkedinUrl: null | string;
@@ -1305,9 +1305,9 @@ export interface components {
         jobTitle: string;
         experienceInYears: string | number;
         /** @enum {string} */
-        availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+        availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
         /** @enum {string} */
-        workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+        workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
         bio: string;
         githubUrl: null | string;
         linkedinUrl: null | string;
@@ -1372,9 +1372,9 @@ export interface components {
       jobTitle: string;
       experienceInYears: string | number;
       /** @enum {string} */
-      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio: string;
       githubUrl: null | string;
       linkedinUrl: null | string;
@@ -1453,9 +1453,9 @@ export interface components {
       /** @enum {string} */
       expectedSalaryCurrency?: 'Iqd' | 'Usd';
       /** @enum {string} */
-      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio: string;
       /** Format: uri */
       githubUrl?: string;
@@ -1472,9 +1472,9 @@ export interface components {
       jobTitle: string;
       experienceInYears: string | number;
       /** @enum {string} */
-      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio: string;
       githubUrl: null | string;
       linkedinUrl: null | string;
@@ -1553,9 +1553,9 @@ export interface components {
       /** @enum {string} */
       expectedSalaryCurrency?: 'Iqd' | 'Usd';
       /** @enum {string} */
-      availabilityType?: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes?: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType?: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes?: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio?: string;
       /** Format: uri */
       githubUrl?: string;
@@ -1572,9 +1572,9 @@ export interface components {
       jobTitle: string;
       experienceInYears: string | number;
       /** @enum {string} */
-      availabilityType: 'FullTime' | 'PartTime' | 'Freelance';
+      availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
       /** @enum {string} */
-      workLocationType: 'OnSite' | 'Remote' | 'Hybrid';
+      workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio: string;
       githubUrl: null | string;
       linkedinUrl: null | string;

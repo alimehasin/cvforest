@@ -28,8 +28,8 @@ function getInitialValues(
       expectedSalaryMin: undefined as number | undefined,
       expectedSalaryMax: undefined as number | undefined,
       expectedSalaryCurrency: undefined as Currency | undefined,
-      availabilityType: AvailabilityType.FullTime,
-      workLocationType: WorkLocationType.Remote,
+      availabilityTypes: [AvailabilityType.FullTime],
+      workLocationTypes: [WorkLocationType.Remote],
       bio: '',
       githubUrl: '',
       linkedinUrl: '',
@@ -50,8 +50,14 @@ function getInitialValues(
     expectedSalaryMin: undefined as number | undefined,
     expectedSalaryMax: undefined as number | undefined,
     expectedSalaryCurrency: undefined as Currency | undefined,
-    availabilityType: cv.availabilityType,
-    workLocationType: cv.workLocationType,
+    availabilityTypes:
+      cv.availabilityTypes?.length > 0
+        ? cv.availabilityTypes
+        : [AvailabilityType.FullTime],
+    workLocationTypes:
+      cv.workLocationTypes?.length > 0
+        ? cv.workLocationTypes
+        : [WorkLocationType.Remote],
     bio: cv.bio,
     githubUrl: cv.githubUrl ?? '',
     linkedinUrl: cv.linkedinUrl ?? '',
@@ -101,12 +107,12 @@ export function useUploadCvForm({
           error: t('uploadCv.currencyRequired'),
         })
         .optional(),
-      availabilityType: z.enum(AvailabilityType, {
-        error: t('uploadCv.availabilityRequired'),
-      }),
-      workLocationType: z.enum(WorkLocationType, {
-        error: t('uploadCv.workLocationRequired'),
-      }),
+      availabilityTypes: z
+        .array(z.enum(AvailabilityType))
+        .min(1, { error: t('uploadCv.availabilityRequired') }),
+      workLocationTypes: z
+        .array(z.enum(WorkLocationType))
+        .min(1, { error: t('uploadCv.workLocationRequired') }),
       bio: z.string().min(32, {
         error: t('uploadCv.bioMustBeAtLeast32Characters'),
       }),
@@ -166,8 +172,8 @@ export function useUploadCvForm({
         expectedSalaryCurrency: hasSalary
           ? values.expectedSalaryCurrency
           : undefined,
-        availabilityType: values.availabilityType,
-        workLocationType: values.workLocationType,
+        availabilityTypes: values.availabilityTypes,
+        workLocationTypes: values.workLocationTypes,
         bio: values.bio,
         githubUrl: githubUrl === '' ? undefined : githubUrl,
         linkedinUrl: linkedinUrl === '' ? undefined : linkedinUrl,

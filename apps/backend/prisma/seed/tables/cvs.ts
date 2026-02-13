@@ -31,8 +31,14 @@ export async function seedCvs(prisma: PrismaClient) {
         expectedSalaryMin: dunna.basic.integer({ min: 0, max: 100000 }),
         expectedSalaryMax: dunna.basic.integer({ min: 0, max: 100000 }),
         expectedSalaryCurrency: dunna.basic.choice(Object.values(Currency)),
-        availabilityType: dunna.basic.choice(Object.values(AvailabilityType)),
-        workLocationType: dunna.basic.choice(Object.values(WorkLocationType)),
+        availabilityTypes: dunna.basic.pick(
+          dunna.basic.integer({ min: 1, max: 3 }),
+          Object.values(AvailabilityType),
+        ),
+        workLocationTypes: dunna.basic.pick(
+          dunna.basic.integer({ min: 1, max: 3 }),
+          Object.values(WorkLocationType),
+        ),
         availableForHire: dunna.basic.boolean(),
         bio: dunna.basic.choice(bios),
         githubUrl: 'https://github.com/alimehasin',

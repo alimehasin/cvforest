@@ -147,8 +147,10 @@ export function CvsRowExpansion({ cv }: CvsRowExpansionProps) {
                 label={t('cvs.availabilityType')}
                 value={
                   <Text>
-                    {cv.availabilityType
-                      ? translateAvailabilityType(t, cv.availabilityType)
+                    {cv.availabilityTypes?.length
+                      ? cv.availabilityTypes
+                          .map((a) => translateAvailabilityType(t, a))
+                          .join(', ')
                       : '-'}
                   </Text>
                 }
@@ -159,8 +161,10 @@ export function CvsRowExpansion({ cv }: CvsRowExpansionProps) {
                 label={t('cvs.workLocationType')}
                 value={
                   <Text>
-                    {cv.workLocationType
-                      ? translateWorkLocationType(t, cv.workLocationType)
+                    {cv.workLocationTypes?.length
+                      ? cv.workLocationTypes
+                          .map((w) => translateWorkLocationType(t, w))
+                          .join(', ')
                       : '-'}
                   </Text>
                 }

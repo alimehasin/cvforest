@@ -119,21 +119,25 @@ export function UserSidebar({ user }: UserSidebarProps) {
             />
           )}
 
-          {user.availabilityType && (
+          {user.availabilityTypes?.length ? (
             <InfoRow
               icon={IconBriefcase}
               label={t('users.availabilityType')}
-              value={translateAvailabilityType(t, user.availabilityType)}
+              value={user.availabilityTypes
+                .map((a) => translateAvailabilityType(t, a))
+                .join(', ')}
             />
-          )}
+          ) : null}
 
-          {user.workLocationType && (
+          {user.workLocationTypes?.length ? (
             <InfoRow
               icon={IconWorld}
               label={t('users.workLocationType')}
-              value={translateWorkLocationType(t, user.workLocationType)}
+              value={user.workLocationTypes
+                .map((w) => translateWorkLocationType(t, w))
+                .join(', ')}
             />
-          )}
+          ) : null}
         </Stack>
       </Paper>
     </Stack>

@@ -216,21 +216,21 @@ export function UploadCvForm({
           description={t('uploadCv.sectionAvailabilityAndSalaryDescription')}
         >
           <SimpleGrid cols={3}>
-            <Select
+            <MultiSelect
               required
-              key={form.key('availabilityType')}
+              key={form.key('availabilityTypes')}
               label={t('uploadCv.availabilityType')}
               data={availabilityOptions}
               leftSection={<IconBriefcase size={18} />}
-              {...form.getInputProps('availabilityType')}
+              {...form.getInputProps('availabilityTypes')}
             />
 
-            <Select
+            <MultiSelect
               required
-              key={form.key('workLocationType')}
+              key={form.key('workLocationTypes')}
               label={t('uploadCv.workLocationType')}
               data={workLocationOptions}
-              {...form.getInputProps('workLocationType')}
+              {...form.getInputProps('workLocationTypes')}
             />
 
             <Select
