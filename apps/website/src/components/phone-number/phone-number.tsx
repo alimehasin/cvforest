@@ -8,7 +8,7 @@ export interface PhoneNumberProps extends TextProps {
 
 export function PhoneNumber({ phone, ...props }: PhoneNumberProps) {
   return (
-    <Text className={cls.root} {...props}>
+    <Text component="span" className={cls.root} {...props}>
       {formatPhoneNumber(phone)}
     </Text>
   );
