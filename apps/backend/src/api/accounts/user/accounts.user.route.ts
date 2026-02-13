@@ -49,11 +49,23 @@ export const accounts = new Elysia({ prefix: '/accounts' })
 
   .post(
     '/sign-in',
-    async ({ body: { email, password } }) => {
-      const res = await auth.api.signInEmail({
-        asResponse: true,
-        body: { email, password },
-      });
+    async ({ t, set, body: { email, password } }) => {
+      const res = await auth.api
+        .signInEmail({
+          returnHeaders: true,
+          body: { email, password },
+        })
+        .catch(() => {
+          throw new HttpError({
+            statusCode: 401,
+            message: t({
+              en: 'Invalid email or password',
+              ar: 'البريد الإلكتروني أو كلمة المرور غير صحيحة',
+            }),
+          });
+        });
+
+      setBetterAuthHeaders(set, res.headers);
 
       return res;
     },
