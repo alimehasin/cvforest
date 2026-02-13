@@ -41,7 +41,7 @@ export async function Footer() {
             </Text>
           </Stack>
 
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="xl">
+          <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
             <Stack gap="sm">
               <Text fw={600} size="sm" className={cls.sectionTitle}>
                 {t('footer.quickLinks')}
