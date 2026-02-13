@@ -1,6 +1,7 @@
 import { Elysia } from 'elysia';
 import { init } from '@/init';
 import { mustBeUser } from '@/plugins/better-auth';
+import { trackCvView } from '../cv.helpers';
 import { UserCvsModel } from './cvs.user.model';
 import { userCvsService } from './cvs.user.service';
 
@@ -64,10 +65,13 @@ export const cvs = new Elysia({ prefix: '/cvs' })
 
   .get(
     '/:id',
-    async ({ params: { id }, t }) => {
+    async ({ t, params: { id } }) => {
       return userCvsService.getById(id, t);
     },
     {
+      afterHandle: async ({ params: { id }, request, server }) => {
+        await trackCvView(id, request, server);
+      },
       response: {
         200: 'UserCvsGetResponse',
       },

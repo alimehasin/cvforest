@@ -942,6 +942,7 @@ export interface components {
         workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
         /** @enum {string} */
         status: 'Pending' | 'Approved' | 'Rejected';
+        views: string | number;
         createdAt: Record<string, never> | string | number;
         updatedAt: Record<string, never> | string | number;
         user: {
@@ -1010,6 +1011,7 @@ export interface components {
       workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       /** @enum {string} */
       status: 'Pending' | 'Approved' | 'Rejected';
+      views: string | number;
       createdAt: Record<string, never> | string | number;
       updatedAt: Record<string, never> | string | number;
       user: {
@@ -1127,6 +1129,7 @@ export interface components {
           availabilityTypes: ('FullTime' | 'PartTime' | 'Freelance')[];
           workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
           status: 'Pending' | 'Approved' | 'Rejected';
+          views: string | number;
           createdAt: Record<string, never> | string | number;
           updatedAt: Record<string, never> | string | number;
         };
@@ -1305,6 +1308,7 @@ export interface components {
         workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
         /** @enum {string} */
         status: 'Pending' | 'Approved' | 'Rejected';
+        views: string | number;
         createdAt: Record<string, never> | string | number;
         updatedAt: Record<string, never> | string | number;
         user: {
@@ -1370,6 +1374,7 @@ export interface components {
       workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       /** @enum {string} */
       status: 'Pending' | 'Approved' | 'Rejected';
+      views: string | number;
       createdAt: Record<string, never> | string | number;
       updatedAt: Record<string, never> | string | number;
       user: {
@@ -1462,6 +1467,7 @@ export interface components {
       workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       /** @enum {string} */
       status: 'Pending' | 'Approved' | 'Rejected';
+      views: string | number;
       createdAt: Record<string, never> | string | number;
       updatedAt: Record<string, never> | string | number;
       user: {
@@ -1554,6 +1560,7 @@ export interface components {
       workLocationTypes: ('OnSite' | 'Remote' | 'Hybrid')[];
       /** @enum {string} */
       status: 'Pending' | 'Approved' | 'Rejected';
+      views: string | number;
       createdAt: Record<string, never> | string | number;
       updatedAt: Record<string, never> | string | number;
       user: {

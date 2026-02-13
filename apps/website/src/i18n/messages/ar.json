@@ -232,7 +232,8 @@
     "portfolio": "المعرض",
     "professionalDetails": "التفاصيل المهنية",
     "skills": "المهارات والتقنيات",
-    "viewOnGithub": "عرض على GitHub"
+    "viewOnGithub": "عرض على GitHub",
+    "views": "مشاهدات الملف"
   },
   "users": {
     "availabilityType": "نوع التوفر",
