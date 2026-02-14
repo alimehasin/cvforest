@@ -45,7 +45,7 @@ export const accounts = new Elysia({ prefix: '/accounts' })
             },
             afterResponse: async ({ body }) => {
               await sendMessageToChannel(
-                `New user registered: ${body.name} (${body.email})`,
+                `👋 New user registered\n<b>${body.name}</b>\n${body.email}`,
               );
             },
           },

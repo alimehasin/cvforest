@@ -64,7 +64,7 @@ export const cvs = new Elysia({ prefix: '/cvs' })
       },
       afterResponse: async ({ user }) => {
         await sendMessageToChannel(
-          `CV updated by ${user.name} (${user.email})`,
+          `📝 CV updated\n<b>${user.name}</b>\n${user.email}`,
         );
       },
     },
@@ -83,7 +83,7 @@ export const cvs = new Elysia({ prefix: '/cvs' })
       },
       afterResponse: async ({ user }) => {
         await sendMessageToChannel(
-          `New CV created by ${user.name} (${user.email})`,
+          `✨ New CV created\n<b>${user.name}</b>\n${user.email}`,
         );
       },
     },
