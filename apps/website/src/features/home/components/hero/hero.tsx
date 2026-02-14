@@ -1,5 +1,6 @@
 import { Button, Container, Group, Stack, Text, Title } from '@mantine/core';
 import {
+  IconBrandGithub,
   IconBriefcase,
   IconCode,
   IconFileDescription,
@@ -42,6 +43,19 @@ export async function Hero() {
       <Container size="md" className={cls.content}>
         <Stack align="center" gap="xl" py={100}>
           <Stack align="center" gap="md" maw={760}>
+            <Button
+              component={Link}
+              href="https://github.com/alimehasin/cvforest"
+              variant="subtle"
+              size="sm"
+              color="dark"
+              leftSection={<IconBrandGithub size={18} />}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('hero.starOnGitHub')}
+            </Button>
+
             <Title order={1} ta="center" className={cls.title}>
               {t('hero.title')}
             </Title>
