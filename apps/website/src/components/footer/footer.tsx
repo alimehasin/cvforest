@@ -25,7 +25,11 @@ export async function Footer() {
 
   const socialLinks = [
     { icon: IconBrandX, href: 'https://x.com', label: 'X' },
-    { icon: IconBrandGithub, href: 'https://github.com', label: 'GitHub' },
+    {
+      icon: IconBrandGithub,
+      href: 'https://githubhttps://github.com/alimehasin/cvforest.com',
+      label: 'GitHub',
+    },
     {
       icon: IconBrandLinkedin,
       href: 'https://www.linkedin.com/showcase/cvforest',
