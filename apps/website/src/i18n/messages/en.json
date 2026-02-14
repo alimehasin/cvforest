@@ -238,8 +238,7 @@
     "portfolio": "Portfolio",
     "professionalDetails": "Professional Details",
     "skills": "Skills & Technologies",
-    "viewOnGithub": "View on GitHub",
-    "views": "Profile views"
+    "viewOnGithub": "View on GitHub"
   },
   "users": {
     "availabilityType": "Availability Type",

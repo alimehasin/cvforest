@@ -65,6 +65,12 @@ export function Cvs({ initialData }: CvsProps) {
               width: 200,
             },
             {
+              accessor: 'views',
+              title: t('cvs.views'),
+              width: 200,
+              render: ({ views }) => Number(views).toLocaleString(),
+            },
+            {
               accessor: 'status',
               title: t('cvs.status'),
               width: 200,
