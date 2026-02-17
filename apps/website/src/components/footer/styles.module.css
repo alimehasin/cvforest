@@ -40,14 +40,6 @@
   color: var(--mantine-color-primary-filled);
 }
 
-.socialIcon {
-  transition: transform 150ms ease;
-}
-
-.socialIcon:hover {
-  transform: scale(1.1);
-}
-
 .languageOption {
   transition: opacity 150ms ease;
 }

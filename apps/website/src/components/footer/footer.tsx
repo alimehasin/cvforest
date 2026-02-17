@@ -10,13 +10,13 @@ import {
 } from '@mantine/core';
 import {
   IconBrandGithub,
+  IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandX,
 } from '@tabler/icons-react';
 import dayjs from 'dayjs';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/components/link/link';
-import { FooterLanguageSwitcher } from './footer-language-switcher';
 import cls from './styles.module.css';
 
 export async function Footer() {
@@ -24,7 +24,6 @@ export async function Footer() {
   const currentYear = dayjs().year();
 
   const socialLinks = [
-    { icon: IconBrandX, href: 'https://x.com', label: 'X' },
     {
       icon: IconBrandGithub,
       href: 'https://github.com/alimehasin/cvforest',
@@ -34,6 +33,16 @@ export async function Footer() {
       icon: IconBrandLinkedin,
       href: 'https://www.linkedin.com/showcase/cvforest',
       label: 'LinkedIn',
+    },
+    {
+      icon: IconBrandX,
+      href: 'https://x.com/cvforest_social',
+      label: 'X',
+    },
+    {
+      icon: IconBrandInstagram,
+      href: 'https://www.instagram.com/cvforest_social',
+      label: 'Instagram',
     },
   ];
 
@@ -61,7 +70,7 @@ export async function Footer() {
             </Text>
           </Stack>
 
-          <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
+          <SimpleGrid cols={{ base: 2, md: 3 }} spacing="xl">
             <Stack gap="sm">
               <Text fw={600} size="sm" className={cls.sectionTitle}>
                 {t('footer.quickLinks')}
@@ -106,30 +115,21 @@ export async function Footer() {
               <Text fw={600} size="sm" className={cls.sectionTitle}>
                 {t('footer.followUs')}
               </Text>
-              <Group gap="xs">
+              <Group gap={4}>
                 {socialLinks.map((social) => (
                   <ActionIcon
-                    key={social.label}
                     component="a"
+                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="subtle"
-                    size="lg"
                     aria-label={social.label}
-                    className={cls.socialIcon}
                   >
                     <social.icon size={20} />
                   </ActionIcon>
                 ))}
               </Group>
-            </Stack>
-
-            <Stack gap="sm">
-              <Text fw={600} size="sm" className={cls.sectionTitle}>
-                {t('footer.language')}
-              </Text>
-              <FooterLanguageSwitcher />
             </Stack>
           </SimpleGrid>
         </div>
