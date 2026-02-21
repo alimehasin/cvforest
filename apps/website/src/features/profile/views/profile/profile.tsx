@@ -16,8 +16,8 @@ export function Profile({ initialData }: { initialData: ProfileResponseBody }) {
   const signOutMut = useSignOut();
 
   return (
-    <Stack>
-      <SimpleGrid cols={2}>
+    <Stack gap="md">
+      <SimpleGrid cols={{ base: 1, sm: 2 }}>
         <ProfileInfo profile={profile.data} />
         <ProfileForm profile={profile.data} />
       </SimpleGrid>
