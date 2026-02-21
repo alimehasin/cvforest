@@ -9,6 +9,7 @@ export const env = createEnv({
     API_BASE_URL: process.env.API_BASE_URL,
     NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
     NEXT_PUBLIC_STORAGE_BASE_URL: process.env.NEXT_PUBLIC_STORAGE_BASE_URL,
+    NEXT_PUBLIC_CLARITY_PROJECT_ID: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
   },
 
   server: {
@@ -18,5 +19,6 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_API_BASE_URL: z.url(),
     NEXT_PUBLIC_STORAGE_BASE_URL: z.url(),
+    NEXT_PUBLIC_CLARITY_PROJECT_ID: z.string().optional(),
   },
 });

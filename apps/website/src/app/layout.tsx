@@ -2,6 +2,7 @@ import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import type { Metadata } from 'next';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ClientConfigs } from '@/components/client-configs';
+import { MicrosoftClarity } from '@/components/microsoft-clarity';
 import { MantineProviders } from '@/providers/mantine-providers';
 import { NextIntlProvider } from '@/providers/nex-intl-provider';
 import { QueryClientProvider } from '@/providers/query-client-provider';
@@ -37,6 +38,7 @@ export default async function RootLayout({
               {children}
 
               <ClientConfigs locale={locale} />
+              <MicrosoftClarity />
             </MantineProviders>
           </QueryClientProvider>
         </NextIntlProvider>
