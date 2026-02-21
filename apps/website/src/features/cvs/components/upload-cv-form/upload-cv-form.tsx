@@ -134,7 +134,7 @@ export function UploadCvForm({
               src={constructImageUrl(profile.avatar?.key)}
             />
 
-            <SimpleGrid cols={2} style={{ flexGrow: 1 }}>
+            <SimpleGrid cols={{ md: 2 }} style={{ flexGrow: 1 }}>
               <TextInput
                 required
                 key={form.key('name')}
@@ -186,7 +186,7 @@ export function UploadCvForm({
           description={t('uploadCv.sectionProfessionalDescription')}
         >
           <Stack>
-            <SimpleGrid cols={2} style={{ alignItems: 'end' }}>
+            <SimpleGrid cols={{ md: 2 }} style={{ alignItems: 'end' }}>
               <TextInput
                 required
                 key={form.key('jobTitle')}
@@ -225,7 +225,7 @@ export function UploadCvForm({
           label={t('uploadCv.sectionAvailabilityAndSalary')}
           description={t('uploadCv.sectionAvailabilityAndSalaryDescription')}
         >
-          <SimpleGrid cols={3}>
+          <SimpleGrid cols={{ md: 3 }}>
             <MultiSelect
               required
               key={form.key('availabilityTypes')}
@@ -299,7 +299,7 @@ export function UploadCvForm({
               {...form.getInputProps('bio')}
             />
 
-            <SimpleGrid cols={3}>
+            <SimpleGrid cols={{ md: 3 }}>
               <TextInput
                 key={form.key('githubUrl')}
                 label={`${t('uploadCv.githubUrl')} (${t('uploadCv.optional')})`}
