@@ -49,7 +49,7 @@ export function ProfileInfo({ profile }: { profile: ProfileResponseBody }) {
           <ProfileAvatar profile={profile} />
 
           <Stack gap={0}>
-            <Title order={3}>{profile.name}</Title>
+            <Title order={4}>{profile.name}</Title>
 
             <Text fz={14} c="gray.7">
               {profile.email}
