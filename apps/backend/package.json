@@ -14,7 +14,7 @@
     "scripts:create-admin": "bun run scripts/create-admin.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.995.0",
+    "@aws-sdk/client-s3": "^3.996.0",
     "@bogeychan/elysia-logger": "^0.1.10",
     "@elysiajs/cors": "^1.4.1",
     "@elysiajs/cron": "^1.4.1",
@@ -22,7 +22,7 @@
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "@t3-oss/env-core": "^0.13.10",
-    "better-auth": "^1.4.18",
+    "better-auth": "^1.4.19",
     "dotenv": "^17.3.1",
     "elysia": "^1.4.25",
     "elysia-helmet": "^3.0.0",
@@ -35,7 +35,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@inquirer/prompts": "^8.2.1",
+    "@inquirer/prompts": "^8.3.0",
     "@repo/tsconfig": "workspace:*",
     "@types/bun": "^1.3.9",
     "chalk": "^5.6.2",
