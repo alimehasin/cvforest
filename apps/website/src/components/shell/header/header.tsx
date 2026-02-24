@@ -1,6 +1,7 @@
 'use client';
 
-import { Anchor, Box, Container, Group } from '@mantine/core';
+import { Anchor, Box, Container, Group, Title } from '@mantine/core';
+import Image from 'next/image';
 import { Link } from '@/components/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
 import { DesktopNav } from './desktop-nav';
@@ -17,13 +18,21 @@ export function Header({ session }: HeaderProps) {
       <Group p="sm" justify="space-between" wrap="nowrap">
         <Anchor
           underline="never"
-          fz="h2"
-          fw={600}
           href="/"
           component={Link}
           className={cls.logo}
+          aria-label="CV Forest"
         >
-          CV Forest
+          <Image
+            src="/logo-512.png"
+            alt="CV Forest"
+            width={160}
+            height={40}
+            className={cls.logoImage}
+            priority
+          />
+
+          <Title order={3}>CV Forest</Title>
         </Anchor>
 
         <Box visibleFrom="sm">

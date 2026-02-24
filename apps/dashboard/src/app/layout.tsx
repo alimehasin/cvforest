@@ -13,6 +13,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t('meta.title'),
     description: t('meta.description'),
     robots: 'noindex, nofollow',
+    icons: {
+      icon: '/logo-512.png',
+      apple: '/logo-512.png',
+    },
   };
 }
 

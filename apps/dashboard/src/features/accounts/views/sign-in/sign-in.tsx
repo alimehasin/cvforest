@@ -20,6 +20,7 @@ import {
   IconLogin,
   IconUser,
 } from '@tabler/icons-react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useSignInForm } from '@/features/accounts/hooks/use-sign-in-form';
 import { useSignInMut } from '@/features/accounts/hooks/use-sign-in-mut';
@@ -45,7 +46,18 @@ export function SignIn({ locale }: { locale: string }) {
         bg="var(--mantine-primary-color-1)"
       >
         <Center h="100%" p="xl">
-          <Title>{t('signIn.logo')}</Title>
+          <Image
+            src="/logo-1024.png"
+            alt="CV Forest"
+            width={320}
+            height={320}
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+              borderRadius: '100vw',
+            }}
+          />
         </Center>
       </Box>
 

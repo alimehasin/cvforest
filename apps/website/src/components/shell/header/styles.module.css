@@ -2,3 +2,14 @@
   background-color: var(--mantine-color-white);
   border-bottom: 1px solid var(--mantine-color-gray-3);
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
