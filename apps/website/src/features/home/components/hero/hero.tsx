@@ -14,7 +14,11 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/components/link/link';
 import cls from './styles.module.css';
 
-export async function Hero() {
+interface HeroProps {
+  hasCv: boolean;
+}
+
+export async function Hero({ hasCv }: HeroProps) {
   const t = await getTranslations();
 
   const glassCards = [
@@ -72,26 +76,40 @@ export async function Hero() {
           </Stack>
 
           <Group gap="md" wrap="wrap" justify="center" className={cls.buttons}>
-            <Button
-              size="lg"
-              href="/upload-cv"
-              component={Link}
-              leftSection={<IconUpload size={20} />}
-              className={cls.ctaPrimary}
-            >
-              {t('hero.ctaDeveloper')}
-            </Button>
+            {hasCv ? (
+              <Button
+                size="lg"
+                href="/cvs"
+                component={Link}
+                leftSection={<IconBriefcase size={20} />}
+                className={cls.ctaSecondary}
+              >
+                {t('hero.ctaRecruiter')}
+              </Button>
+            ) : (
+              <>
+                <Button
+                  size="lg"
+                  href="/upload-cv"
+                  component={Link}
+                  leftSection={<IconUpload size={20} />}
+                  className={cls.ctaPrimary}
+                >
+                  {t('hero.ctaDeveloper')}
+                </Button>
 
-            <Button
-              size="lg"
-              href="/cvs"
-              variant="outline"
-              component={Link}
-              leftSection={<IconBriefcase size={20} />}
-              className={cls.ctaSecondary}
-            >
-              {t('hero.ctaRecruiter')}
-            </Button>
+                <Button
+                  size="lg"
+                  href="/cvs"
+                  variant="outline"
+                  component={Link}
+                  leftSection={<IconBriefcase size={20} />}
+                  className={cls.ctaSecondary}
+                >
+                  {t('hero.ctaRecruiter')}
+                </Button>
+              </>
+            )}
           </Group>
 
           <Group gap="sm" wrap="wrap" justify="center" className={cls.features}>
