@@ -126,7 +126,6 @@
   },
   "signIn": {
     "email": "Email",
-    "logo": "Logo Here",
     "password": "Password",
     "signIn": "Sign in",
     "signInTitle": "Sign in to your account"

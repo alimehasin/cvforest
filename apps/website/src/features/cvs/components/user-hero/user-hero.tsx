@@ -3,6 +3,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Button,
   Group,
   Stack,
   Text,
@@ -12,6 +13,7 @@ import {
 import {
   IconBrandGithub,
   IconBrandLinkedin,
+  IconFileCv,
   IconMail,
   IconWorld,
 } from '@tabler/icons-react';
@@ -94,39 +96,41 @@ export function UserHero({ user, actions }: UserHeroProps) {
         </Group>
 
         {/* Social links */}
-        {(socialLinks.length > 0 || user.user.email) && (
-          <Group gap="xs">
-            {socialLinks.map((link) => (
-              <Tooltip key={link.label} label={link.label} withArrow>
-                <ActionIcon
-                  component="a"
-                  href={link.url as string}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="light"
-                  size="lg"
-                  radius="xl"
-                  className={cls.socialButton}
-                >
-                  <link.icon size={18} />
-                </ActionIcon>
-              </Tooltip>
-            ))}
+        <Group gap="xs">
+          <Button leftSection={<IconFileCv size={18} />}>
+            {t('cvs.showCv')}
+          </Button>
 
-            <Tooltip label={t('users.email')} withArrow>
+          {socialLinks.map((link) => (
+            <Tooltip key={link.label} label={link.label} withArrow>
               <ActionIcon
                 component="a"
-                href={`mailto:${user.user.email}`}
+                href={link.url as string}
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="light"
                 size="lg"
                 radius="xl"
                 className={cls.socialButton}
               >
-                <IconMail size={18} />
+                <link.icon size={18} />
               </ActionIcon>
             </Tooltip>
-          </Group>
-        )}
+          ))}
+
+          <Tooltip label={t('users.email')} withArrow>
+            <ActionIcon
+              component="a"
+              href={`mailto:${user.user.email}`}
+              variant="light"
+              size="lg"
+              radius="xl"
+              className={cls.socialButton}
+            >
+              <IconMail size={18} />
+            </ActionIcon>
+          </Tooltip>
+        </Group>
       </Group>
     </Box>
   );
