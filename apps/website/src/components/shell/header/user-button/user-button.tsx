@@ -3,7 +3,7 @@
 import { Avatar } from '@mantine/core';
 import { Link } from '@/components/link';
 import type { SessionResponseBody } from '@/features/accounts/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 
 interface UserButtonProps {
   session: SessionResponseBody;
@@ -17,7 +17,7 @@ export function UserButton({ session }: UserButtonProps) {
       href="/profile"
       component={Link}
       name={session.user.name}
-      src={constructImageUrl(session.user.avatar?.key)}
+      src={constructFileUrl(session.user.avatar?.key)}
     />
   );
 }

@@ -10,7 +10,7 @@ import { useHover } from '@mantine/hooks';
 import { IconCamera } from '@tabler/icons-react';
 import { useAvatarUpdate } from '@/features/profile/hooks/use-avatar-update';
 import type { ProfileResponseBody } from '@/features/profile/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import cls from './styles.module.css';
 
 export function ProfileAvatar({ profile }: { profile: ProfileResponseBody }) {
@@ -30,7 +30,7 @@ export function ProfileAvatar({ profile }: { profile: ProfileResponseBody }) {
           <Avatar
             name={profile.name}
             className={cls.avatar}
-            src={constructImageUrl(profile.avatar?.key)}
+            src={constructFileUrl(profile.avatar?.key)}
           />
 
           {updateImageMut.isPending && (

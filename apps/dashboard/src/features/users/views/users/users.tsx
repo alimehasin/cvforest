@@ -8,7 +8,7 @@ import { PhoneNumber } from '@/components/phone-number';
 import { SearchInput } from '@/components/search-input';
 import { useUsersList } from '@/features/users/hooks/use-users-list';
 import type { UsersList } from '@/features/users/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 
 interface UsersProps {
   initialData: UsersList;
@@ -45,7 +45,7 @@ export function Users({ initialData }: UsersProps) {
                 <Center>
                   <Avatar
                     radius="var(--mantine-radius-md)"
-                    src={constructImageUrl(avatar?.key)}
+                    src={constructFileUrl(avatar?.key)}
                   />
                 </Center>
               ),

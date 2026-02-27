@@ -29,7 +29,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useKy } from '@/hooks/use-ky';
 import { useSetLocale } from '@/hooks/use-set-locale';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import cls from './styles.module.css';
 import type { ProfileResponseBody } from './types';
 
@@ -64,7 +64,7 @@ export function UserButton() {
             ) : (
               <Avatar
                 name={profile.data?.name ?? undefined}
-                src={constructImageUrl(profile.data?.avatar?.key)}
+                src={constructFileUrl(profile.data?.avatar?.key)}
               />
             )}
 

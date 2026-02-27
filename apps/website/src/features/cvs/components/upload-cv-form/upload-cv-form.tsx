@@ -46,7 +46,7 @@ import { useSkillsQuery } from '@/features/cvs/hooks/use-skills-query';
 import { useUploadCvForm } from '@/features/cvs/hooks/use-upload-cv-form';
 import type { UserDetailResponse } from '@/features/cvs/types';
 import type { ProfileResponseBody } from '@/features/profile/types';
-import { constructFileUrl, constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import {
   translateAvailabilityType,
   translateCurrency,
@@ -140,7 +140,7 @@ export function UploadCvForm({
               size={128}
               radius="100vw"
               name={profile.name}
-              src={constructImageUrl(profile.avatar?.key)}
+              src={constructFileUrl(profile.avatar?.key)}
             />
 
             <SimpleGrid cols={{ md: 2 }} style={{ flexGrow: 1 }}>

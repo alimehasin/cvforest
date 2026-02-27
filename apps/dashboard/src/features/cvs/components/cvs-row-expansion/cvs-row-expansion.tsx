@@ -31,7 +31,7 @@ import { useTranslations } from 'next-intl';
 import { BooleanBadge } from '@/components/boolean-badge';
 import { PhoneNumber } from '@/components/phone-number';
 import type { Cv } from '@/features/cvs/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import {
   translateAvailabilityType,
   translateCurrency,
@@ -89,7 +89,7 @@ export function CvsRowExpansion({ cv }: CvsRowExpansionProps) {
                 size={80}
                 radius="md"
                 name={user.name}
-                src={constructImageUrl(user.avatar?.key)}
+                src={constructFileUrl(user.avatar?.key)}
               />
               <Stack gap={4}>
                 <Title order={2}>{user.name}</Title>

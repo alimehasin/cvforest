@@ -16,7 +16,7 @@ import {
   IconWorld,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import type { UserDetailResponse } from '../../types';
 import cls from './styles.module.css';
 
@@ -69,7 +69,7 @@ export function UserHero({ user, actions }: UserHeroProps) {
                 size={112}
                 radius="50%"
                 name={user.user.name}
-                src={constructImageUrl(user.user.avatar?.key)}
+                src={constructFileUrl(user.user.avatar?.key)}
                 color="primary"
               />
             </div>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { UserDetailResponse } from '@/features/cvs/types';
 import { CvDetail } from '@/features/cvs/views/cv-detail';
 import { getKy } from '@/server/actions';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 
 export async function generateMetadata({
   params,
@@ -13,7 +13,7 @@ export async function generateMetadata({
   const { id } = await params;
   const cv = await ky.get(`cvs/${id}`).json<UserDetailResponse>();
 
-  const image = constructImageUrl(cv.user.avatar?.key);
+  const image = constructFileUrl(cv.user.avatar?.key);
 
   return {
     title: cv.user.name,

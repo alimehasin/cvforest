@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { SearchInput } from '@/components/search-input';
 import { useCvsList } from '@/features/cvs/hooks/use-cvs-list';
 import type { CvsList } from '@/features/cvs/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import { CvStatusBadge } from '../../components/cv-status-badge';
 import { CvsRowExpansion } from '../../components/cvs-row-expansion';
 
@@ -49,7 +49,7 @@ export function Cvs({ initialData }: CvsProps) {
                 <Center>
                   <Avatar
                     radius="var(--mantine-radius-md)"
-                    src={constructImageUrl(user.avatar?.key)}
+                    src={constructFileUrl(user.avatar?.key)}
                   />
                 </Center>
               ),

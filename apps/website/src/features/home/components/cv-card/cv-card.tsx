@@ -21,7 +21,7 @@ import {
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/components/link';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl } from '@/utils/helpers';
 import {
   translateAvailabilityType,
   translateWorkLocationType,
@@ -73,7 +73,7 @@ export function CvCard({ cv }: { cv: CvListItem }) {
                 radius="50%"
                 color="primary"
                 name={cv.user.name}
-                src={constructImageUrl(cv.user.avatar?.key)}
+                src={constructFileUrl(cv.user.avatar?.key)}
               />
             </div>
           </div>

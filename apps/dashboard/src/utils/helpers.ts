@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import parsePhoneNumber from 'libphonenumber-js';
 import { env } from '@/env';
 
-export function constructImageUrl(key: string | undefined) {
+export function constructFileUrl(key: string | undefined) {
   if (!key) {
     return undefined;
   }
