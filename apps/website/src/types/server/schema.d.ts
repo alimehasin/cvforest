@@ -1463,7 +1463,7 @@ export interface components {
       portfolioUrl?: string;
       availableForHire: boolean;
       /** Format: uuid */
-      fileId: string;
+      fileId?: string;
       skillIds: string[];
     };
     UserCvsCreateResponse: {
@@ -1554,10 +1554,15 @@ export interface components {
       availabilityTypes?: ('FullTime' | 'PartTime' | 'Freelance')[];
       workLocationTypes?: ('OnSite' | 'Remote' | 'Hybrid')[];
       bio?: string;
-      githubUrl?: string | null;
-      linkedinUrl?: string | null;
-      portfolioUrl?: string | null;
+      /** Format: uri */
+      githubUrl?: string;
+      /** Format: uri */
+      linkedinUrl?: string;
+      /** Format: uri */
+      portfolioUrl?: string;
       availableForHire?: boolean;
+      /** Format: uuid */
+      fileId?: string;
       skillIds?: string[];
     };
     UserCvsUpdateResponse: {

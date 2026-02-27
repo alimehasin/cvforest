@@ -58,7 +58,7 @@ const CvForm = t.Object({
   linkedinUrl: t.Optional(t.String({ format: 'uri' })),
   portfolioUrl: t.Optional(t.String({ format: 'uri' })),
   availableForHire: t.Boolean(),
-  fileId: t.String({ format: 'uuid' }),
+  fileId: t.Optional(t.String({ format: 'uuid' })),
   skillIds: t.Array(t.String({ format: 'uuid' }), {
     minItems: 3,
     maxItems: 12,
