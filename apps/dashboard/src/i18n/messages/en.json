@@ -2,7 +2,6 @@
   "_": {
     "done": "Done",
     "error": "Error",
-    "hello": "Hello",
     "no": "No",
     "save": "Save",
     "search": "Search",
@@ -63,6 +62,12 @@
     "name": "Name",
     "nameRequired": "Name is required",
     "savedSuccessfully": "Governorate saved successfully"
+  },
+  "home": {
+    "cvsChart": "CVs by Month",
+    "totalCvs": "Total CVs",
+    "totalUsers": "Total Users",
+    "totalViews": "Total Views"
   },
   "meta": {
     "description": "CV Forest | A platform for finding CVs",

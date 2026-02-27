@@ -2,7 +2,6 @@
   "_": {
     "done": "تم",
     "error": "خطأ",
-    "hello": "مرحبا",
     "no": "لا",
     "save": "حفظ",
     "search": "بحث",
@@ -63,6 +62,12 @@
     "name": "الاسم",
     "nameRequired": "الاسم مطلوب",
     "savedSuccessfully": "تم حفظ المحافظة بنجاح"
+  },
+  "home": {
+    "cvsChart": "السير الذاتيات الشهرية",
+    "totalCvs": "السير الذاتيات الكلية",
+    "totalUsers": "المستخدمين الكلي",
+    "totalViews": "المشاهدات الكلية"
   },
   "meta": {
     "description": "CV Forest | منصة للعثور على السير الذاتية",

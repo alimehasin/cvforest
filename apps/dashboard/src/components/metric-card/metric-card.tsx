@@ -38,7 +38,7 @@ export function MetricCard({
         )}
       </Group>
 
-      <Text fz={24} fw={700}>
+      <Text fz={32} fw={700}>
         {value.toLocaleString()}
       </Text>
 

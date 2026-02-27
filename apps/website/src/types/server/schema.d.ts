@@ -308,6 +308,22 @@ export interface paths {
     patch: operations['patchAdminCvsByIdReject'];
     trace?: never;
   };
+  '/admin/home/': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations['getAdminHome'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   '/user/accounts/sign-up': {
     parameters: {
       query?: never;
@@ -1075,6 +1091,19 @@ export interface components {
     };
     AdminCvsRejectResponse: {
       message: string;
+    };
+    AdminHomeResponse: {
+      metrics: {
+        totalUsers: number;
+        totalCvs: number;
+        totalViews: number;
+      };
+      charts: {
+        cvs: {
+          month: string;
+          count: number;
+        }[];
+      };
     };
     UserAccountsSignUpBody: {
       name: string;
@@ -2612,6 +2641,44 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['AdminCvsRejectResponse'];
+        };
+      };
+      /** @description Response for status 400 */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['BadRequestError'];
+        };
+      };
+      /** @description Response for status 422 */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['FieldsValidationError'];
+        };
+      };
+    };
+  };
+  getAdminHome: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Response for status 200 */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AdminHomeResponse'];
         };
       };
       /** @description Response for status 400 */
