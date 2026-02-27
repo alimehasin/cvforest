@@ -124,6 +124,7 @@ export function useUploadCvForm({
         .array(z.uuid())
         .min(3, { error: t('uploadCv.selectAtLeast3Skills') })
         .max(12, { error: t('uploadCv.selectAtMost12Skills') }),
+      fileId: z.string().optional(),
     })
     .refine(
       (data) => {
@@ -180,6 +181,7 @@ export function useUploadCvForm({
         portfolioUrl: portfolioUrl === '' ? undefined : portfolioUrl,
         availableForHire: values.availableForHire,
         skillIds: values.skillIds,
+        fileId: values.fileId,
       };
     },
   });

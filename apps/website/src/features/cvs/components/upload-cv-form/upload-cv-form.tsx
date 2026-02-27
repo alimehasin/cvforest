@@ -3,12 +3,14 @@
 import {
   Avatar,
   Button,
+  FileInput,
   Group,
   MultiSelect,
   NumberInput,
   Select,
   SimpleGrid,
   Stack,
+  Text,
   Textarea,
   TextInput,
 } from '@mantine/core';
@@ -25,6 +27,7 @@ import {
   IconBriefcase,
   IconCheck,
   IconCurrencyDollar,
+  IconFileTypePdf,
   IconLink,
   IconMapPin,
   IconPhone,
@@ -32,16 +35,18 @@ import {
   IconUser,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { FormSection } from '@/components/form-section';
 import { PhoneNumberInput } from '@/components/phone-number-input';
 import { useCvCreate } from '@/features/cvs/hooks/use-cv-create';
+import { useCvPdfUpload } from '@/features/cvs/hooks/use-cv-pdf-upload';
 import { useCvUpdate } from '@/features/cvs/hooks/use-cv-update';
 import { useGovernoratesQuery } from '@/features/cvs/hooks/use-governorates-query';
 import { useSkillsQuery } from '@/features/cvs/hooks/use-skills-query';
 import { useUploadCvForm } from '@/features/cvs/hooks/use-upload-cv-form';
 import type { UserDetailResponse } from '@/features/cvs/types';
 import type { ProfileResponseBody } from '@/features/profile/types';
-import { constructImageUrl } from '@/utils/helpers';
+import { constructFileUrl, constructImageUrl } from '@/utils/helpers';
 import {
   translateAvailabilityType,
   translateCurrency,
@@ -65,7 +70,9 @@ export function UploadCvForm({
   const skillsQuery = useSkillsQuery();
   const form = useUploadCvForm({ profile, cv });
   const governoratesQuery = useGovernoratesQuery();
+  const [cvFileError, setCvFileError] = useState<string | undefined>(undefined);
 
+  const pdfUploadMut = useCvPdfUpload();
   const createMut = useCvCreate({ onSuccess: onCreateSuccess });
   const updateMut = useCvUpdate({ onSuccess: onUpdateSuccess });
 
@@ -101,17 +108,19 @@ export function UploadCvForm({
     { label: t('uploadCv.availableForHireNo'), value: 'false' },
   ];
 
-  const handleSubmit = form.onSubmit(async (data) => {
-    if (!cv) {
-      await createMut.mutateAsync(data);
-    } else {
-      await updateMut.mutateAsync({
-        ...data,
-        githubUrl: data.githubUrl ?? null,
-        linkedinUrl: data.linkedinUrl ?? null,
-        portfolioUrl: data.portfolioUrl ?? null,
-      });
+  const handlePdfChange = (file: File | null) => {
+    if (!file) {
+      return;
     }
+
+    setCvFileError(undefined);
+    pdfUploadMut.mutate(file, {
+      onSuccess: (data) => form.setFieldValue('fileId', data.id),
+    });
+  };
+
+  const handleSubmit = form.onSubmit(async (data) => {
+    !cv ? await createMut.mutateAsync(data) : await updateMut.mutateAsync(data);
   });
 
   const genderOptions = [
@@ -321,6 +330,40 @@ export function UploadCvForm({
                 {...form.getInputProps('portfolioUrl')}
               />
             </SimpleGrid>
+          </Stack>
+        </FormSection>
+
+        <FormSection
+          label={t('uploadCv.sectionCvFile')}
+          description={t('uploadCv.sectionCvFileDescription')}
+        >
+          <Stack gap="sm">
+            {cv?.file?.key && (
+              <Text
+                size="sm"
+                c="dimmed"
+                component="a"
+                href={constructFileUrl(cv.file.key)}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+              >
+                <IconFileTypePdf size={16} />
+                {t('uploadCv.cvFileCurrent')}
+              </Text>
+            )}
+
+            <FileInput
+              required={!cv}
+              accept="application/pdf"
+              label={cv ? t('uploadCv.cvFileReplace') : t('uploadCv.cvFile')}
+              leftSection={<IconFileTypePdf size={18} />}
+              onChange={handlePdfChange}
+              error={
+                cvFileError ??
+                (pdfUploadMut.isError ? pdfUploadMut.error?.message : undefined)
+              }
+            />
           </Stack>
         </FormSection>
 

@@ -2,7 +2,16 @@ import dayjs from 'dayjs';
 import parsePhoneNumber from 'libphonenumber-js';
 import { env } from '@/env';
 
+// TODO: Delete this function
 export function constructImageUrl(key: string | undefined) {
+  if (!key) {
+    return undefined;
+  }
+
+  return `${env.NEXT_PUBLIC_STORAGE_BASE_URL}/${key}`;
+}
+
+export function constructFileUrl(key: string | undefined) {
   if (!key) {
     return undefined;
   }
