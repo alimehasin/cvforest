@@ -7,7 +7,9 @@ import { parsePaginationProps, parseSortingProps } from '@/utils/helpers';
 import type { UserCvsModel } from './cvs.user.model';
 
 export const userCvsService = {
-  async list(query: typeof UserCvsModel.UserCvsListQuery.static) {
+  async list(
+    query: typeof UserCvsModel.UserCvsListQuery.static,
+  ): Promise<typeof UserCvsModel.UserCvsListResponse.static> {
     // Normalize skillIds to array
     const skillIdsArray =
       query.skillIds === undefined
@@ -87,6 +89,7 @@ export const userCvsService = {
 
       where,
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
@@ -102,6 +105,7 @@ export const userCvsService = {
     const cv = await prisma.cv.findUnique({
       where: { id },
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
@@ -137,6 +141,7 @@ export const userCvsService = {
     const cv = await prisma.cv.findUnique({
       where: { userId },
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
@@ -162,6 +167,7 @@ export const userCvsService = {
   ): Promise<typeof UserCvsModel.UserCvsUpdateResponse.static> {
     const cv = await prisma.cv.findUnique({
       where: { userId },
+      include: { file: true },
     });
 
     if (!cv) {
@@ -174,7 +180,17 @@ export const userCvsService = {
       });
     }
 
-    const { profile, skillIds, ...cvBody } = body;
+    if (cv.file && cv.file.type !== 'Pdf') {
+      throw new HttpError({
+        statusCode: 400,
+        message: t({
+          en: 'File must be a PDF.',
+          ar: 'الملف يجب أن يكون من نوع PDF.',
+        }),
+      });
+    }
+
+    const { profile, skillIds, fileId, ...cvBody } = body;
 
     if (
       cvBody.expectedSalaryMin !== undefined &&
@@ -190,18 +206,46 @@ export const userCvsService = {
       });
     }
 
+    if (fileId !== undefined) {
+      const file = await prisma.file.findUnique({
+        where: { id: fileId, userId },
+      });
+
+      if (!file) {
+        throw new HttpError({
+          statusCode: 404,
+          message: t({
+            en: 'File not found',
+            ar: 'الملف غير موجود',
+          }),
+        });
+      }
+
+      if (file.type !== 'Pdf') {
+        throw new HttpError({
+          statusCode: 400,
+          message: t({
+            en: 'File must be a PDF.',
+            ar: 'الملف يجب أن يكون من نوع PDF.',
+          }),
+        });
+      }
+    }
+
     if (profile && Object.keys(profile).length > 0) {
       await userAccountsService.updateProfile(userId, profile);
     }
 
-    return await prisma.cv.update({
+    return prisma.cv.update({
       where: { userId },
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
       data: {
         ...cvBody,
+        ...(fileId !== undefined && { fileId }),
         userSkills: skillIds && {
           deleteMany: {},
           create: skillIds.map((skillId) => ({ skillId })),
@@ -249,9 +293,34 @@ export const userCvsService = {
       await userAccountsService.updateProfile(userId, profile);
     }
 
-    const cv = await prisma.cv.create({
+    const file = await prisma.file.findUnique({
+      where: { id: cvBody.fileId },
+    });
+
+    if (!file) {
+      throw new HttpError({
+        statusCode: 404,
+        message: t({
+          en: 'File not found',
+          ar: 'الملف غير موجود',
+        }),
+      });
+    }
+
+    if (file.type !== 'Pdf') {
+      throw new HttpError({
+        statusCode: 400,
+        message: t({
+          en: 'File must be a PDF.',
+          ar: 'الملف يجب أن يكون من نوع PDF.',
+        }),
+      });
+    }
+
+    return prisma.cv.create({
       data: {
         userId,
+        fileId: cvBody.fileId,
         jobTitle: cvBody.jobTitle,
         experienceInYears: cvBody.experienceInYears,
         expectedSalaryMin: cvBody.expectedSalaryMin,
@@ -267,11 +336,10 @@ export const userCvsService = {
         userSkills: { create: cvBody.skillIds.map((skillId) => ({ skillId })) },
       },
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
     });
-
-    return cv;
   },
 };

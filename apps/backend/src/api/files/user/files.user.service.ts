@@ -1,11 +1,14 @@
 import { prisma } from '@db/client';
+import { FileType } from '@db/gen/prisma/enums';
 import { env } from '@/env';
 import type { TranslationFn } from '@/types';
+import { deleteObjects } from '@/utils/clients/s3/helpers';
 import {
-  deleteObjects,
   uploadImage,
+  uploadOther,
+  uploadPdf,
   uploadVideo,
-} from '@/utils/clients/s3/helpers';
+} from '@/utils/clients/s3/uploaders';
 import { HttpError } from '@/utils/error';
 import type { UserFilesModel } from './files.user.model';
 
@@ -16,37 +19,29 @@ export const userFilesService = {
     body: typeof UserFilesModel.UserFilesCreateBody.static,
   ) {
     const isPublic = body.isPublic === 'true';
+    const bucketName = env.STORAGE_BUCKET_NAME;
 
-    if (body.type === 'Image') {
-      const { key, size } = await uploadImage({
-        isPublic,
-        file: body.file,
-        bucketName: env.STORAGE_BUCKET_NAME,
-      });
+    const uploaders = {
+      Pdf: () => uploadPdf({ file: body.file, bucketName, isPublic }),
+      Image: () => uploadImage({ isPublic, file: body.file, bucketName }),
+      Video: () => uploadVideo({ file: body.file, bucketName, isPublic }),
+      Other: () => uploadOther({ file: body.file, bucketName, isPublic }),
+    } as const;
 
-      return prisma.file.create({
-        data: { key, size, isPublic, type: body.type, userId },
-      });
-    }
-
-    if (body.type === 'Video') {
-      const { key, size } = await uploadVideo({
-        file: body.file,
-        bucketName: env.STORAGE_BUCKET_NAME,
-        isPublic,
-      });
-
-      return prisma.file.create({
-        data: { key, size, isPublic, type: body.type, userId },
+    if (!(body.type in FileType)) {
+      throw new HttpError({
+        statusCode: 400,
+        message: t({
+          en: 'Invalid file type',
+          ar: 'نوع الملف غير صالح',
+        }),
       });
     }
 
-    throw new HttpError({
-      statusCode: 400,
-      message: t({
-        en: 'Invalid file type',
-        ar: 'نوع الملف غير صالح',
-      }),
+    const { key, size } = await uploaders[body.type]();
+
+    return prisma.file.create({
+      data: { key, size, isPublic, type: body.type, userId },
     });
   },
 

@@ -3,6 +3,7 @@ import {
   Currency,
   WorkLocationType,
 } from '@db/gen/prisma/client';
+import { __nullable__ } from '@db/gen/prismabox/__nullable__';
 import { CvPlain } from '@db/gen/prismabox/Cv';
 import { FilePlain } from '@db/gen/prismabox/File';
 import { GovernoratePlain } from '@db/gen/prismabox/Governorate';
@@ -39,8 +40,30 @@ const CvWithRelations = t.Composite([
   t.Object({
     user: UserWithRelations,
     userSkills: t.Array(UserSkillWithSkill),
+    file: __nullable__(t.Object({ key: t.String() })),
   }),
 ]);
+
+const CvForm = t.Object({
+  profile: t.Optional(UserAccountsModel.UserAccountsProfileUpdateBody),
+  jobTitle: t.String({ minLength: 1 }),
+  experienceInYears: t.Number({ minimum: 0 }),
+  expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
+  expectedSalaryMax: t.Optional(t.Number({ minimum: 0 })),
+  expectedSalaryCurrency: t.Optional(t.Enum(Currency)),
+  availabilityTypes: t.Array(t.Enum(AvailabilityType), { minItems: 1 }),
+  workLocationTypes: t.Array(t.Enum(WorkLocationType), { minItems: 1 }),
+  bio: t.String({ minLength: 32 }),
+  githubUrl: t.Optional(t.String({ format: 'uri' })),
+  linkedinUrl: t.Optional(t.String({ format: 'uri' })),
+  portfolioUrl: t.Optional(t.String({ format: 'uri' })),
+  availableForHire: t.Boolean(),
+  fileId: t.String({ format: 'uuid' }),
+  skillIds: t.Array(t.String({ format: 'uuid' }), {
+    minItems: 3,
+    maxItems: 12,
+  }),
+});
 
 export const UserCvsModel = {
   // List
@@ -70,52 +93,10 @@ export const UserCvsModel = {
   UserCvsGetResponse: CvWithRelations,
 
   // Create
-  UserCvsCreateBody: t.Object({
-    profile: t.Optional(UserAccountsModel.UserAccountsProfileUpdateBody),
-    jobTitle: t.String({ minLength: 1 }),
-    experienceInYears: t.Number({ minimum: 0 }),
-    expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
-    expectedSalaryMax: t.Optional(t.Number({ minimum: 0 })),
-    expectedSalaryCurrency: t.Optional(t.Enum(Currency)),
-    availabilityTypes: t.Array(t.Enum(AvailabilityType), { minItems: 1 }),
-    workLocationTypes: t.Array(t.Enum(WorkLocationType), { minItems: 1 }),
-    bio: t.String({ minLength: 32 }),
-    githubUrl: t.Optional(t.String({ format: 'uri' })),
-    linkedinUrl: t.Optional(t.String({ format: 'uri' })),
-    portfolioUrl: t.Optional(t.String({ format: 'uri' })),
-    availableForHire: t.Boolean(),
-    skillIds: t.Array(t.String({ format: 'uuid' }), {
-      minItems: 3,
-      maxItems: 12,
-    }),
-  }),
+  UserCvsCreateBody: CvForm,
   UserCvsCreateResponse: CvWithRelations,
 
   // Update (partial)
-  UserCvsUpdateBody: t.Object({
-    profile: t.Optional(UserAccountsModel.UserAccountsProfileUpdateBody),
-    jobTitle: t.Optional(t.String({ minLength: 1 })),
-    experienceInYears: t.Optional(t.Number({ minimum: 0 })),
-    expectedSalaryMin: t.Optional(t.Number({ minimum: 0 })),
-    expectedSalaryMax: t.Optional(t.Number({ minimum: 0 })),
-    expectedSalaryCurrency: t.Optional(t.Enum(Currency)),
-    availabilityTypes: t.Optional(
-      t.Array(t.Enum(AvailabilityType), { minItems: 1 }),
-    ),
-    workLocationTypes: t.Optional(
-      t.Array(t.Enum(WorkLocationType), { minItems: 1 }),
-    ),
-    bio: t.Optional(t.String({ minLength: 32 })),
-    githubUrl: t.Optional(t.Union([t.String({ format: 'uri' }), t.Null()])),
-    linkedinUrl: t.Optional(t.Union([t.String({ format: 'uri' }), t.Null()])),
-    portfolioUrl: t.Optional(t.Union([t.String({ format: 'uri' }), t.Null()])),
-    availableForHire: t.Optional(t.Boolean()),
-    skillIds: t.Optional(
-      t.Array(t.String({ format: 'uuid' }), {
-        minItems: 3,
-        maxItems: 12,
-      }),
-    ),
-  }),
+  UserCvsUpdateBody: t.Partial(CvForm),
   UserCvsUpdateResponse: CvWithRelations,
 };

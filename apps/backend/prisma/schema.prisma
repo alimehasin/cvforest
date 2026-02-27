@@ -30,6 +30,7 @@ enum WorkLocationType {
 enum FileType {
   Image
   Video
+  Pdf
   Other
 }
 
@@ -93,6 +94,9 @@ model Cv {
 
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  fileId String?
+  file   File?   @relation(fields: [fileId], references: [id], onDelete: Cascade)
 
   // Professional Information
   jobTitle               String
@@ -215,6 +219,7 @@ model File {
 
   // Backrefs
   avatars User[] @relation("UserAvatar")
+  cvs     Cv[]
 }
 
 model Governorate {

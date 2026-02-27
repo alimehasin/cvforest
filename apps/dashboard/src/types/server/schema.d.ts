@@ -627,7 +627,7 @@ export interface components {
         id: string;
         key: string;
         size: string | number;
-        type: 'Image' | 'Video' | 'Other';
+        type: 'Image' | 'Video' | 'Pdf' | 'Other';
         isPublic: boolean;
         userId: null | string;
         createdAt: Record<string, never> | string | number;
@@ -802,7 +802,7 @@ export interface components {
        */
       file: string;
       /** @enum {string} */
-      type: 'Image' | 'Video' | 'Other';
+      type: 'Image' | 'Video' | 'Pdf' | 'Other';
       /** @enum {string} */
       isPublic: 'true' | 'false';
     };
@@ -811,7 +811,7 @@ export interface components {
       key: string;
       size: string | number;
       /** @enum {string} */
-      type: 'Image' | 'Video' | 'Other';
+      type: 'Image' | 'Video' | 'Pdf' | 'Other';
       isPublic: boolean;
       userId: null | string;
       createdAt: Record<string, never> | string | number;
@@ -854,7 +854,7 @@ export interface components {
           id: string;
           key: string;
           size: string | number;
-          type: 'Image' | 'Video' | 'Other';
+          type: 'Image' | 'Video' | 'Pdf' | 'Other';
           isPublic: boolean;
           userId: null | string;
           createdAt: Record<string, never> | string | number;
@@ -891,7 +891,7 @@ export interface components {
         id: string;
         key: string;
         size: string | number;
-        type: 'Image' | 'Video' | 'Other';
+        type: 'Image' | 'Video' | 'Pdf' | 'Other';
         isPublic: boolean;
         userId: null | string;
         createdAt: Record<string, never> | string | number;
@@ -928,6 +928,7 @@ export interface components {
       data: {
         id: string;
         userId: string;
+        fileId: null | string;
         jobTitle: string;
         experienceInYears: string | number;
         expectedSalaryMin: null | (string | number);
@@ -968,7 +969,7 @@ export interface components {
             id: string;
             key: string;
             size: string | number;
-            type: 'Image' | 'Video' | 'Other';
+            type: 'Image' | 'Video' | 'Pdf' | 'Other';
             isPublic: boolean;
             userId: null | string;
             createdAt: Record<string, never> | string | number;
@@ -997,6 +998,7 @@ export interface components {
     AdminCvsGetResponse: {
       id: string;
       userId: string;
+      fileId: null | string;
       jobTitle: string;
       experienceInYears: string | number;
       expectedSalaryMin: null | (string | number);
@@ -1037,7 +1039,7 @@ export interface components {
           id: string;
           key: string;
           size: string | number;
-          type: 'Image' | 'Video' | 'Other';
+          type: 'Image' | 'Video' | 'Pdf' | 'Other';
           isPublic: boolean;
           userId: null | string;
           createdAt: Record<string, never> | string | number;
@@ -1116,6 +1118,7 @@ export interface components {
         cv: null | {
           id: string;
           userId: string;
+          fileId: null | string;
           jobTitle: string;
           experienceInYears: string | number;
           expectedSalaryMin: null | (string | number);
@@ -1158,7 +1161,7 @@ export interface components {
         id: string;
         key: string;
         size: string | number;
-        type: 'Image' | 'Video' | 'Other';
+        type: 'Image' | 'Video' | 'Pdf' | 'Other';
         isPublic: boolean;
         userId: null | string;
         createdAt: Record<string, never> | string | number;
@@ -1251,7 +1254,7 @@ export interface components {
        */
       file: string;
       /** @enum {string} */
-      type: 'Image' | 'Video' | 'Other';
+      type: 'Image' | 'Video' | 'Pdf' | 'Other';
       /** @enum {string} */
       isPublic: 'true' | 'false';
     };
@@ -1260,7 +1263,7 @@ export interface components {
       key: string;
       size: string | number;
       /** @enum {string} */
-      type: 'Image' | 'Video' | 'Other';
+      type: 'Image' | 'Video' | 'Pdf' | 'Other';
       isPublic: boolean;
       userId: null | string;
       createdAt: Record<string, never> | string | number;
@@ -1297,6 +1300,7 @@ export interface components {
       data: {
         id: string;
         userId: string;
+        fileId: null | string;
         jobTitle: string;
         experienceInYears: string | number;
         bio: string;
@@ -1334,7 +1338,7 @@ export interface components {
             id: string;
             key: string;
             size: string | number;
-            type: 'Image' | 'Video' | 'Other';
+            type: 'Image' | 'Video' | 'Pdf' | 'Other';
             isPublic: boolean;
             userId: null | string;
             createdAt: Record<string, never> | string | number;
@@ -1358,11 +1362,15 @@ export interface components {
             updatedAt: Record<string, never> | string | number;
           };
         }[];
+        file: null | {
+          key: string;
+        };
       }[];
     };
     UserCvsGetResponse: {
       id: string;
       userId: string;
+      fileId: null | string;
       jobTitle: string;
       experienceInYears: string | number;
       bio: string;
@@ -1400,7 +1408,7 @@ export interface components {
           id: string;
           key: string;
           size: string | number;
-          type: 'Image' | 'Video' | 'Other';
+          type: 'Image' | 'Video' | 'Pdf' | 'Other';
           isPublic: boolean;
           userId: null | string;
           createdAt: Record<string, never> | string | number;
@@ -1424,6 +1432,9 @@ export interface components {
           updatedAt: Record<string, never> | string | number;
         };
       }[];
+      file: null | {
+        key: string;
+      };
     };
     UserCvsCreateBody: {
       profile?: {
@@ -1451,11 +1462,14 @@ export interface components {
       /** Format: uri */
       portfolioUrl?: string;
       availableForHire: boolean;
+      /** Format: uuid */
+      fileId: string;
       skillIds: string[];
     };
     UserCvsCreateResponse: {
       id: string;
       userId: string;
+      fileId: null | string;
       jobTitle: string;
       experienceInYears: string | number;
       bio: string;
@@ -1493,7 +1507,7 @@ export interface components {
           id: string;
           key: string;
           size: string | number;
-          type: 'Image' | 'Video' | 'Other';
+          type: 'Image' | 'Video' | 'Pdf' | 'Other';
           isPublic: boolean;
           userId: null | string;
           createdAt: Record<string, never> | string | number;
@@ -1517,6 +1531,9 @@ export interface components {
           updatedAt: Record<string, never> | string | number;
         };
       }[];
+      file: null | {
+        key: string;
+      };
     };
     UserCvsUpdateBody: {
       profile?: {
@@ -1546,6 +1563,7 @@ export interface components {
     UserCvsUpdateResponse: {
       id: string;
       userId: string;
+      fileId: null | string;
       jobTitle: string;
       experienceInYears: string | number;
       bio: string;
@@ -1583,7 +1601,7 @@ export interface components {
           id: string;
           key: string;
           size: string | number;
-          type: 'Image' | 'Video' | 'Other';
+          type: 'Image' | 'Video' | 'Pdf' | 'Other';
           isPublic: boolean;
           userId: null | string;
           createdAt: Record<string, never> | string | number;
@@ -1607,6 +1625,9 @@ export interface components {
           updatedAt: Record<string, never> | string | number;
         };
       }[];
+      file: null | {
+        key: string;
+      };
     };
   };
   responses: never;
