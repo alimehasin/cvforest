@@ -33,6 +33,7 @@ export const adminCvsService = {
       ...parseSortingProps(query),
       where,
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },
@@ -48,6 +49,7 @@ export const adminCvsService = {
     const cv = await prisma.cv.findUnique({
       where: { id },
       include: {
+        file: true,
         userSkills: { include: { skill: true } },
         user: { include: { avatar: true, governorate: true } },
       },

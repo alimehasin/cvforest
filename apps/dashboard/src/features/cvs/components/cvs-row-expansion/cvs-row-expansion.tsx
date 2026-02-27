@@ -20,6 +20,7 @@ import {
   IconCircleCheck,
   IconClock,
   IconCurrencyDollar,
+  IconFileCv,
   IconMapPin,
   IconPhone,
   IconTrophy,
@@ -286,6 +287,18 @@ export function CvsRowExpansion({ cv }: CvsRowExpansionProps) {
             </Title>
 
             <Group gap="sm">
+              <Button
+                component="a"
+                target="_blank"
+                variant="light"
+                disabled={!cv.file?.key}
+                rel="noopener noreferrer"
+                href={constructFileUrl(cv.file?.key)}
+                leftSection={<IconFileCv size={18} />}
+              >
+                {t('cvs.showCv')}
+              </Button>
+
               <Button
                 component="a"
                 target="_blank"

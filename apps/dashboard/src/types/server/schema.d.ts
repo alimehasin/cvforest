@@ -993,6 +993,9 @@ export interface components {
             updatedAt: Record<string, never> | string | number;
           };
         }[];
+        file: null | {
+          key: string;
+        };
       }[];
     };
     AdminCvsGetResponse: {
@@ -1063,6 +1066,9 @@ export interface components {
           updatedAt: Record<string, never> | string | number;
         };
       }[];
+      file: null | {
+        key: string;
+      };
     };
     AdminCvsApproveResponse: {
       message: string;

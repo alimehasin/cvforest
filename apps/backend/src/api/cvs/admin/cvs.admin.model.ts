@@ -1,4 +1,5 @@
 import { CvStatus } from '@db/gen/prisma/client';
+import { __nullable__ } from '@db/gen/prismabox/barrel';
 import { CvPlain } from '@db/gen/prismabox/Cv';
 import { FilePlain } from '@db/gen/prismabox/File';
 import { GovernoratePlain } from '@db/gen/prismabox/Governorate';
@@ -30,6 +31,7 @@ const CvWithRelations = t.Composite([
   t.Object({
     user: UserWithRelations,
     userSkills: t.Array(UserSkillWithSkill),
+    file: __nullable__(t.Object({ key: t.String() })),
   }),
 ]);
 
