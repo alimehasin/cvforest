@@ -24,7 +24,6 @@ import cls from './styles.module.css';
 
 interface UserHeroProps {
   user: UserDetailResponse;
-  /** Optional actions rendered inside the cover (e.g. edit button) */
   actions?: React.ReactNode;
 }
 
@@ -97,7 +96,15 @@ export function UserHero({ user, actions }: UserHeroProps) {
 
         {/* Social links */}
         <Group gap="xs">
-          <Button leftSection={<IconFileCv size={18} />}>
+          <Button
+            component="a"
+            target="_blank"
+            variant="light"
+            disabled={!user.file?.key}
+            rel="noopener noreferrer"
+            leftSection={<IconFileCv size={18} />}
+            href={constructFileUrl(user.file?.key)}
+          >
             {t('cvs.showCv')}
           </Button>
 
