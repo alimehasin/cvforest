@@ -1,9 +1,23 @@
 {
-  "_": {
-    "done": "Done",
-    "error": "Error",
-    "save": "Save",
-    "search": "Search",
-    "success": "Success"
+  "_": { "save": "Save" },
+  "availability": {
+    "freelance": "Freelance",
+    "fullTime": "Full Time",
+    "partTime": "Part Time"
+  },
+  "currency": { "iqd": "IQD", "usd": "USD" },
+  "gender": { "female": "Female", "male": "Male" },
+  "meta": {
+    "description": "CV Forest connects developers with recruiters on a privacy-first platform. Upload your CV and control your data, or discover quality talent with structured professional profiles.",
+    "title": "CV Forest – Connect Talent with Opportunity | Developers & Recruiters"
+  },
+  "uploadCv": {
+    "availableForHireNo": "Not available for hire",
+    "availableForHireYes": "Available for hire"
+  },
+  "workLocation": {
+    "hybrid": "Hybrid",
+    "onSite": "On-Site",
+    "remote": "Remote"
   }
 }

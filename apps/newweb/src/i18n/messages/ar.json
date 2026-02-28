@@ -1,9 +1,31 @@
 {
   "_": {
-    "done": "تم",
-    "error": "خطأ",
-    "save": "حفظ",
-    "search": "بحث",
-    "success": "نجحت"
+    "save": "حفظ"
+  },
+  "availability": {
+    "freelance": "عمل حر",
+    "fullTime": "دوام كامل",
+    "partTime": "دوام جزئي"
+  },
+  "currency": {
+    "iqd": "دينار عراقي",
+    "usd": "دولار أمريكي"
+  },
+  "gender": {
+    "female": "أنثى",
+    "male": "ذكر"
+  },
+  "meta": {
+    "description": "CV Forest تربط المطورين بأصحاب العمل على منصة تحترم الخصوصية. ارفع سيرتك وتحكم ببياناتك، أو اكتشف مواهب عالية الجودة بملفات شخصية منظمة.",
+    "title": "CV Forest – اربط المواهب بالفرص | مطورون وأصحاب عمل"
+  },
+  "uploadCv": {
+    "availableForHireNo": "غير متاح للتوظيف",
+    "availableForHireYes": "متاح للتوظيف"
+  },
+  "workLocation": {
+    "hybrid": "مختلط",
+    "onSite": "حضوري",
+    "remote": "عن بعد"
   }
 }
