@@ -22,5 +22,5 @@ ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 ENV NEXT_PUBLIC_STORAGE_BASE_URL=$NEXT_PUBLIC_STORAGE_BASE_URL
 
 # Build the application
-WORKDIR /app/apps/website
+WORKDIR /app/apps/newweb
 RUN bun run build
