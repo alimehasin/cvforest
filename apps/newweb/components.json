@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "base-nova",
+  "style": "base-vega",
   "rsc": true,
   "tsx": true,
   "tailwind": {
@@ -11,7 +11,7 @@
     "prefix": ""
   },
   "iconLibrary": "tabler",
-  "rtl": false,
+  "rtl": true,
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",

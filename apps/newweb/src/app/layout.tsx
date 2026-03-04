@@ -1,10 +1,16 @@
-import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
 import '@/styles/globals.css';
-import { getTranslations } from 'next-intl/server';
-import { NextIntlProvider } from '@/providers/nex-intl-provider';
 
-const rubik = Rubik({ subsets: ['latin'], variable: '--font-sans' });
+import type { Metadata } from 'next';
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { I18nProvider } from '@/providers/i18n-provider';
+import { QueryClientProvider } from '@/providers/query-client-provider';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -23,11 +29,20 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const locale = await getLocale();
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+
   return (
-    <html lang="en" className={rubik.variable}>
+    <html
+      dir={dir}
+      lang={locale}
+      className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+    >
       <body>
-        <NextIntlProvider>{children}</NextIntlProvider>
+        <I18nProvider dir={dir}>
+          <QueryClientProvider>{children}</QueryClientProvider>
+        </I18nProvider>
       </body>
     </html>
   );
