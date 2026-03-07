@@ -29,7 +29,8 @@
 
       "suspicious": {
         "noUnknownAtRules": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noDuplicateProperties": "off"
       },
 
       "a11y": {
