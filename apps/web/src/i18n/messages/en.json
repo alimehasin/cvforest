@@ -1,0 +1,261 @@
+{
+  "_": {
+    "done": "Done",
+    "error": "Error",
+    "save": "Save",
+    "search": "Search",
+    "success": "Success"
+  },
+  "auth": {
+    "backToSignIn": "Back to sign in",
+    "emailVerificationFailedDescription": "The verification code is invalid or expired.",
+    "emailVerificationFailedTitle": "Email Verification Failed",
+    "emailVerifiedSuccessDescription": "Your email has been verified. You can now navigate to home page.",
+    "emailVerifiedSuccessTitle": "Email Verified Successfully",
+    "verificationLinkInstructions": "Click the link in the email to verify your account.",
+    "verificationLinkSent": "We sent a verification link to",
+    "verifyEmail": "Verify Your Email"
+  },
+  "availability": {
+    "freelance": "Freelance",
+    "fullTime": "Full Time",
+    "partTime": "Part Time"
+  },
+  "browse": {
+    "availabilityPlaceholder": "Availability type",
+    "currencyPlaceholder": "Currency",
+    "experienceMax": "Max experience",
+    "experienceMin": "Min experience",
+    "governoratePlaceholder": "Governorate",
+    "noResults": "No profiles found matching your search",
+    "searchPlaceholder": "Search by name or job title...",
+    "subtitle": "Explore all professionals available on CV Forest",
+    "title": "Browse Talent",
+    "workLocationPlaceholder": "Work location"
+  },
+  "confirmDelete": {
+    "actionCannotBeUndone": "This action cannot be undone.",
+    "areYouSureAboutThisAction": "Are you sure you want to perform this action?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "courses": {
+    "comingSoon": "Coming soon"
+  },
+  "currency": {
+    "iqd": "IQD",
+    "usd": "USD"
+  },
+  "cvMine": {
+    "editCv": "Edit my CV",
+    "saveChanges": "Save changes",
+    "updateSuccess": "Your CV has been updated."
+  },
+  "cvs": {
+    "availableForHire": "Available for hire",
+    "browseAll": "Browse All Talent",
+    "showCv": "Show CV",
+    "skills": "Skills",
+    "skillsPlaceholder": "Typescript, React, Next.js, etc.",
+    "subtitle": "Discover top professionals ready for new opportunities",
+    "title": "Latest CVs",
+    "yearsExperience": "{number} years exp."
+  },
+  "dataTable": {
+    "noRecords": "No records to show",
+    "recordsPerPageLabel": "Records per page"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "brief": "CV Forest is a privacy-first platform connecting talented developers with recruiters through structured, professional profiles.",
+    "company": "Company",
+    "copyright": "© {year} CV Forest. All rights reserved.",
+    "courses": "Courses",
+    "followUs": "Follow Us",
+    "home": "Home",
+    "privacyPolicy": "Privacy Policy",
+    "quickLinks": "Quick Links",
+    "termsOfService": "Terms of Service"
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male"
+  },
+  "header": {
+    "courses": "Courses",
+    "cvApproved": "CV Approved",
+    "cvRejected": "CV Rejected",
+    "cvUnderReview": "CV Under Review",
+    "menu": "Menu",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "uploadCv": "Upload CV"
+  },
+  "hero": {
+    "ctaDeveloper": "Upload Your CV",
+    "ctaRecruiter": "Browse Talent",
+    "description": "For developers: showcase your skills and control your data. For recruiters: access quality talent with structured profiles.",
+    "feature1": "Privacy-First",
+    "feature2": "Structured Profiles",
+    "feature3": "Quality Talent",
+    "starOnGitHub": "Star on GitHub",
+    "title": "Connect Talent with Opportunity"
+  },
+  "meta": {
+    "aboutDescription": "About CV Forest",
+    "aboutTitle": "About us",
+    "description": "CV Forest connects developers with recruiters on a privacy-first platform. Upload your CV and control your data, or discover quality talent with structured professional profiles.",
+    "privacyDescription": "Privacy Policy",
+    "privacyTitle": "Privacy Policy",
+    "termsDescription": "Terms of Service",
+    "termsTitle": "Terms of Service",
+    "title": "CV Forest – Connect Talent with Opportunity | Developers & Recruiters"
+  },
+  "notFound": {
+    "description": "The page you requested might have been moved, deleted, or you might have entered the wrong URL.",
+    "errorCode": "404",
+    "goBack": "Go Back",
+    "goHome": "Go Home",
+    "subtitle": "Oops! The page you're looking for doesn't exist.",
+    "title": "Page Not Found"
+  },
+  "profiles": {
+    "email": "Email Address",
+    "emailRequired": "Email is required",
+    "female": "Female",
+    "gender": "Gender",
+    "genderRequired": "Gender is required",
+    "male": "Male",
+    "memberSince": "Member since",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "phone": "Phone",
+    "profileInfo": "Profile Info",
+    "updated": "Profile updated successfully",
+    "updateProfile": "Update Profile Details"
+  },
+  "sessions": {
+    "activeSessions": "Active Sessions",
+    "createdAt": "Created At",
+    "currentSession": "Current Session",
+    "currentSessionCannotBeRevoked": "Current session cannot be revoked",
+    "expiresAt": "Expires At",
+    "ipAddress": "IP Address",
+    "revoke": "Revoke",
+    "revokeAll": "Revoke All Other Sessions",
+    "revokeAllSuccess": "All other sessions were revoked successfully",
+    "revokeSuccess": "Revoked successfully",
+    "userAgent": "User Agent"
+  },
+  "signIn": {
+    "dontHaveAccount": "Don't have an account?",
+    "email": "Email",
+    "emailDescription": "Enter your email address",
+    "pageDescription": "Sign in to access your account",
+    "pageTitle": "Sign in",
+    "password": "Password",
+    "passwordDescription": "Enter your password",
+    "signIn": "Sign in",
+    "signUp": "Sign up"
+  },
+  "signUp": {
+    "alreadyHaveAccount": "Already have an account?",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDescription": "Re-enter your password to confirm.",
+    "confirmPasswordMismatch": "Passwords do not match",
+    "email": "Email",
+    "emailDescription": "Verification email will be sent to your email address",
+    "emailInvalid": "Invalid email address",
+    "gender": "Gender",
+    "genderDescription": "Select your gender.",
+    "name": "Name",
+    "nameDescription": "Enter your full name.",
+    "nameRequired": "Name is required",
+    "pageDescription": "Create your account to get started",
+    "pageTitle": "Sign Up",
+    "password": "Password",
+    "passwordDescription": "At least 8 characters, including uppercase, lowercase, and a number.",
+    "passwordInvalid": "Password must be at least 8 characters and contain uppercase, lowercase, and a number",
+    "phoneNumber": "Phone Number",
+    "phoneNumberDescription": "Phone number should match +964 7xx xxx xxxx format.",
+    "registrationSuccess": "Registration successful! Please check your email to verify your account.",
+    "signIn": "Sign In",
+    "submitButton": "Sign Up"
+  },
+  "uploadCv": {
+    "availabilityRequired": "Availability type is required",
+    "availabilityType": "Availability Type",
+    "availableForHire": "Available for hire",
+    "availableForHireNo": "Not available for hire",
+    "availableForHireYes": "Available for hire",
+    "bio": "About / Bio",
+    "bioMustBeAtLeast32Characters": "Bio must be at least 32 characters long",
+    "bioPlaceholder": "Tell us about your experience and what you're looking for",
+    "currencyRequired": "Currency is required",
+    "cvFile": "CV File (PDF)",
+    "cvFileCurrent": "Current CV attached",
+    "cvFileReplace": "Replace CV",
+    "expectedSalaryCurrency": "Salary Currency",
+    "expectedSalaryMax": "Max Expected Salary",
+    "expectedSalaryMin": "Min Expected Salary ",
+    "experienceInYears": "Years of Experience",
+    "experienceMin": "Must be 0 or more",
+    "githubUrl": "GitHub URL",
+    "jobTitle": "Job Title",
+    "jobTitlePlaceholder": "e.g. Senior Frontend Developer",
+    "jobTitleRequired": "Job title is required",
+    "linkedinUrl": "LinkedIn URL",
+    "optional": "optional",
+    "pageDescription": "Fill in your professional details to create your CV. It will be reviewed before going live.",
+    "pageTitle": "Upload Your CV",
+    "portfolioUrl": "Portfolio / Website URL",
+    "salaryMaxRequired": "Max salary is required",
+    "salaryMinMustBeLessThanMax": "Min salary must be less than or equal to max salary",
+    "salaryMinRequired": "Min salary is required",
+    "sectionAboutLinks": "About & links",
+    "sectionAboutLinksDescription": "Short bio and your profile links",
+    "sectionAvailabilityAndSalary": "Availability and salary",
+    "sectionAvailabilityAndSalaryDescription": "Your availability, work location, hire status, and salary expectations",
+    "sectionCvFile": "CV File",
+    "sectionCvFileDescription": "Attach your CV as a PDF document",
+    "sectionProfessional": "Professional details",
+    "sectionProfessionalDescription": "Your role and work preferences",
+    "sectionProfile": "Your profile",
+    "sectionProfileDescription": "Your profile information. To edit, go to Profile.",
+    "selectAtLeast3Skills": "Select at least 3 skills",
+    "selectAtMost12Skills": "Select at most 12 skills",
+    "skills": "Skills",
+    "skillsDescription": "Select between 3 and 12 skills",
+    "submit": "Submit CV",
+    "successMessage": "Your CV has been submitted and is pending review.",
+    "urlInvalid": "Please enter a valid URL",
+    "workLocationRequired": "Work location type is required",
+    "workLocationType": "Work Location Type"
+  },
+  "userDetails": {
+    "about": "About",
+    "activeDays": "Active Days",
+    "bestDay": "Best Day",
+    "contactInfo": "Contact Info",
+    "contributions": "Contributions",
+    "githubActivity": "GitHub Activity",
+    "githubError": "Unable to load GitHub contributions",
+    "portfolio": "Portfolio",
+    "professionalDetails": "Professional Details",
+    "skills": "Skills & Technologies",
+    "viewOnGithub": "View on GitHub"
+  },
+  "users": {
+    "availabilityType": "Availability Type",
+    "email": "Email",
+    "experienceInYears": "Experience (Years)",
+    "governorate": "Governorate",
+    "workLocationType": "Work Location Type"
+  },
+  "workLocation": {
+    "hybrid": "Hybrid",
+    "onSite": "On-Site",
+    "remote": "Remote"
+  }
+}

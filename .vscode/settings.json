@@ -9,8 +9,8 @@
     "source.organizeImports.biome": "explicit"
   },
 
-  "tailwindCSS.experimental.configFile": {
-    "apps/newweb/src/styles/globals.css": "apps/newweb/src/**"
+  "files.associations": {
+    "**/apps/web/src/styles/globals.css": "tailwindcss"
   },
 
   "[prisma]": {

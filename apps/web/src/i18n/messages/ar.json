@@ -1,0 +1,261 @@
+{
+  "_": {
+    "done": "تم",
+    "error": "خطأ",
+    "save": "حفظ",
+    "search": "بحث",
+    "success": "نجحت"
+  },
+  "auth": {
+    "backToSignIn": "العودة لتسجيل الدخول",
+    "emailVerificationFailedDescription": "رمز التحقق غير صالح أو منتهي الصلاحية.",
+    "emailVerificationFailedTitle": "فشل التحقق من بريدك الإلكتروني",
+    "emailVerifiedSuccessDescription": "تم التحقق من بريدك الإلكتروني بنجاح. يمكنك الآن الانتقال الى الصحفة الرئيسية.",
+    "emailVerifiedSuccessTitle": "تم التحقق من بريدك الإلكتروني بنجاح",
+    "verificationLinkInstructions": "انقر على الرابط في البريد للتحقق من حسابك.",
+    "verificationLinkSent": "أرسلنا رابط التحقق إلى",
+    "verifyEmail": "تحقق من بريدك الإلكتروني"
+  },
+  "availability": {
+    "freelance": "عمل حر",
+    "fullTime": "دوام كامل",
+    "partTime": "دوام جزئي"
+  },
+  "browse": {
+    "availabilityPlaceholder": "نوع التوفر",
+    "currencyPlaceholder": "العملة",
+    "experienceMax": "أقصى خبرة",
+    "experienceMin": "أدنى خبرة",
+    "governoratePlaceholder": "المحافظة",
+    "noResults": "لم يتم العثور على ملفات تطابق بحثك",
+    "searchPlaceholder": "ابحث بالاسم أو المسمى الوظيفي...",
+    "subtitle": "استعرض جميع المحترفين المتاحين على CV Forest",
+    "title": "تصفح المواهب",
+    "workLocationPlaceholder": "موقع العمل"
+  },
+  "confirmDelete": {
+    "actionCannotBeUndone": "لا يمكن التراجع عن هذا الإجراء.",
+    "areYouSureAboutThisAction": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد"
+  },
+  "courses": {
+    "comingSoon": "قريباً"
+  },
+  "currency": {
+    "iqd": "دينار عراقي",
+    "usd": "دولار أمريكي"
+  },
+  "cvMine": {
+    "editCv": "تعديل سيرتي الذاتية",
+    "saveChanges": "حفظ التغييرات",
+    "updateSuccess": "تم تحديث سيرتك الذاتية."
+  },
+  "cvs": {
+    "availableForHire": "متاح للتوظيف",
+    "browseAll": "تصفح جميع المواهب",
+    "showCv": "اضهار السيرة الذاتية",
+    "skills": "المهارات",
+    "skillsPlaceholder": "Typescript, React, Next.js, مثل",
+    "subtitle": "اكتشف أفضل المحترفين المستعدين لفرص جديدة",
+    "title": "أحدث السير الذاتية",
+    "yearsExperience": "{number} سنوات خبرة"
+  },
+  "dataTable": {
+    "noRecords": "لا توجد سجلات لعرضها",
+    "recordsPerPageLabel": "عدد السجلات في الصفحة"
+  },
+  "footer": {
+    "aboutUs": "من نحن",
+    "brief": "CV Forest هي منصة تحترم الخصوصية تربط المطورين الموهوبين بأصحاب العمل من خلال ملفات شخصية مهنية ومنظمة.",
+    "company": "الشركة",
+    "copyright": "© {year} CV Forest. جميع الحقوق محفوظة.",
+    "courses": "الدورات",
+    "followUs": "تابعنا",
+    "home": "الرئيسية",
+    "privacyPolicy": "سياسة الخصوصية",
+    "quickLinks": "روابط سريعة",
+    "termsOfService": "شروط الخدمة"
+  },
+  "gender": {
+    "female": "أنثى",
+    "male": "ذكر"
+  },
+  "header": {
+    "courses": "الدورات",
+    "cvApproved": "موافق عليها",
+    "cvRejected": "مرفوض",
+    "cvUnderReview": "قيد المراجعة",
+    "menu": "القائمة",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "signUp": "التسجيل",
+    "uploadCv": "رفع السيرة الذاتية"
+  },
+  "hero": {
+    "ctaDeveloper": "ارفع سيرتك الذاتية",
+    "ctaRecruiter": "تصفح المواهب",
+    "description": "للمطورين: اعرض مهاراتك وتحكم في بياناتك. للموظفين: احصل على مواهب عالية الجودة مع ملفات منظمة.",
+    "feature1": "خصوصية أولاً",
+    "feature2": "ملفات منظمة",
+    "feature3": "مواهب مميزة",
+    "starOnGitHub": "نجمنا على GitHub",
+    "title": "اربط المواهب بالفرص"
+  },
+  "meta": {
+    "aboutDescription": "عن CV Forest",
+    "aboutTitle": "عنا",
+    "description": "CV Forest تربط المطورين بأصحاب العمل على منصة تحترم الخصوصية. ارفع سيرتك وتحكم ببياناتك، أو اكتشف مواهب عالية الجودة بملفات شخصية منظمة.",
+    "privacyDescription": "سياسة الخصوصية",
+    "privacyTitle": "سياسة الخصوصية",
+    "termsDescription": "شروط الخدمة",
+    "termsTitle": "شروط الخدمة",
+    "title": "CV Forest – اربط المواهب بالفرص | مطورون وأصحاب عمل"
+  },
+  "notFound": {
+    "description": "قد تكون الصفحة المطلوبة قد تم نقلها أو حذفها، أو ربما أدخلت رابطاً خاطئاً.",
+    "errorCode": "404",
+    "goBack": "العودة للخلف",
+    "goHome": "العودة للرئيسية",
+    "subtitle": "عذراً! الصفحة التي تبحث عنها غير موجودة.",
+    "title": "الصفحة غير موجودة"
+  },
+  "profiles": {
+    "email": "البريد الإلكتروني",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "female": "أنثى",
+    "gender": "الجنس",
+    "genderRequired": "الجنس مطلوب",
+    "male": "ذكر",
+    "memberSince": "عضو منذ",
+    "name": "الاسم",
+    "nameRequired": "الاسم مطلوب",
+    "phone": "الهاتف",
+    "profileInfo": "معلومات  الحساب الشخصي",
+    "updated": "تم تحديث الحساب بنجاح",
+    "updateProfile": "تحديث بيانات الحساب الشخصي"
+  },
+  "sessions": {
+    "activeSessions": "الجلسات النشطة",
+    "createdAt": "تاريخ الإنشاء",
+    "currentSession": "الجلسة الحالية",
+    "currentSessionCannotBeRevoked": "لا يمكن إلغاء الجلسة الحالية",
+    "expiresAt": "تاريخ الانتهاء",
+    "ipAddress": "عنوان IP",
+    "revoke": "إلغاء",
+    "revokeAll": "إلغاء جميع الجلسات الأخرى",
+    "revokeAllSuccess": "تم إلغاء جميع الجلسات الأخرى بنجاح",
+    "revokeSuccess": "تم إلغاء الجلسة بنجاح",
+    "userAgent": "مستخدم الويب"
+  },
+  "signIn": {
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "email": "البريد الإلكتروني",
+    "emailDescription": "ادخل ايميلك الإلكتروني",
+    "pageDescription": "قم بتسجيل الدخول للوصول إلى حسابك",
+    "pageTitle": "تسجيل الدخول",
+    "password": "كلمة المرور",
+    "passwordDescription": "ادخل كلمة المرور الخاصة بك",
+    "signIn": "تسجيل الدخول",
+    "signUp": "التسجيل"
+  },
+  "signUp": {
+    "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordDescription": "أكد كلمة المرور الخاصة بك",
+    "confirmPasswordMismatch": "كلمات المرور غير متطابقة",
+    "email": "البريد الإلكتروني",
+    "emailDescription": "سيتم إرسال رابط التحقق إلى بريدك الإلكتروني",
+    "emailInvalid": "عنوان بريد إلكتروني غير صالح",
+    "gender": "الجنس",
+    "genderDescription": "اختر جنسك.",
+    "name": "الاسم",
+    "nameDescription": "أدخل الاسم الكامل الخاص بك.",
+    "nameRequired": "الاسم مطلوب",
+    "pageDescription": "أنشئ حسابك للبدء",
+    "pageTitle": "التسجيل",
+    "password": "كلمة المرور",
+    "passwordDescription": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على أحرف كبيرة وصغيرة ورقم",
+    "passwordInvalid": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على أحرف كبيرة وصغيرة ورقم",
+    "phoneNumber": "رقم الهاتف",
+    "phoneNumberDescription": "يجب أن يتطابق رقم هاتفك مع الشكل +964 7xx xxx xxxx.",
+    "registrationSuccess": "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني للتحقق من حسابك.",
+    "signIn": "تسجيل الدخول",
+    "submitButton": "التسجيل"
+  },
+  "uploadCv": {
+    "availabilityRequired": "نوع التوفر مطلوب",
+    "availabilityType": "نوع التوفر",
+    "availableForHire": "متاح للتوظيف",
+    "availableForHireNo": "غير متاح للتوظيف",
+    "availableForHireYes": "متاح للتوظيف",
+    "bio": "نبذة عنك",
+    "bioMustBeAtLeast32Characters": "يجب ان يكون الوصف اطول من 32 على الاقل",
+    "bioPlaceholder": "أخبرنا عن خبرتك وما تبحث عنه",
+    "currencyRequired": "العملة مطلوبة",
+    "cvFile": "ملف السيرة الذاتية (PDF)",
+    "cvFileCurrent": "السيرة الذاتية الحالية مرفقة",
+    "cvFileReplace": "استبدال السيرة الذاتية",
+    "expectedSalaryCurrency": "عملة الراتب",
+    "expectedSalaryMax": "الحد الاعلى للراتب المتوقع",
+    "expectedSalaryMin": "الحد الادنى للراتب الموقع",
+    "experienceInYears": "سنوات الخبرة",
+    "experienceMin": "يجب أن تكون 0 أو أكثر",
+    "githubUrl": "رابط GitHub",
+    "jobTitle": "المسمى الوظيفي",
+    "jobTitlePlaceholder": "مثال: مطور واجهة أمامية أول",
+    "jobTitleRequired": "المسمى الوظيفي مطلوب",
+    "linkedinUrl": "رابط LinkedIn",
+    "optional": "اختياري",
+    "pageDescription": "أدخل تفاصيلك المهنية لإنشاء سيرتك الذاتية. ستتم مراجعتها قبل النشر.",
+    "pageTitle": "رفع السيرة الذاتية",
+    "portfolioUrl": "رابط المعرض أو الموقع",
+    "salaryMaxRequired": "الحد الأقصى للراتب مطلوب",
+    "salaryMinMustBeLessThanMax": "الحد الأدنى للراتب يجب أن يكون أقل من أو يساوي الحد الأقصى",
+    "salaryMinRequired": "الحد الأدنى للراتب مطلوب",
+    "sectionAboutLinks": "نبذة وروابط",
+    "sectionAboutLinksDescription": "نبذة قصيرة وروابط ملفك الشخصي",
+    "sectionAvailabilityAndSalary": "التوفر والراتب",
+    "sectionAvailabilityAndSalaryDescription": "توفرك، موقع العمل، حالة التوظيف، والراتب المتوقع",
+    "sectionCvFile": "ملف السيرة الذاتية",
+    "sectionCvFileDescription": "أرفق سيرتك الذاتية كملف PDF",
+    "sectionProfessional": "التفاصيل المهنية",
+    "sectionProfessionalDescription": "مسمى وظيفتك وتفضيلات العمل",
+    "sectionProfile": "ملفك الشخصي",
+    "sectionProfileDescription": "معلومات ملفك الشخصي. للتعديل، انتقل إلى الحساب الشخصي.",
+    "selectAtLeast3Skills": "اختر على الاقل 3 مهارات",
+    "selectAtMost12Skills": "اختر على الاكثر 12 مهارات",
+    "skills": "المهارات",
+    "skillsDescription": "اختر من 3 إلى 12 مهارة",
+    "submit": "إرسال السيرة الذاتية",
+    "successMessage": "تم إرسال سيرتك الذاتية وهي قيد المراجعة.",
+    "urlInvalid": "يرجى إدخال رابط صحيح",
+    "workLocationRequired": "نوع موقع العمل مطلوب",
+    "workLocationType": "نوع موقع العمل"
+  },
+  "userDetails": {
+    "about": "نبذة",
+    "activeDays": "أيام النشاط",
+    "bestDay": "أفضل يوم",
+    "contactInfo": "معلومات التواصل",
+    "contributions": "المساهمات",
+    "githubActivity": "نشاط GitHub",
+    "githubError": "تعذر تحميل مساهمات GitHub",
+    "portfolio": "المعرض",
+    "professionalDetails": "التفاصيل المهنية",
+    "skills": "المهارات والتقنيات",
+    "viewOnGithub": "عرض على GitHub"
+  },
+  "users": {
+    "availabilityType": "نوع التوفر",
+    "email": "البريد الإلكتروني",
+    "experienceInYears": "الخبرة (بالسنوات)",
+    "governorate": "المحافظة",
+    "workLocationType": "نوع موقع العمل"
+  },
+  "workLocation": {
+    "hybrid": "مختلط",
+    "onSite": "حضوري",
+    "remote": "عن بعد"
+  }
+}
