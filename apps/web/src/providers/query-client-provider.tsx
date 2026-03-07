@@ -1,8 +1,5 @@
 'use client';
 
-import { List, ListItem } from '@mantine/core';
-import { createFormActions } from '@mantine/form';
-import { showNotification } from '@mantine/notifications';
 import {
   QueryClient,
   QueryClientProvider as ReactQueryClientProvider,
@@ -10,15 +7,14 @@ import {
 import { HTTPError } from 'ky';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { useNotifications } from '@/hooks/use-notifications';
+import { toast } from 'sonner';
 
-export function QueryClientProvider({
-  children,
-}: {
+interface QueryClientProviderProps {
   children: React.ReactNode;
-}) {
+}
+
+export function QueryClientProvider({ children }: QueryClientProviderProps) {
   const t = useTranslations();
-  const n = useNotifications();
 
   const [queryClient] = useState(() => {
     return new QueryClient({
@@ -29,30 +25,37 @@ export function QueryClientProvider({
               const errorBody = await err.response.json();
 
               if (errorBody.errorCode === 'HttpError') {
-                n.error(errorBody.message);
+                toast.error(t('_.error'), {
+                  description: errorBody.message,
+                });
               }
 
               if (errorBody.errorCode === 'LogicValidationError') {
-                showNotification({
-                  color: 'red',
-                  title: t('_.error'),
-                  message: (
-                    <List>
+                toast.error(t('_.error'), {
+                  description: (
+                    <ul className="list-inside list-disc text-sm">
                       {errorBody.errors.map((error: string) => (
-                        <ListItem key={error}>{error}</ListItem>
+                        <li key={error}>{error}</li>
                       ))}
-                    </List>
+                    </ul>
                   ),
                 });
               }
 
               if (errorBody.errorCode === 'FieldsValidationError') {
-                const formActions = createFormActions('main-form');
-                errorBody.errors.forEach(
-                  (error: { field: string; message: string }) => {
-                    formActions.setFieldError(error.field, error.message);
-                  },
-                );
+                toast.error(t('_.error'), {
+                  description: (
+                    <ul className="list-inside list-disc text-sm">
+                      {errorBody.errors.map(
+                        (error: { field: string; message: string }) => (
+                          <li key={error.field}>
+                            {error.field}: {error.message}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  ),
+                });
               }
             }
           },
