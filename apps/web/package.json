@@ -5,9 +5,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3004",
+    "dev": "next dev --port 3003",
     "build": "next build",
-    "start": "next start --port 3004",
+    "start": "next start --port 3003",
     "lint": "bun biome check --write ."
   },
   "dependencies": {
